@@ -12,11 +12,11 @@
     justify-content: space-between;
 
     background: linear-gradient(to bottom right,
-    rgb(1, 252, 252) 0%, rgb(78, 159, 235)40%, rgb(1, 101, 252) 60%, rgb(255, 255, 255) 100%);
+    rgb(1, 22, 22) 0%, rgb(0, 43, 107)40%, rgb(0, 43, 107) 60%, rgb(24, 22, 22) 100%);
     
 
-    background-size: 200% 200%;
-    animation: gradientEffect 6s linear infinite alternate;
+    background-size: 200% 100%;
+    animation: gradientEffect 3s linear infinite alternate;
 }
 
 @keyframes gradientEffect{
@@ -29,19 +29,21 @@
         display: flex;
         align-items: center;
         margin-bottom: 100px;
-        padding: 40px;
+        padding: 20px;
 
     }
     .logo img {
-        width: 130px;
-        margin-left: 35px;
-        margin-top: 20px;
+        width: 230px;
+        margin: auto;
+      
+
     }
     .logo div {
         font: 700 22px 'Inter';
         color: #E9E9E9;
         position: relative;
-        left: -10px;
+        
+        
     }
 
     .menu-items {
@@ -67,7 +69,7 @@
         cursor: pointer;
     }
     .menu-items > div:hover {
-        background-color: #004866;
+        background-color: rgb(7, 74, 173);
     }
 
     .menu-items > div img {

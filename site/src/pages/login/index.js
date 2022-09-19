@@ -2,7 +2,44 @@ import './index.scss'
 import Cabecalho from '../../components/cabecalho'
 
 
-export default function Index() {
+import { useState } from 'react'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
+
+
+export default function Index(){
+    const [email, setEmail] = useState('')
+    const [senha, setSenha] = useState('')
+    const [erro, setErro] = useState('')
+
+    const navigate = useNavigate()
+
+async function entrarClick(){
+    try{
+        const r = await axios.post('', {
+            gmail:email,
+            senha:senha
+        });
+
+        navigate('/adm')
+
+    }catch (err) {
+        if(err.response.status ==401){
+            setErro(err.response.data.erro);
+        }
+        }            
+}
+
+function mostra(){
+    const senha = document.getElementById("senha");
+    if (senha.type=== "password") {
+        senha.type="text";
+        
+    }
+    else
+    senha.type="password"
+}
+
     return (
         <main className='page-login'>
             <Cabecalho />
@@ -22,8 +59,7 @@ export default function Index() {
            		   		<i class="fas fa-user"></i>
            		   </div>
            		   <div class="div">
-           		   		<h5>Usuario</h5>
-           		   		<input type="text" class="input"/>
+           		   		<input type="text" class="input"  placeholder="Usuario"  value={email} onChange={e => setEmail(e.target.value)}/>
            		   </div>
            		</div>
            		<div class="input-div pass">
@@ -31,17 +67,21 @@ export default function Index() {
            		    	<i class="fas fa-lock"></i>
            		   </div>
            		   <div class="div">
-           		    	<h5>Senha</h5>
-           		    	<input type="password" class="input"/>
+                        
+           		    	<input type="password" placeholder="Senha" class="input" value={senha} onChange={e => setSenha(e.target.value)} Id='senha' />
             	   </div>
             	</div>
             	<a href="#">Esqueceu a senha?</a>
-            	<input type="submit" class="btn" value="Login"/>
+            	<input type="submit" class="btn" value="Login"  onClick={entrarClick}/>
+				<div className='invalido'>
+                {erro}
+            </div>
+
 				<p >Cadastre-se agora  </p>
+
             </form>
         </div>
     </div>
         </main>
     )
 }
-
