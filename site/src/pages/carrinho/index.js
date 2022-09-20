@@ -13,6 +13,3 @@ export default function Index() {
         </nav>
     )
 }
-
-
-

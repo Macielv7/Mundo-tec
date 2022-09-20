@@ -1,7 +1,8 @@
 import 'dotenv/config'
 import express from 'express'
 import cors from 'cors'
-import usuariocontroler from './controler/usuariocontroler.js'
+import usuariocontroler from './controller/usuariocontroller.js'
+import categoriaController from ' ./controller/categoriaController.js'
 
 
 const server = express();
@@ -10,6 +11,7 @@ server.use(express.json());
 
 
 server.use(usuariocontroler);
+server.use(categoriaController)
 
 
 server.listen(process.env.PORT, () => console.log(`API NA PORTA ${process.env.PORT}`));

@@ -1,23 +1,25 @@
-import { Router } from "express";
-import { Login  } from "../repository/usuarioRepositorio"
 
-const server = Router()
+import { login } from '../repository/usuarioRepositorio.js'
 
-server.post('/usuario' , async (req,resp) => {
-    try{
-        const {gmail, senha} = req.body;
+import { Router } from 'express';
+const server = Router();
 
-        const resposta = await Login(gmail,senha)
-        if(!resposta){
-            throw new Error('Credenciais Inválidas')
+
+server.post('/usuario/login', async (req, resp) => {
+    try {
+        const { email, senha } = req.body;
+        
+        const resposta = await login(email, senha);
+        if (!resposta) {
+            throw new Error('Credenciais inválidas');
         }
+
         resp.send(resposta)
 
-    }
-    catch(err){
+    } catch (err) {
         resp.status(401).send({
-            erro:err.message
-        })
+            erro: err.message
+        });
     }
 })
 

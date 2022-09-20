@@ -13,8 +13,11 @@ import TelaInicial from './pages/telaInicial';
 import TelaPedido from './pages/telaPedido';
 
 
-import Adm1 from './pages/adimin/adm1';
 
+import Adm1 from './pages/adimin/adm1';
+import Adm2 from './pages/adimin/adm2';
+import Adm3 from './pages/adimin/adm3';
+import Adm4 from './pages/adimin/adm4';
 
 
 
@@ -38,6 +41,9 @@ root.render(
         
 
         <Route path='/adm1' element={ < Adm1 /> } />
+        <Route path='/adm2' element={ < Adm2 /> } />
+        <Route path='/adm3' element={ < Adm3 /> } />
+        <Route path='/adm4' element={ < Adm4 /> } />
     </Routes>
     </BrowserRouter>
   </React.StrictMode>

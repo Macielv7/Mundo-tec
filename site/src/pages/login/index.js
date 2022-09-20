@@ -75,6 +75,7 @@ function mostra(){
             	<input type="submit" class="btn" value="Login"  onClick={entrarClick}/>
 				<div className='invalido'>
                 {erro}
+                      
             </div>
 
 				<p >Cadastre-se agora  </p>
