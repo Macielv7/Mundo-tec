@@ -1,7 +1,7 @@
 import { con } from "./connection.js";
 
 
-export async function inserirFilme(produto) {
+export async function inserirProduto(produto) {
     const comando = 
         `INSERT INTO tb_produto (id_usuario, nm_produto, vl_avaliacao, dt_lancamento, bt_disponivel)
                        VALUES (?, ?, ?, ?, ?, ?) `

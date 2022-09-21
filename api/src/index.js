@@ -1,8 +1,8 @@
 import 'dotenv/config'
 import express from 'express'
 import cors from 'cors'
-import usuariocontroler from './controller/usuariocontroller.js'
-import categoriaController from ' ./controller/categoriaController.js'
+import usuariocontroler from './controller/usuariocontroler.js'
+import categoriaController from './controller/categoriaController.js'
 
 
 const server = express();

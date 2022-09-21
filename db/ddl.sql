@@ -19,4 +19,6 @@ CREATE TABLE tb_produto (
     FOREIGN KEY (id_usuario) REFERENCES tb_usuario (id_usuario)
 );
 
+
+
      

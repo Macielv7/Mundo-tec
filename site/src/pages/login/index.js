@@ -16,12 +16,12 @@ export default function Index(){
 
 async function entrarClick(){
     try{
-        const r = await axios.post('', {
+        const r = await axios.post('http://localhost:5000/usuario', {
             gmail:email,
             senha:senha
         });
 
-        navigate('/adm')
+        navigate('/adimin/adm1')
 
     }catch (err) {
         if(err.response.status ==401){
@@ -75,7 +75,7 @@ function mostra(){
             	<input type="submit" class="btn" value="Login"  onClick={entrarClick}/>
 				<div className='invalido'>
                 {erro}
-                      
+                     
             </div>
 
 				<p >Cadastre-se agora  </p>
