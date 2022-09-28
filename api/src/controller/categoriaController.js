@@ -13,22 +13,7 @@ server.post('/produto', async (req, resp) => {
     try {
         const novoProduto = req.body;
 
-        if (!novoProduto.nome)
-            throw new Error('Nome do produto é obrigatório!');
-        
-        
-        if (novoProduto.avaliacao == undefined || novoProduto.avaliacao < 0)
-            throw new Error('Avaliação do produto é obrigatória!');
-    
-        if (!novoProduto.lancamento)
-            throw new Error('Lançamento do produto é obrigatório!');
-        
-        if (novoProduto.disponivel == undefined)
-            throw new Error('Campo Disponível é obrigatório!');
-        
-        if (!novoProduto.usuario)
-            throw new Error('Usuário não logado!');
-
+      
         
         const produtoInserido = await inserirProduto(novoProduto);
         resp.send(produtoInserido);

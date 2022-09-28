@@ -3,15 +3,15 @@ import { con } from "./connection.js";
 
 export async function inserirProduto(produto) {
     const comando = 
-        `INSERT INTO tb_produto (id_usuario, nm_produto, vl_avaliacao, dt_lancamento, bt_disponivel)
-                       VALUES (?, ?, ?, ?, ?, ?) `
+        `insert into tb_produto (nm_produto,nm_categoria ,vl_preco,dt_desconto, bt_disponivel)
+        values (?,?,?,?,?) `
     
-    const [resposta] = await con.query(comando, [produto.usuario, produto.nome,  produto.avaliacao, produto.lancamento, produto.disponivel]);
-    filme.id = resposta.insertId;
+    const [resposta] = await con.query(comando, [produto.nome, produto.categoria,  produto.preco, produto.desconto, produto.disponivel ]);
+    produto.id = resposta.insertId;
 
-    return filme;
+    return produto;
 }
-
+ 
 
 export async function alterarImagem(imagem, id) {
     const comando =

@@ -16,12 +16,12 @@ export default function Index(){
 
 async function entrarClick(){
     try{
-        const r = await axios.post('http://localhost:5000/usuario', {
+        const r = await axios.post('http://localhost:5000/usuario/login', {
             gmail:email,
             senha:senha
         });
 
-        navigate('/adimin/adm1')
+        navigate('/adm1')
 
     }catch (err) {
         if(err.response.status ==401){
@@ -42,7 +42,7 @@ function mostra(){
 
     return (
         <main className='page-login'>
-            <Cabecalho />
+              <Cabecalho/>
 
          
 	<img class="wave" src="./img/wave.png"/>
@@ -51,7 +51,7 @@ function mostra(){
 			<img src="./img/Mobile login-bro.png"/>
 		</div>
 		<div class="login-content">
-			<form action="index.html">
+			<form >
 				
 				<h2 class="title">Faça login</h2>
            		<div class="input-div one">
@@ -72,17 +72,22 @@ function mostra(){
             	   </div>
             	</div>
             	<a href="#">Esqueceu a senha?</a>
-            	<input type="submit" class="btn" value="Login"  onClick={entrarClick}/>
+            	
+                
+
 				<div className='invalido'>
                 {erro}
                      
+                
             </div>
-
 				<p >Cadastre-se agora  </p>
-
             </form>
+            <input type="submit" class="btn" value="Login"  onClick={entrarClick}/>
+            
         </div>
     </div>
         </main>
     )
 }
+
+

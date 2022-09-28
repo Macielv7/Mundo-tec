@@ -1,0 +1,73 @@
+.os{
+    display: flex;
+    justify-content:center;
+    padding: 30px;
+    
+
+    font-family: "Montserrat",sans-serif;
+    font-style: normal;
+    font-weight: 40px;
+}
+
+ 
+
+
+.lk{
+    margin: auto;
+    vertical-align: baseline;
+    
+    
+
+    text-align: center;
+    letter-spacing: 0px;
+    
+
+}
+
+.car{
+    display: flex;
+   
+}
+
+
+.car img{
+    width: 80px;
+    float: left;
+    margin-right: 20px;
+}
+
+.car h3{
+    color: #4D4D4D;
+    width: 214px;
+    font-family: "Inter",sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+
+    box-sizing: inherit;
+    padding: 0;
+    margin: 0;
+
+    display: block;
+    font-size: 1.17em;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+
+}
+
+.nome{
+  display: flex;
+  height: 263px;
+
+}
+
+
+.con{
+    display: flex;
+    height: 200px;
+    justify-content: space-around;
+}

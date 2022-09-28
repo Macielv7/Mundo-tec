@@ -1,4 +1,3 @@
-
 import { login } from '../repository/usuarioRepositorio.js'
 
 import { Router } from 'express';
@@ -7,9 +6,9 @@ const server = Router();
 
 server.post('/usuario/login', async (req, resp) => {
     try {
-        const { email, senha } = req.body;
+        const { gmail, senha } = req.body;
         
-        const resposta = await login(email, senha);
+        const resposta = await login(gmail, senha);
         if (!resposta) {
             throw new Error('Credenciais inválidas');
         }
