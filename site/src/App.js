@@ -12,6 +12,7 @@ import Conta from "./pages/conta/Conta"
 
 
 
+
 function App() {
 
   const { productItems } = Data
@@ -34,18 +35,12 @@ function App() {
 
   return (
 
-   
         <Router>
           <Conta productItems={productItems} addToCart={addToCart} />
         </Router>
-    
-
 
   )
 }
-
-
-
 
 export default App
 

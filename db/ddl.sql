@@ -17,8 +17,9 @@ CREATE TABLE tb_produto (
 	id_produto		int primary key auto_increment,
     id_usuario		int,
     nm_produto		varchar(200),
-    vl_avaliacao	decimal(15,2),
-    dt_lancamento	date,
+    nm_categoria	varchar(200),
+    vl_preco	int,
+    dt_desconto int,
     bt_disponivel	boolean,
     img_produto       varchar(800),
     FOREIGN KEY (id_usuario) REFERENCES tb_usuario (id_usuario)

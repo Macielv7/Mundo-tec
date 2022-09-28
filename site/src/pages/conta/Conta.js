@@ -27,8 +27,8 @@ const Index = ({ productItems, addToCart,  }) => {
 
     <FlashDeals productItems={productItems} addToCart={addToCart} />
 <div className="con">
-<img src="./img/espacogamer.jpg" alt="" />
-<img src="./img/espacogamer.jpg" alt="" />
+<img src="./img/cadeira.jfif" alt="" />
+<img src="./img/cadeira.jfif" alt="" />
 </div>
       <FlashDeals productItems={productItems} addToCart={addToCart} />
 
