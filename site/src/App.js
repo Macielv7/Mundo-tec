@@ -1,46 +1,48 @@
-import React, { useState } from "react"
+
 import "./App.css"
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 // git config -–global user.name "nome completo"
 // git config -–global user.email "emaildogit@email.com"
 
-import Data from "./components/data"
+import Data from "./components/flashDeals/data"
 
 import Conta from "./pages/conta/Conta"
+import Login from "./pages/login"
+
+
+import Adm1 from "./pages/adimin/adm1"
+import Adm2 from "./pages/adimin/adm2"
+import Adm3 from "./pages/adimin/adm3"
+import Adm4 from "./pages/adimin/adm4"
 
 
 
 
-
-function App() {
-
-  const { productItems } = Data
-
-  const [CartItem, setCartItem] = useState([])
+const { productItems } = Data
 
 
-  const addToCart = (product) => {
 
-    const productExit = CartItem.find((item) => item.id === product.id)
-
-    if (productExit) {
-      setCartItem(CartItem.map((item) => (item.id === product.id ? { ...productExit, qty: productExit.qty + 1 } : item)))
-    } else {
-
-      setCartItem([...CartItem, { ...product, qty: 1 }])
-    }
-  }
-
+export default function Index() {
 
   return (
+      <BrowserRouter>
+          <Routes>
+              
 
-        <Router>
-          <Conta productItems={productItems} addToCart={addToCart} />
-        </Router>
 
+              <Route path='/login' element={<Login />} />
+              
+              <Route>
+              <Route path='/conta' element={<Conta productItems={productItems} />} />
+              </Route>
+
+              <Route path='/amd1' element={<Adm1 />} />
+              <Route path='/adm2' element={<Adm2 />} />
+              <Route path='/adm3' element={<Adm3/>} />
+              <Route path='/adm4' element={<Adm4 />} />
+          </Routes>
+      </BrowserRouter>
   )
 }
-
-export default App
 

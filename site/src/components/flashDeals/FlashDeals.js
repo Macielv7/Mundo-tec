@@ -1,6 +1,6 @@
 import React from "react"
 import FlashCard from "./FlashCard"
-import "./style.css"
+import "./index.scss"
 
 const FlashDeals = ({ productItems, addToCart }) => {
   return (

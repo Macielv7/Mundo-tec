@@ -1,7 +1,7 @@
 import Menu from '../../../components/menu'
 
 
-import { cadastrarProduto, enviarImagemProduto, alterarProduto, buscarPorId, buscarImagem } from '../../../api/produtoApis'
+import { cadastrarProduto, enviarImagemProduto, alterarProduto, buscarPorId, buscarImagem } from '../../../api/produto'
 import storage from 'local-storage'
 
 import './index.scss'
