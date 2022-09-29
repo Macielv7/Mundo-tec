@@ -23,6 +23,7 @@ export async function alterarImagem(imagem, id) {
     return resposta.affectedRows;
 }
 
+//loi
 
 export async function listarTodosProdutos() {
     const comando =
