@@ -21,7 +21,7 @@ async function entrarClick(){
             senha:senha
         });
 
-        navigate('/adm1')
+        navigate('/home')
 
     }catch (err) {
         if(err.response.status ==401){

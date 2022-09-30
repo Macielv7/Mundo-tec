@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 import './index.scss'
 
 export default function Index() {
@@ -18,27 +11,27 @@ export default function Index() {
                 <div className='menu-items'>
                     
                     <div>
-                    <img src="./img/icons8-sms-de-token.png" alt="cadastrar" />
-                    <div>Consultas</div>
+                    <a href='/home'><img src="./img/perfil.png"  /></a>
+                    <div>Home</div>
                     </div>
 
                     <div>
-                    <img src="./img/icons8-sms-de-token.png" alt="cadastrar" />
-                    <div>Consultas</div>
+                    <a href='/adm1'><img src="./img/cesta.png" alt="cadastrar" /></a>
+                    <div>Cadastrar</div>
+                    </div>
+                    
+                    <div>
+                    <a href='/adm2'><img src="./img/cesta.png" alt="consultar" /></a>
+                        <div>Consultar</div>
                     </div>
 
                     <div>
-                    <img src="./img/icons8-sms-de-token.png" alt="cadastrar" />
-                    <div>Consultas</div>
+                    <a href='/adm3'><img src="./img/cesta.png" alt="consultar" /></a>
+                        <div>Consultas</div>
                     </div>
 
                     <div>
-                    <img src="./img/icons8-sms-de-token.png" alt="cadastrar" />
-                    <div>Consultas</div>
-                    </div>
-
-                    <div>
-                   <img src="./img/icons8-sms-de-token.png" alt="consultar" />
+                    <a href='/adm3'><img src="./img/cesta.png" alt="consultar" /></a>
                         <div>Consultas</div>
                     </div>
                 </div>
@@ -46,7 +39,7 @@ export default function Index() {
 
             <div className='menu-items'>
                 <div>
-                <img src="./img/icons8-sms-de-token.png" alt="consultar" />
+                <a href='/conta'><img src="./img/sair.png" alt="consultar" /></a>
                     <div>Sair</div>
                 </div>
             </div>

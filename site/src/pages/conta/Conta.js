@@ -5,24 +5,21 @@ import "./index.scss"
 
 import FlashDeals from "../../components/flashDeals/FlashDeals"
 
+import Header from "../../components/header"
+
 
 
 
 
 const Index = ({ productItems, addToCart,  }) => {
     return (
-
-
         <>
-       
-            
 
+       <Header />
 
-
-
-
-
-
+       <div class="nome">
+            <img src="/img/p (1).png" alt=""/>
+        </div>
 
             <FlashDeals productItems={productItems} addToCart={addToCart} />
             <div className="con">
