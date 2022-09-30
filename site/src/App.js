@@ -34,6 +34,7 @@ export default function Index() {
               </Route>
            
            <Route>
+           
            <Route path='/home' element={<Home />} />
               <Route path='/adm1' element={<Adm1 />} />
               <Route path='/adm2' element={<Adm2 />} />

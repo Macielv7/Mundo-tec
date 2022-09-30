@@ -1,7 +1,7 @@
 import Menu from '../../../components/menu'
 
 
-import { listarTodosProduto, buscarProdutoPorNome, removerProduto  } from '../../../api/produto'
+import { listarTodosProduto, buscarProdutoPorNome, removerProduto } from '../../../api/produto'
 
 import { confirmAlert } from 'react-confirm-alert'
 import { toast } from 'react-toastify'
@@ -42,7 +42,7 @@ export default function Index() {
                             carregarTodosProduto();
                         else
                             filtrar();
-                        
+
                         toast.dark('🚀 Produto removido!');
                     }
                 },
@@ -51,7 +51,7 @@ export default function Index() {
                 }
             ]
         })
-        
+
     }
 
     async function filtrar() {
@@ -74,8 +74,8 @@ export default function Index() {
         <main className='page page-consultar'>
             <Menu selecionado='consultar' />
             <div className='container'>
-                
-                
+
+
                 <div className='conteudo'>
 
                     <div className='caixa-busca'>
@@ -84,46 +84,46 @@ export default function Index() {
                     </div>
 
                     <table>
-                    <div className='comp-detalhe'>
-            <img alt='' />
-            <div className='box-info'>
-                <h1>  </h1>
-                <div className='info'>
-                    <h3>Lançamento</h3>
-                    <p></p>
-                </div>
-                <div className='info'>
-                    <h3>Sinopse</h3>
-                    <p className='sinopse'>  </p>
-                </div>
-                <div className='info'>
-                    <h3>Avaliação</h3>
-                    <p> </p>
-                </div>
-                <div className='info'>
-                    <h3></h3>
-                </div>
-            </div>
-        </div>
+                        <div className='comp-detalhe'>
+                            <img alt='' />
+                            <div className='box-info'>
+                                <h1>  </h1>
+                                <div className='info'>
+                                    <h3>Lançamento</h3>
+                                    <p></p>
+                                </div>
+                                <div className='info'>
+                                    <h3>Sinopse</h3>
+                                    <p className='sinopse'>  </p>
+                                </div>
+                                <div className='info'>
+                                    <h3>Avaliação</h3>
+                                    <p> </p>
+                                </div>
+                                <div className='info'>
+                                    <h3></h3>
+                                </div>
+                            </div>
+                        </div>
                         <tbody>
 
-                            {produto.map(item => 
+                            {produto.map(item =>
                                 <tr key={item.id} onClick={() => abrirDetalhes(item.id)}>
                                     <td>{item.id}</td>
                                     <td>{item.nome}</td>
-                                    <td>{item.avaliacao}</td>
-                                    <td>{item.lancamento.substr(0, 10)}</td>
+                                    <td>{item.desconto}</td>
+                                    <td>{item.preco.substr(0, 10)}</td>
                                     <td>{item.disponivel ? 'Sim' : 'Não'}</td>
                                     <td>
-                                        <img src='/assets/images/icon-editar.svg' alt='editar'
+                                        <img src='./img/icons8-lápis-64.png' alt='editar'
                                             onClick={e => {
                                                 e.stopPropagation();
                                                 editarProduto(item.id);
                                             }} />
-                                        
+
                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-                                        <img src='/assets/images/icon-remover.svg' alt='remover'
+                                        <img src='./img/icons8-remover-24.png' alt='remover'
                                             onClick={e => {
                                                 e.stopPropagation();
                                                 removerProdutoClick(item.id, item.nome);
@@ -131,11 +131,11 @@ export default function Index() {
                                     </td>
                                 </tr>
                             )}
-                            
+
 
                         </tbody>
                     </table>
-                    
+
                 </div>
             </div>
         </main>

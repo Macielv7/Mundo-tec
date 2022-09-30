@@ -2,11 +2,13 @@
 
 .comp-detalhe {
     display: flex;
-    align-items: flex-start;
+   justify-content: end;
 
     background-color: #fff;
     padding: 20px 60px 20px 20px;
     border-radius: 35px;
+    
+   
     box-shadow: 0px 0px 8px rgba(155, 155, 155, 0.25);
 
     img {
@@ -14,6 +16,8 @@
         border-radius: 35px;
         margin-right: 30px;
     }
+
+    
 
     h1 {
         font: 800 32px 'Inter';

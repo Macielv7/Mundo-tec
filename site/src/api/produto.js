@@ -4,9 +4,14 @@ const api = axios.create({
 })
 
 
-export async function cadastrarProduto(nome,  disponivel,  usuario) {
+export async function cadastrarProduto(nome, categoria, preco, disponivel, desconto, descricao) {
     const resposta = await api.post('/Produto', {
-        
+        nome: nome,
+        categoria: categoria,
+        preco: preco,
+        desconto: desconto,
+        descricao: descricao,
+        disponivel: disponivel
 
        
     })
@@ -29,9 +34,14 @@ export async function enviarImagemProduto(id, imagem) {
 
 
 
-export async function alterarProduto(id, nome,  disponivel,  usuario) {
+export async function alterarProduto(id, nome, categoria, preco, disponivel, desconto, descricao) {
     const resposta = await api.put(`/produto/${id}`, {
-     
+        nome: nome,
+        categoria: categoria,
+        preco: preco,
+        desconto: desconto,
+        descricao: descricao,
+        disponivel: disponivel
     })
     return resposta.data;
 }

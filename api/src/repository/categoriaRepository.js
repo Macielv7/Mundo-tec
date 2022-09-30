@@ -1,17 +1,18 @@
+
 import { con } from "./connection.js";
 
 
 export async function inserirProduto(produto) {
     const comando = 
-        `insert into tb_produto (nm_produto,nm_categoria ,vl_preco,dt_desconto, bt_disponivel)
-        values (?,?,?,?,?) `
+        `INSERT INTO tb_produto (id_usuario, nm_produto, nm_categoria, vl_preco, vl_desconto, ds_descricao,  bt_disponivel)
+                       VALUES (?, ?, ?, ?, ?, ? ,?) `
     
-    const [resposta] = await con.query(comando, [produto.nome, produto.categoria,  produto.preco, produto.desconto, produto.disponivel ]);
-    produto.id = resposta.insertId;
+    const [resposta] = await con.query(comando, [produto.usuario, produto.nome, produto.categoria, produto.preco, produto.desconto, produto.descricao, produto.disponivel]);
+    filme.id = resposta.insertId;
 
-    return produto;
+    return filme;
 }
- 
+
 
 export async function alterarImagem(imagem, id) {
     const comando =
@@ -23,17 +24,18 @@ export async function alterarImagem(imagem, id) {
     return resposta.affectedRows;
 }
 
-//loi
 
 export async function listarTodosProdutos() {
     const comando =
-        `SELECT id_filme		id,
-                nm_filme		nome,
-                vl_avaliacao	avaliacao,
-                dt_lancamento	lancamento,
-                bt_disponivel	disponivel,
+        `SELECT id_produto		id,
+                nm_produto		nome,
+                nm_categoria	categoria,
+                vl_preco	    preco,
+                vl_desconto	    desconto,
+                ds_descricao    descricao,
+                bt_disponivel   disponivel,
                 id_usuario      usuario
-           FROM tb_filme`;
+           FROM tb_produto`;
     
     const [linhas] = await con.query(comando);
     return linhas;
@@ -44,10 +46,12 @@ export async function buscarPorId(id) {
     const comando =
         `SELECT id_produto		id,
                 nm_produto		nome,
-                img_produto       imagem,
-                vl_avaliacao	avaliacao,
-                dt_lancamento	lancamento,
-                bt_disponivel	disponivel,
+                nm_categoria	categoria,
+                img_produto     imagem,
+                vl_preco	    preco,
+                vl_desconto	    desconto,
+                ds_descricao    descricao,
+                bt_disponivel   disponivel,
                 id_usuario      usuario
            FROM tb_produto
           WHERE id_produto = ? `;
@@ -62,9 +66,11 @@ export async function buscarPorNome(nome) {
     const comando =
         `SELECT id_produto		id,
                 nm_produto		nome,
-                vl_avaliacao	avaliacao,
-                dt_lancamento	lancamento,
-                bt_disponivel	disponivel,
+                nm_categoria	categoria,
+                vl_preco	    preco,
+                vl_desconto	    desconto,
+                ds_descricao    descricao,
+                bt_disponivel   disponivel,
                 id_usuario      usuario
            FROM tb_produto
           WHERE nm_produto like ? `;
@@ -77,7 +83,7 @@ export async function buscarPorNome(nome) {
 
 export async function removerProduto(id) {
     const comando =
-        `DELETE FROM tb_produto
+        `DELETE FROM tb_produto 
                WHERE id_produto = ? `;
     
     const [resposta] = await con.query(comando, [id]);
@@ -89,15 +95,17 @@ export async function removerProduto(id) {
 
 export async function alterarProduto(id, produto) {
     const comando = 
-        `UPDATE tb_produto
-            SET nm_produto     = ?,
-                vl_avaliacao  = ?,
-                dt_lancamento = ?,
-                bt_disponivel = ?,
-                id_usuario    = ?
+        `UPDATE tb_produto 
+            SET nm_produto  = ?,
+            nm_categoria	= ?,
+            vl_preco	    = ?,
+            vl_desconto	    = ?,
+            ds_descricao    = ?,
+            bt_disponivel   = ?,
+            id_usuario      usuario   = ?
           WHERE id_produto      = ?`
     
-    const [resposta] = await con.query(comando, [produto.nome,  produto.avaliacao, produto.lancamento, produto.disponivel, produto.usuario, id]);
+    const [resposta] = await con.query(comando, [produto.nome, produto.categoria, produto.preco, produto.desconto, produto.descricao,produto.disponivel, produto.usuario, id]);
     return resposta.affectedRows;
 }
 
