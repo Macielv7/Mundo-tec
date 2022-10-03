@@ -109,3 +109,7 @@ export async function alterarProduto(id, produto) {
     return resposta.affectedRows;
 }
 
+
+
+
+
