@@ -1,7 +1,7 @@
 import Menu from '../../../components/menu'
 
 
-import { listarTodosProduto, buscarProdutoPorNome, removerProduto } from '../../../api/produto'
+import { listarTodosProduto, buscarProdutoPorNome, removerProduto } from '../../../api/produtoAPI'
 
 import { confirmAlert } from 'react-confirm-alert'
 import { toast } from 'react-toastify'

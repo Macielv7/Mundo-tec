@@ -30,6 +30,7 @@ body {
 }
 .f_flex {
   display: flex;
+  
 }
 a {
   text-decoration: none;

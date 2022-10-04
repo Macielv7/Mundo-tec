@@ -1,4 +1,7 @@
-.page-cadastrar {
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+.pagina-admin-produto {
+    padding: 1.5em;
     display: flex;
     font: 600 18px 'Inter';
 
@@ -15,9 +18,9 @@
         align-items: flex-start;
         
         padding: 20px 60px;
-        background-color: #F5F6FA;
+        background-color: #0935e4;
         flex-grow: 1;
-        margin-left: 100px;
+        margin-left: 300px;
     }
     .conteudo > section {
         flex-grow: 1;
@@ -71,4 +74,93 @@
         height: 250px;
         width: 200px;
     }
+    
+    .form {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 500px;
+    }
+
+    .form > div {
+        display: flex;
+        align-items: center;
+        margin: .2em;
+    }
+    .form > div label {
+        min-width: 8em;
+        text-align: right;
+        margin-right: 1em;
+    }
+    .form > div:last-child {
+        margin-top: 1em;
+        justify-content: center;
+    }
+    
+    .gpo-categoria {
+        display: flex;
+        width: 100%;
+    }
+
+    
+
+    .cat-conteiner {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .cat-selecionada {
+        font-size: .7em;
+        background-color: #672dc3;
+        padding: .5em 1em;
+        margin: .5em 5px;
+        color: #fff;
+        border-radius: 1em;
+    }
+
+
+
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  font-family: 'Roboto';
+}
+
+h1 {
+  margin-bottom: 1em;
+}
+
+textarea {
+  resize: none;
+}
+
+input, select {
+  outline: none;
+  border: 1px solid rgb(92, 92, 92);
+  user-select: none;
+
+  border-radius: 5px;
+  font-size: 1em;
+  padding: .5em;
+  width: 100%;
+}
+
+input[type=checkbox] {
+  width: auto;
+  align-self: flex-start;
+}
+
+button {
+  outline: none;
+  border: none;
+  background-color: #672dc3;
+  color: #fff;
+  padding: .8em 1.5em;
+  border-radius: 2em;
+
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
 }

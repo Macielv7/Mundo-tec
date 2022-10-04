@@ -1,11 +1,13 @@
-import Menu from '../../../components/menu'
-
-
 import { cadastrarProduto, enviarImagemProduto, alterarProduto, buscarPorId, buscarImagem } from '../../../api/produtoAPI'
 import storage from 'local-storage'
 
-import './index.scss'
+import { listarCategorias } from '../../../api/categoriaAPI'
+import { listarDepartamentos } from '../../../api/departamentoAPI'
 import { useEffect, useState } from 'react'
+import { salvarProduto } from '../../../api/produtoAPI';
+
+import './index.scss'
+
 import { useParams } from 'react-router-dom'
 
 import { toast } from 'react-toastify';
@@ -41,7 +43,7 @@ export default function Index() {
     async function carregarproduto() {
         const resposta = await buscarPorId(idParam);
         setNome(resposta.nome);
-        setCategoria(resposta.categoria);
+        
         setPreco(resposta.preco);
         setDisponivel(resposta.disponivel);
         setDesconto(resposta.desconto.substr(0, 10));
@@ -59,14 +61,14 @@ export default function Index() {
             const usuario = storage('usuario-logado').id;
 
             if (id === 0) {
-                const novoproduto = await cadastrarProduto(nome, categoria, preco, disponivel, desconto, usuario);
+                const novoproduto = await cadastrarProduto(nome, preco, disponivel, desconto, usuario);
                 await enviarImagemProduto(novoproduto.id, imagem);
                 setId(novoproduto.id);
 
                 toast.dark('🚀 produto cadastrado com sucesso!');
             }
             else {
-                await alterarProduto(id, nome, categoria, preco, disponivel, desconto, usuario);
+                await alterarProduto(id, nome, preco, disponivel, desconto, usuario);
 
                 if (typeof (imagem) == 'object')
                     await enviarImagemProduto(id, imagem);
@@ -100,7 +102,7 @@ export default function Index() {
         setId(0);
         setNome('');
         setPreco(0);
-        setCategoria('');
+        
         setDisponivel(true);
         setDesconto(0);
         setImagem();
@@ -110,7 +112,7 @@ export default function Index() {
         try {
             const prevoProduto = Number(preco.replace(',', '.'));
 
-            const r = await salvarProduto(nome, prevoProduto, destaque, idDepartamento, catSelecionadas);
+            const r = await salvarProduto(nome, prevoProduto, idDepartamento, catSelecionadas);
             toast.dark('Produto cadastrado com sucesso');
         }
         catch (err) {
@@ -154,10 +156,9 @@ export default function Index() {
 
 
     return (
-        <main className='page page-cadastrar'>
-            <Menu selecionado='cadastrar' />
+        <main className='pagina-admin-produto'>
+            
             <div className='container'>
-
 
                 <div className='conteudo'>
                     <section>
@@ -168,7 +169,7 @@ export default function Index() {
                                 <div className='upload-capa' onClick={escolherImagem}>
 
                                     {!imagem &&
-                                        <img src="/assets/images/icon-upload.svg" alt="" />
+                                        <img src="./img/icons8-add-image-64.png" alt="" />
                                     }
 
                                     {imagem &&
@@ -178,9 +179,7 @@ export default function Index() {
                                     <input type='file' id='imagemCapa' onChange={e => setImagem(e.target.files[0])} />
                                 </div>
                             </div>
-                        </div>
-                        <div className='pagina-admin-produto'>
-                            <h1> Novo Produto </h1>
+                        
 
                             <div className='form'>
 
@@ -195,8 +194,8 @@ export default function Index() {
                                 </div>
 
                                 <div>
-                                    <label> Destaque: </label>
-                                    <input type='checkbox' checked={destaque} onChange={e => setDestaque(e.target.checked)} />
+                                    <label> Desconto: </label>
+                                    <input type='text' value={desconto} onChange={e => setDesconto(e.target.value)} />
                                 </div>
 
 
@@ -224,7 +223,7 @@ export default function Index() {
                                                 <option value={item.id}> {item.categoria} </option>
                                             )}
                                         </select>
-                                        <button onClick={adicionarCategoria} className='btn-categoria'>+</button>
+                                       
                                     </div>
                                 </div>
                                 <div>
@@ -237,6 +236,11 @@ export default function Index() {
                                         )}
                                     </div>
 
+                                </div>
+
+                                <div className='form-row'>
+                                    <label></label>
+                                    <input type='checkbox' checked={disponivel} onChange={e => setDisponivel(e.target.checked)} /> &nbsp; Disponível
                                 </div>
 
 

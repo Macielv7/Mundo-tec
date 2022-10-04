@@ -58,8 +58,7 @@ const FlashCard = ({ productItems, addToCart }) => {
                   </div>
                   <div className='price'>
                     <h4>R${productItems.price}.00 </h4>
-                    { 
-                     }
+                    
                     <button onClick={() => addToCart(productItems)}>
                       <i className=''></i>
                     </button>
