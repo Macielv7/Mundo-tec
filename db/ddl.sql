@@ -1,6 +1,3 @@
-
-
-
 CREATE DATABASE Tec;
 USE Tec;
 
@@ -64,3 +61,29 @@ create table tb_produto_imagem (
     ds_imagem   			varchar(800),
     foreign key (id_produto) references tb_produto (id_produto)
 );
+
+
+CREATE TABLE TB_USUARIO(
+ID_USUARIO        INT PRIMARY KEY AUTO_INCREMENT,
+NM_USUARIO        VARCHAR(100),
+DS_CPF            VARCHAR(14),
+DS_EMAIL          VARCHAR(100),
+DS_GENERO         VARCHAR(100),
+DS_TELEFONE       VARCHAR(100),
+DS_SENHA          VARCHAR(100),
+DS_COMFIRMAR      VARCHAR(100)
+);
+
+
+create table tb_usuario_endereco(
+    id_usuario_endereco     int primary key auto_increment,
+    id_usuario               int,
+    DS_CEP                   varchar(100),
+    nm_numero                int,
+    NM_ESTADO                varchar(100),
+    DS_CASA                  varchar(8),
+    NM_CIDADE                varchar(300),
+    DS_COMPLEMENTO           varchar(200),
+    NM_BAIRRO                varchar(100),
+    foreign key (id_usuario)  references tb_usuario (id_usuario)
+)
