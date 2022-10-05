@@ -9,7 +9,8 @@ import Data from "./components/flashDeals/data"
 
 import Conta from "./pages/conta/Conta"
 
-
+import CriarConta from "./pages/criarConta"
+import Endereco from "./pages/endereco"
 import Home from "./pages/adimin/home"
 import Adm1 from "./pages/adimin/adm1"
 import Adm2 from "./pages/adimin/adm2"
@@ -36,6 +37,8 @@ export default function Index() {
            <Route>
            
            <Route path='/home' element={<Home />} />
+           <Route path='/criarconta' element={<CriarConta />} />
+           <Route path='/Endereco' element={<Endereco />} />
               <Route path='/adm1' element={<Adm1 />} />
               <Route path='/adm2' element={<Adm2 />} />
               <Route path='/adm3' element={<Adm3/>} />

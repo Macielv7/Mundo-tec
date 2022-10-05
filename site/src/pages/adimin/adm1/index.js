@@ -5,6 +5,7 @@ import { listarCategorias } from '../../../api/categoriaAPI'
 import { listarDepartamentos } from '../../../api/departamentoAPI'
 import { useEffect, useState } from 'react'
 import { salvarProduto } from '../../../api/produtoAPI';
+import Menu from "../../../components/menu"
 
 import './index.scss'
 
@@ -157,7 +158,7 @@ export default function Index() {
 
     return (
         <main className='pagina-admin-produto'>
-            
+            <Menu/>
             <div className='container'>
 
                 <div className='conteudo'>
