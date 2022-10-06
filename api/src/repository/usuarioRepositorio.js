@@ -1,17 +1,19 @@
+import { con } from "./connection.js";
 
-import { con } from './connection.js'
+export async function usuario(usuario){
+    const linhas = `
+        INSERT INTO TB_USUARIO(NM_USUARIO,  DS_CPF, DS_EMAIL, DS_CELULAR, DS_SENHA  )
+                VALUES( ?, ?, ?, ?, ?, ?)
+    `
 
-
-
-export async function login(email, senha) {
-    const comando = 
-        `select id_login 		id,
-                nm_doutor		doutor,
-                ds_gmail		gmail
-           from tb_login
-          where ds_gmail 		= ?
-            and ds_senha		= ? `
+    const [resp] = await con.query(linhas, [
+        usuario.nome,
+        usuario.cpf,
+        usuario.email,
+        usuario.celular,
+        usuario.senha
+        
+    ])
     
-    const [linhas] = await con.query(comando, [email, senha])
-    return linhas[0];
+    return resp.insertId;
 }

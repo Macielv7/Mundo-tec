@@ -1,24 +1,19 @@
-import { login } from '../repository/usuarioRepositorio.js'
-
+import { usuario } from "../repository/usuarioRepositorio.js";
 import { Router } from 'express';
+
 const server = Router();
 
+server.post('/cadastro/usuario', async (req, resp)=> {
+    try{
 
-server.post('/usuario/login', async (req, resp) => {
-    try {
-        const { gmail, senha } = req.body;
-        
-        const resposta = await login(gmail, senha);
-        if (!resposta) {
-            throw new Error('Credenciais inválidas');
-        }
+        const usuario = req.body;
+        const linhas = await usuario(usuario)
+        resp.send(usuario)
 
-        resp.send(resposta)
-
-    } catch (err) {
-        resp.status(401).send({
-            erro: err.message
-        });
+    }catch(err){
+        return resp.status(400).send({
+            erro:"Ops, algo não está funcionando corretamente!!"
+        })
     }
 })
 

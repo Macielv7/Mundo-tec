@@ -1,5 +1,5 @@
 
-import { alterarProduto, alterarImagem, buscarPorId, buscarPorNome, inserirProduto, listarTodosProdutos, removerProduto } from '../repository/categoriaRepository.js'
+import { alterarProduto, alterarImagem, buscarPorId, buscarPorNome, inserirProduto, listarTodosProdutos, removerProduto } from '../repository/produto.js'
 
 import multer from 'multer'
 import { Router } from 'express'

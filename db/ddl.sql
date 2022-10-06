@@ -3,14 +3,7 @@ USE Tec;
 
 drop database tec;
 
-select * from tb_login;
-
-CREATE TABLE tb_login (
-id_login int primary key auto_increment,
-nm_doutor varchar(50),
-ds_gmail varchar (100),
-ds_senha varchar(100)
-);    
+select * from tb_login;   
 
 insert into tb_login (nm_doutor, ds_gmail, ds_senha)
 values ('micka','adm', 123);
@@ -70,8 +63,7 @@ DS_CPF            VARCHAR(14),
 DS_EMAIL          VARCHAR(100),
 DS_GENERO         VARCHAR(100),
 DS_TELEFONE       VARCHAR(100),
-DS_SENHA          VARCHAR(100),
-DS_COMFIRMAR      VARCHAR(100)
+DS_SENHA          VARCHAR(100)
 );
 
 
@@ -87,3 +79,15 @@ create table tb_usuario_endereco(
     NM_BAIRRO                varchar(100),
     foreign key (id_usuario)  references tb_usuario (id_usuario)
 )
+
+CREATE TABLE TB_ADMIN_LOGIN(
+ID_ADMIN_LOGIN   INT PRIMARY KEY AUTO_INCREMENT,
+DS_EMAIL         VARCHAR(100),
+DS_SENHA         VARCHAR(100)
+);
+
+CREATE TABLE TB_LOGIN(
+ID_LOGIN         INT PRIMARY KEY AUTO_INCREMENT,
+ID_USUARIO       INT,
+FOREIGN KEY (ID_USUARIO) REFERENCES TB_USUARIO (ID_USUARIO)
+);
