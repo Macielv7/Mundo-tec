@@ -4,9 +4,9 @@ import './index.scss';
 
 function App() {
 
-    
 
-  const {register, handleSubmit, setValue, setFocus} = useForm();
+
+  const { register, handleSubmit, setValue, setFocus } = useForm();
 
   const onSubmit = (e) => {
     console.log(e);
@@ -28,71 +28,64 @@ function App() {
 
   return (
     <div class="container">
-    <form onSubmit={handleSubmit(onSubmit)}>
-
-<div class="form-header">
+        
+    <div class="form">
+        <form action="#">
+        
+            <div class="form-header">
                 <div class="title">
                     <h1>Faça o seu cadastro</h1>
-                    <p>Preencha os campos para podermos realizar o cadastro</p>
+                    <p>Preencha os campos para podermos enviar seus produtos</p>
                 </div>
             </div>
 
-
-        <div class="input-group">
-
-        
-
-      
-
-      <div class="input-box">
-                    <label for="firstname">Nome usuario</label>
-                    <input type="text" {...register("cep")} onBlur={checkCEP} />
+            <div class="input-box">
+                    <label for="lastname">Cep</label>
+                    <input id="text" type="text" {...register("cep")} onBlur={checkCEP}   required/>
                 </div>
 
-      
-
-      <div class="input-box">
-                    <label for="firstname">Nome usuario</label>
-                    <input type="text" {...register("address" )}/>
+            <div class="input-group">
+                <div class="input-box">
+                    <label for="firstname">Rua</label>
+                    <input  type="text"{...register("address" )}   required/>
                 </div>
 
-      
-
-      <div class="input-box">
-                    <label for="firstname">Nome usuario</label>
-                    <input type="text" {...register("addressNumber" )}/>
+                <div class="input-box">
+                    <label for="lastname">Numero de residencia</label>
+                    <input id="text" type="text"  {...register("addressNumber" )}  required/>
                 </div>
-      
-      
-
-      <div class="input-box">
-                    <label for="firstname">Nome usuario</label>
-                    <input type="text" {...register("neighborhood" )}/>
+                <div class="input-box">
+                    <label for="email">Complemento</label>
+                    <input id="text" type="text"   required/>
                 </div>
 
-     
-
-      <div class="input-box">
-                    <label for="firstname">Nome usuario</label>
-                    <input type="text" {...register("city" )}/>
+                <div class="input-box">
+                    <label for="number">Bairro</label>
+                    <input id="text" type="text"  {...register("neighborhood" )}  required/>
                 </div>
 
-      
-
-      <div class="input-box">
-                    <label for="firstname">Nome usuario</label>
-                    <input type="text" {...register("uf" )}/>
+                <div class="input-box">
+                    <label for="password">Cidade</label>
+                    <input id="text" type="text"  {...register("city" )} placeholder="" required/>
                 </div>
 
-      
-      </div>
 
-      <div class="continue-button">
-                <button><a href="#">Cadastrar</a> </button>
+                <div class="input-box">
+                    <label for="confirmPassword">Estado</label>
+                    <input id="text" type="text" {...register("uf" )} placeholder="" required/>
+                </div>
+
             </div>
-    </form>
+
+           
+
+            <div class="continue-button">
+                <button >Cadastrar</button>
+            </div>
+        </form>
     </div>
-  );
+</div>
+)
 }
 
 export default App;

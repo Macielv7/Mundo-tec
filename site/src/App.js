@@ -11,6 +11,10 @@ import Conta from "./pages/conta/Conta"
 
 import CriarConta from "./pages/criarConta"
 import Endereco from "./pages/endereco"
+
+
+import Login from "./pages/login"
+
 import Cadastrar from "./pages/cadastrar"
 import Home from "./pages/adimin/home"
 import CadastrarP from "./pages/adimin/cadastrarP"
@@ -31,18 +35,16 @@ export default function Index() {
       <BrowserRouter>
           <Routes>
       
-              <Route>
+              
               <Route path='/' element={<Conta productItems={productItems} />} />
-              </Route>
-           
-           
-           
            <Route path='/home' element={<Home />} />
+         
+           <Route path='/login' element={<Login />} />
            <Route path='/criarconta' element={<CriarConta />} />
            <Route path='/Cadastrar' element={<Cadastrar />} />
            <Route path='/Endereco' element={<Endereco />} />
-              <Route path='/adm1' element={<CadastrarP />} />
-              <Route path='/adm2' element={<ConsultarP />} />
+              <Route path='/cadastrarP' element={<CadastrarP />} />
+              <Route path='/consultarP' element={<ConsultarP />} />
               <Route path='/adm3' element={<Adm3/>} />
               <Route path='/adm4' element={<Adm4 />} />
             

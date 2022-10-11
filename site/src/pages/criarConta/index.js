@@ -1,53 +1,107 @@
-
-
-
+import React from 'react';
 import './index.scss';
 
+import storage from 'local-storage'
+import { useState } from 'react';
 
+import { toast } from 'react-toastify';
+import { cadastroUsuario, loginUsuario } from '../../api/usuario.js';
+import axios  from 'axios'
+import { useNavigate } from 'react-router-dom'
+
+
+
+ 
 
 export default function Index() {
+
+    const [nome, setNome] = useState('');
+    const [cpf, setCpf] = useState('');
+    const [genero, setGenero] = useState('');
+    const [email, setEmail] = useState('');
+    const [telefone, setTelefone] = useState('');
+    const [senha, setSenha] = useState('');
+    const [confirmar, setConfirmar] = useState('');
+    const navigate = useNavigate ()
+    const [erro,setErro] = useState ('')
+
+
+
+    async function CadastroClick() {
+
+        try{
+            const r = await cadastroUsuario(email,senha) 
+            storage('usuario-logado', r)
+          navigate('/Login');
+        }
+    
+        catch(err){
+          if(err.response.status === 401){
+              setErro(err.response.data.erro)
+          }
+    
+      }
+    }
+  
+      
+  
+      async function salvarClick(){
+        try{      
+            const r = await cadastroUsuario (nome, cpf,  genero, email, telefone, senha, confirmar)
+            storage('usuario-logado', r)
+            navigate('/login');
+        }
+        catch (err){
+            toast.error(err.response.data.erro)
+        }
+        
+        
+    }
+  
+  
+
  return (
-    <div class="container">
+    <div class="containerr">
         
-    <div class="form">
-        <form action="#">
+    <div class="formm">
+        <form >
         
-            <div class="form-header">
+            <div class="form-headerr">
                 <div class="title">
                     <h1>Faça o seu cadastro</h1>
                     <p>Preencha os campos para podermos realizar o cadastro</p>
                 </div>
             </div>
 
-            <div class="input-group">
-                <div class="input-box">
+            <div class="input-groupp">
+                <div class="input-boxx">
                     <label for="firstname">Nome usuario</label>
-                    <input id="firstname" type="text" name="firstname" placeholder="Digite seu nome" required/>
+                    <input  type="text"value={nome} onChange={e => setNome(e.target.value)}  placeholder="Digite seu nome" required/>
                 </div>
 
                 <div class="input-box">
                     <label for="lastname">CPF</label>
-                    <input id="lastname" type="text" name="lastname" placeholder="0000.000.000" required/>
+                    <input id="lastname" type="nu" value={cpf} onChange={e => setCpf(e.target.value)}  placeholder="0000.000.000" required/>
                 </div>
                 <div class="input-box">
                     <label for="email">Telefone</label>
-                    <input id="email" type="email" name="email" placeholder="(xx) xxxx-xxxx" required/>
+                    <input id="phone" type="phone" value={telefone} onChange={e => setTelefone(e.target.value)}  placeholder="(xx) xxxx-xxxx" required/>
                 </div>
 
                 <div class="input-box">
                     <label for="number">Criar sua senha</label>
-                    <input id="number" type="tel" name="number" placeholder="Digite sua senha" required/>
+                    <input  id="password" type="password" value={senha} onChange={e => setSenha(e.target.value)}  placeholder="Digite sua senha" required/>
                 </div>
 
                 <div class="input-box">
                     <label for="password">Email</label>
-                    <input id="password" type="password" name="password" placeholder="@gmail.com" required/>
+                    <input  id="email" type="email" value={email} onChange={e => setEmail(e.target.value)}  placeholder="@gmail.com" required/>
                 </div>
 
 
                 <div class="input-box">
                     <label for="confirmPassword">Confirme sua Senha</label>
-                    <input id="confirmPassword" type="password" name="confirmPassword" placeholder="Comfime sua senha" required/>
+                    <input id="confirmPassword" type="password" value={confirmar} onChange={e => setConfirmar(e.target.value)} placeholder="Comfime sua senha" required/>
                 </div>
 
             </div>
@@ -59,7 +113,7 @@ export default function Index() {
 
                 <div class="gender-group">
                     <div class="gender-input">
-                        <input id="female" type="radio" name="gender"/>
+                        <input id="female" type="radio" name="gender" value={genero} onChange={e => setGenero(e.target.value)}/>
                         <label for="female">Feminino</label>
                     </div>
 
@@ -77,7 +131,7 @@ export default function Index() {
             </div>
 
             <div class="continue-button">
-                <button><a href="#">Cadastrar</a> </button>
+                <button onClick={salvarClick}>Cadastrar</button>
             </div>
         </form>
     </div>

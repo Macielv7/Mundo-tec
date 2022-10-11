@@ -1,15 +1,35 @@
-import axios from 'axios'
+import { API_URL } from './config.js';
+
+import axios from 'axios';
+
 const api = axios.create({
-    baseURL: 'http://localhost:5000'
+    baseURL: API_URL
 })
 
 
 
-export async function login(email, senha) {
-    const r = await api.post('/usuario/login', {
+export async function cadastroUsuario(nome, cpf,  genero, email, telefone, senha, confirmar) {
+    const r = await api.post('/cadastrousuario',{
+        nome:nome,
+        cpf:cpf,
+        genero:genero,
+        email: email,
+        telefone: telefone,
+        senha: senha,
+        confirmar: confirmar
+    })
+    return r.data;
+}
+
+export async function loginUsuario(email, senha){
+    const a = await api.post('/usuario/login',{
         email: email,
         senha: senha
     });
-
-    return r.data;
+    return a.data;
 }
+
+export async function listarUsuario(){
+    const resposta = await api.get('/usuario');
+    return resposta.data;
+  }

@@ -1,9 +1,8 @@
 import './index.scss';
 
-import { ToastContainer, toast } from 'react-toastify';
 import Menu from "../../../components/menu"
 import storage from 'local-storage';
-import { alterarProduto, cadastrarProduto, salvarImagens } from '../../../api/produtoAPI';
+import { cadastrarProduto, salvarImagens } from '../../../api/produtoAPI';
 import { listarCategorias } from '../../../api/categoriaAPI';
 import { listarDepartamentos } from '../../../api/departamentoAPI';
 import { useState, useEffect } from 'react';
@@ -17,9 +16,11 @@ export default function Cadastro() {
     const [preco, setPreco] = useState('');
     const [valordesconto, setValorDesconto] = useState('');
     const [valorantigo, setValorAntigo] = useState('');
-    const [id,setId] = useState (0)
   
     const [imagem, setImagem] = useState('');
+
+    const [idCategoria, setIdCategoria] = useState('');
+    const [categorias, setCategorias] = useState([]);
 
     const [idDepartamento, setIdDepartamento] = useState('');
     const [departamentos, setDepartamentos] = useState([]);
@@ -39,45 +40,37 @@ export default function Cadastro() {
         setDepartamentos(r);
     }
 
-    async function salvarClick(){
-        try{ 
-            if (!imagem){
-                throw new Error('escolha a imagem do artista');
-            }
-
-            if(id === 0){
-                const novoProduto = await cadastrarProduto (idDepartamento,nome,preco,valorantigo,valordesconto);
-                await salvarImagens(novoProduto.id, imagem);
-                setId(novoProduto.id)
-
-                toast.dark('Novo artista cadastrado');
-            }
-
-            else{
-                await alterarProduto(id,idDepartamento,nome,preco,valorantigo,valordesconto);
-                if(typeof(imagem) == 'object'){
-                    await salvarImagens(id, imagem)
-                    
-                }
-                toast.dark(' Artista alterado com sucesso');
-            }
-            }
-
-            
-            
-        catch (err){
-                if(err.response)
-                toast.error(err.response.data.erro)
-                else
-                toast.error(err.message);
-            }
+    async function SalvarCLick() {
+        try {
+            const precoProduto = Number(preco.replace(',', '.'));
+            const r = await cadastrarProduto(idDepartamento, nome, precoProduto, valordesconto, valorantigo,  catSelecionadas);
+            await salvarImagens(r.id, imagem);
+            alert('Produto cadastrado com sucesso');
         }
+        catch (err) {
+            alert(err.response.data.erro);
+        }
+       
+    }
 
 
-   
+    function buscarNomeCategoria(id) {
+        const cat = categorias.find(item => item.id == id);
+        return cat.categoria;
+    }
 
 
+    function adicionarCategoria() {
+        if (!catSelecionadas.find(item => item == idCategoria)) {
+            const categorias = [...catSelecionadas, idCategoria];
+            setCatSelecionadas(categorias);
+        }
+    }
 
+    async function carregarCategorias() {
+        const r = await listarCategorias();
+        setCategorias(r);
+    }
 
     function escolherImagem() {
         document.getElementById('imagemCapa').click();
@@ -93,15 +86,14 @@ export default function Cadastro() {
     }
 
     useEffect(() => {
+        carregarCategorias();
         carregarDepartamentos();
     }, [])
 
     return (
         <main className='cont-main-cad'>
-            
 <Menu/>
             <section className='cont-section'>
-                <ToastContainer/>
                 
                 <div className='cont-titulo-cadastro'>
                     
@@ -155,8 +147,31 @@ export default function Cadastro() {
                                 )}
 
                             </select>
-                           
-                           
+                            <label className='text2-infocad002'>Categorias:</label>
+                            <div className='cont-categorias-grupo'>
+                                <select className='selecionar-cat' value={idCategoria} onChange={e => setIdCategoria(e.target.value)} >
+                                    <option selected disabled hidden>Selecione</option>
+
+                                    {categorias.map(item =>
+                                        <option value={item.id}> {item.categoria} </option>
+                                    )}  
+                                </select>
+                                <button onClick={adicionarCategoria} className='btn-mais-categorias'>
+                                    <h1 className='mais-btn'>
+                                        
+                                    </h1>
+                                </button>
+                            </div>
+                            <div>
+                                <div className='cont-categorias-sel'>
+                                    {catSelecionadas.map(id =>
+                                        <div className='cat-selecionada'>
+                                            {buscarNomeCategoria(id)}
+                                        </div>
+                                    )}
+                                </div>
+
+                            </div>
 
                         </div>
                         <div className='contfilha2-infocad-002'>
@@ -187,7 +202,7 @@ export default function Cadastro() {
                     </div>
                    
 
-                    <button className='btnSalvar' onClick={salvarClick} >
+                    <button className='btnSalvar' onClick={SalvarCLick} >
                         CADASTRAR
                     </button>
                 </div>

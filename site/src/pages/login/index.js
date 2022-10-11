@@ -1,48 +1,38 @@
+import { loginUsuario } from '../../api/usuario.js';
+import {useState} from 'react';
+import { useNavigate } from 'react-router-dom';
 import './index.scss'
-import Cabecalho from '../../components/cabecalho'
+import storage from 'local-storage'
+
+export default function Index() {
+  
+
+  const [email, setEmail] = useState('');
+  const [senha, setSenha] = useState('');
+  const [erro, setErro] = useState('');
+  const navigate = useNavigate();
+
+async function loginClick() {
+
+  try{
+    const r = await loginUsuario(email,senha)
+    storage('usuario-logado', r)
+    navigate('/adm4');
+
+  }
 
 
-import { useState } from 'react'
-import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
-
-
-export default function Index(){
-    const [email, setEmail] = useState('')
-    const [senha, setSenha] = useState('')
-    const [erro, setErro] = useState('')
-
-    const navigate = useNavigate()
-
-async function entrarClick(){
-    try{
-        const r = await axios.post('http://localhost:5000/usuario/login', {
-            gmail:email,
-            senha:senha
-        });
-
-        navigate('/home')
-
-    }catch (err) {
-        if(err.response.status ==401){
-            setErro(err.response.data.erro);
-        }
-        }            
-}
-
-function mostra(){
-    const senha = document.getElementById("senha");
-    if (senha.type=== "password") {
-        senha.type="text";
-        
+  
+  catch(err){
+    if(err.response.status === 401){
+        setErro(err.response.data.erro)
     }
-    else
-    senha.type="password"
+}
 }
 
     return (
         <main className='page-login'>
-              <Cabecalho/>
+             
 
          
 	<img class="wave" src="./img/wave.png"/>
@@ -74,7 +64,7 @@ function mostra(){
             	<a href="#">Esqueceu a senha?</a>
             	
                 
-
+               
 				<div className='invalido'>
                 {erro}
                      
@@ -82,7 +72,7 @@ function mostra(){
             </div>
 				<p >Cadastre-se agora  </p>
             </form>
-            <input type="submit" class="btn" value="Login"  onClick={entrarClick}/>
+            <input type="submit" class="btn" value="Login"  onClick={loginClick}/>
             
         </div>
     </div>

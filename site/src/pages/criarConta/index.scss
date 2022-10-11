@@ -8,14 +8,14 @@
 }
 
 
-.container {
+.containerr {
     justify-content: center;
     display: flex;
 }
 
 
 
-.form {
+.formm {
     width: 60%;
     display: flex;
     flex-direction: column;
@@ -25,7 +25,7 @@
     padding: 3rem;
 }
 
-.form-header {
+.form-headerr {
     margin-bottom: 3rem;
     display: flex;
     justify-content: space-between;
@@ -45,20 +45,20 @@
 }
 
 
-.input-group {
+.input-groupp {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 1rem 0;
 }
 
-.input-box {
+.input-boxx {
     display: flex;
     flex-direction: column;
     margin-bottom: 1.1rem;
 }
 
-.input-box input {
+.input-boxx input {
     margin: 0.6rem 0;
     padding: 0.8rem 1.2rem;
     border: none;
@@ -67,22 +67,22 @@
     font-size: 0.8rem;
 }
 
-.input-box input:hover {
+.input-boxx input:hover {
     background-color: #eeeeee75;
 }
 
-.input-box input:focus-visible {
+.input-boxx input:focus-visible {
     outline: 1px solid #040058;
 }
 
-.input-box label,
+.input-boxx label,
 .gender-title h6 {
     font-size: 0.75rem;
     font-weight: 600;
     color: #000000c0;
 }
 
-.input-box input::placeholder {
+.input-boxx input::placeholder {
     color: #000000be;
 }
 

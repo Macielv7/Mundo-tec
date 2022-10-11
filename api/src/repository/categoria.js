@@ -11,9 +11,6 @@ export async function listarCategorias() {
     return linhas;
 }
 
-
-
-
 export async function buscarCategoriaPorId(id) {
     const comando = `
         select id_categoria         as id,

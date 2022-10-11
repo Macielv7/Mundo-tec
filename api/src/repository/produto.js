@@ -2,15 +2,15 @@
 import { con } from "./connection.js";
 
 
-export async function inserirProduto(produto) {
+export async function cadastrarProduto(produto) {
     const comando = 
-        `INSERT INTO tb_produto (id_usuario, nm_produto, nm_categoria, vl_preco, vl_desconto, ds_descricao,  bt_disponivel)
-                       VALUES (?, ?, ?, ?, ?, ? ,?) `
+        `INSERT INTO tb_produto (id_departamento, nm_produto, vl_preco, vl_desconto, dt_valorantigo )
+                       VALUES ( ?, ?, ?, ?, ? ) `
     
-    const [resposta] = await con.query(comando, [produto.usuario, produto.nome, produto.categoria, produto.preco, produto.desconto, produto.descricao, produto.disponivel]);
-    filme.id = resposta.insertId;
+    const [resposta] = await con.query(comando, [ produto.departamento,produto.nome, produto.preco, produto.desconto, produto.antigo ]);
+    produto.id = resposta.insertId;
 
-    return filme;
+    return produto;
 }
 
 
@@ -28,13 +28,14 @@ export async function alterarImagem(imagem, id) {
 export async function listarTodosProdutos() {
     const comando =
         `SELECT id_produto		id,
+                id_departamento departamento,
                 nm_produto		nome,
                 nm_categoria	categoria,
                 vl_preco	    preco,
                 vl_desconto	    desconto,
-                ds_descricao    descricao,
-                bt_disponivel   disponivel,
-                id_usuario      usuario
+                dt_valorantigo  antigo,
+                img_produto imagem
+               
            FROM tb_produto`;
     
     const [linhas] = await con.query(comando);
@@ -50,8 +51,6 @@ export async function buscarPorId(id) {
                 img_produto     imagem,
                 vl_preco	    preco,
                 vl_desconto	    desconto,
-                ds_descricao    descricao,
-                bt_disponivel   disponivel,
                 id_usuario      usuario
            FROM tb_produto
           WHERE id_produto = ? `;
@@ -69,9 +68,7 @@ export async function buscarPorNome(nome) {
                 nm_categoria	categoria,
                 vl_preco	    preco,
                 vl_desconto	    desconto,
-                ds_descricao    descricao,
-                bt_disponivel   disponivel,
-                id_usuario      usuario
+                dt_valorantigo   antigo
            FROM tb_produto
           WHERE nm_produto like ? `;
     
@@ -93,21 +90,7 @@ export async function removerProduto(id) {
 
 
 
-export async function alterarProduto(id, produto) {
-    const comando = 
-        `UPDATE tb_produto 
-            SET nm_produto  = ?,
-            nm_categoria	= ?,
-            vl_preco	    = ?,
-            vl_desconto	    = ?,
-            ds_descricao    = ?,
-            bt_disponivel   = ?,
-            id_usuario      usuario   = ?
-          WHERE id_produto      = ?`
-    
-    const [resposta] = await con.query(comando, [produto.nome, produto.categoria, produto.preco, produto.desconto, produto.descricao,produto.disponivel, produto.usuario, id]);
-    return resposta.affectedRows;
-}
+
 
 
 

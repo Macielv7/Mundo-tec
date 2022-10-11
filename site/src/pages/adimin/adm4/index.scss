@@ -1,48 +1,78 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
-
-.pagina-admin-produto {
-    padding: 1.5em;
+.cont-main-cad{
     display: flex;
-    font: 600 18px 'Inter';
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #e4e4e4;
 
-    .container {
+    width: 100%;
+    height: 100%;
+
+    textarea:focus, input:focus, select:focus {
+        box-shadow: 0 0 0 0;
+        border: 0 none;
+        outline: 0;
+    } 
+
+    .cont-cabecalho{
+        width: 27em;
+        height: 100vh;
+    }
+
+    .cont-section{
         display: flex;
         flex-direction: column;
-        flex-grow: 1;
+        align-items: center;
+        justify-content: flex-start;
+
+        width: 100em;
     }
 
 
-
-    .conteudo {
+    .cont-titulo-cadastro{
         display: flex;
-        align-items: flex-start;
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: center;
+
+        margin-top: 3em;
+        margin-bottom: 2em;
+
+        width: 22em;
+
+        padding-bottom: 0.3em;
         
-        padding: 20px 60px;
-        background-color: #0935e4;
-        flex-grow: 1;
-        margin-left: 300px;
-    }
-    .conteudo > section {
-        flex-grow: 1;
     }
 
 
-    label {
-        width: 120px;
-    }
 
     .upload-capa {
         display: flex;
         justify-content: center;
         align-items: center;
 
-        border: 1px solid #DFDFDF;
+        border: 2px solid #000000;
         border-radius: 3px;
         height: 250px;
         width: 200px;
         
         filter: drop-shadow(0px 0px 20px rgba(0, 0, 0, 0.3));
         cursor: pointer;
+    }
+
+    .capa {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        border: 2px solid #000000;
+        padding: 10px ;
+        border-radius: 3px;
+        height: 60px;
+        width: 70px;
+        
+        filter: drop-shadow(0px 0px 20px rgba(0, 0, 0, 0.3));
+        cursor: pointer;
+        margin-top: 30px;
     }
 
     .form-colums {
@@ -54,14 +84,47 @@
         margin-right: 50px;
     }
 
+    .form-row{
+        border-radius: 10px;
+
+        width: 150px;
+        height: 30px;
+
+      
+            font-family: inherit;
+            width: 100%;
+            border: 0;
+            border-bottom: 2px solid ;
+            outline: 0;
+            font-size: 1.3rem;
+            color: blueviolet;
+            padding: 7px 0;
+            background: transparent;
+            transition: border-color 0.2s;
+          
+            &::placeholder {
+              color: transparent;
+            }
+          
+            &:placeholder-shown ~ .form__label {
+              font-size: 1.3rem;
+              cursor: text;
+              top: 20px;
+            }
+          
+          
+    }
+
     textarea {
         width: 300px;
-        height: 250px;
+        height: 50px;
     }
 
     .btnSalvar {
         flex-grow: 1;
         text-align: right;
+        background-color: antiquewhite;
+        color: #000000;
     }
 
     #imagemCapa {
@@ -74,93 +137,9 @@
         height: 250px;
         width: 200px;
     }
+
+
+
+
     
-    .form {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        max-width: 500px;
     }
-
-    .form > div {
-        display: flex;
-        align-items: center;
-        margin: .2em;
-    }
-    .form > div label {
-        min-width: 8em;
-        text-align: right;
-        margin-right: 1em;
-    }
-    .form > div:last-child {
-        margin-top: 1em;
-        justify-content: center;
-    }
-    
-    .gpo-categoria {
-        display: flex;
-        width: 100%;
-    }
-
-    
-
-    .cat-conteiner {
-        display: flex;
-        flex-wrap: wrap;
-    }
-
-    .cat-selecionada {
-        font-size: .7em;
-        background-color: #672dc3;
-        padding: .5em 1em;
-        margin: .5em 5px;
-        color: #fff;
-        border-radius: 1em;
-    }
-
-
-
-* {
-  box-sizing: border-box;
-  margin: 0px;
-  font-family: 'Roboto';
-}
-
-h1 {
-  margin-bottom: 1em;
-}
-
-textarea {
-  resize: none;
-}
-
-input, select {
-  outline: none;
-  border: 1px solid rgb(92, 92, 92);
-  user-select: none;
-
-  border-radius: 5px;
-  font-size: 1em;
-  padding: .5em;
-  width: 100%;
-}
-
-input[type=checkbox] {
-  width: auto;
-  align-self: flex-start;
-}
-
-button {
-  outline: none;
-  border: none;
-  background-color: #672dc3;
-  color: #fff;
-  padding: .8em 1.5em;
-  border-radius: 2em;
-
-  font-size: 14px;
-  font-weight: 600;
-  text-transform: uppercase;
-}
-
-}

@@ -1,5 +1,5 @@
 
-import { alterarProduto, alterarImagem, buscarPorId, buscarPorNome, inserirProduto, listarTodosProdutos, removerProduto } from '../repository/produto.js'
+import {  alterarImagem, buscarPorId, buscarPorNome,cadastrarProduto , listarTodosProdutos, removerProduto } from '../repository/produto.js'
 
 import multer from 'multer'
 import { Router } from 'express'
@@ -7,15 +7,22 @@ import { Router } from 'express'
 const server = Router();
 const upload = multer({ dest: 'storage/capaProduto' })
 
+server.get('/produto', async (req, resp) => {
+    try {
+        const resposta = await listarTodosProdutos();
+        resp.send(resposta);
+    } catch (err) {
+        resp.status(400).send({
+            erro: err.message
+        })
+    }
+})
 
 
 server.post('/produto', async (req, resp) => {
     try {
         const novoProduto = req.body;
-
-      
-        
-        const produtoInserido = await inserirProduto(novoProduto);
+        const produtoInserido = await cadastrarProduto(novoProduto);
         resp.send(produtoInserido);
 
     } catch (err) {
@@ -44,16 +51,6 @@ server.put('/produto/:id/capa', upload.single('capa'), async (req, resp) => {
 })
 
 
-server.get('/produto', async (req, resp) => {
-    try {
-        const resposta = await listarTodosProdutos();
-        resp.send(resposta);
-    } catch (err) {
-        resp.status(400).send({
-            erro: err.message
-        })
-    }
-})
 
 
 
@@ -120,42 +117,7 @@ server.delete('/produto/:id', async (req, resp) => {
 
 
 
-server.put('/produto/:id', async (req, resp) => {
-    try {
-        const { id } = req.params;
-        const produto = req.body;
 
-        if (!produto.nome)
-            throw new Error('Nome do produto é obrigatório!');
-        
-        if (!produto.sinopse)
-            throw new Error('Sinopse do produto é obrigatório!');
-        
-        if (produto.avaliacao == undefined || produto.avaliacao < 0)
-            throw new Error('Avaliação do produto é obrigatória!');
-    
-        if (!produto.lancamento)
-            throw new Error('Lançamento do produto é obrigatório!');
-        
-        if (produto.disponivel == undefined)
-            throw new Error('Campo Disponível é obrigatório!');
-        
-        if (!produto.usuario)
-            throw new Error('Usuário não logado!');
-        
-
-        const resposta = await alterarproduto(id, filme);
-        if (resposta != 1)
-            throw new Error('produto não pode ser alterado');
-        else
-            resp.status(204).send();
-
-    } catch (err) {
-        resp.status(400).send({
-            erro: err.message
-        })
-    }
-})
 
 
 

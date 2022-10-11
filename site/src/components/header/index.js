@@ -36,7 +36,9 @@ const Search = ({ CartItem }) => {
           </div>
 
           <div className='logo width '>
-            <a href="/adm1">
+            <a href="/home
+            
+            ">
             <img src="./img/logo.png" />
             </a>
           </div>

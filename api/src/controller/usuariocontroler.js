@@ -1,20 +1,82 @@
-import { usuario } from "../repository/usuarioRepositorio.js";
-import { Router } from 'express';
+import { Router } from "express";
+import { cadastrorUsuario, imagemUsuario, listarUsuario, loginUsuario } from "../repository/usuarioRepositorio.js"
+import multer from 'multer';
+
 
 const server = Router();
+const upload = multer({ dest: 'storage/capaUsuario'})
 
-server.post('/cadastro/usuario', async (req, resp)=> {
-    try{
 
-        const usuario = req.body;
-        const linhas = await usuario(usuario)
-        resp.send(usuario)
+server.post('/cadastrousuario', async (req,resp) => {
+    try {
+      const usuario = req.body;
+      const x = await cadastrorUsuario(usuario);
+      
+      resp.send(x);
+ 
+    }
 
-    }catch(err){
-        return resp.status(400).send({
-            erro:"Ops, algo não está funcionando corretamente!!"
+    catch (err) {
+ 
+     resp.status(401).send({
+         erro: err.message
+     })
+        
+    }
+ })
+
+
+server.post('/usuario/login', async (req, resp) => {
+    try {
+        const {email, senha} = req.body;
+        
+        const resposta = await loginUsuario (email, senha)
+        if(!resposta){
+            throw new Error('Credenciais inválidas')
+        }
+      
+        resp.status(200).send(
+        resposta
+        )
+        
+    } 
+    catch (err) {
+        resp.status(401).send({
+            Erro: err.message
         })
     }
 })
 
-export default server;
+server.put('/cadastroUsuario/:id/capa', upload.single('capa') ,async (req, resp) => {
+    try{
+        if(!req.file)
+        throw new Error('Escolhar a imagem do usuario.');
+        const {id} = req.params;
+        const imagem = req.file.path;
+
+        const resposta = await imagemUsuario(imagem, id);
+        if(resposta != 1)
+            throw new Error('A imagem não pode ser salva.');
+
+        resp.status(204).send();
+    }
+    catch(err){
+        resp.status(401).send({
+            erro: err.message
+        })   
+    }
+})
+
+server.get('/usuario', async (req, resp) => {
+    try {
+        const resposta = await listarUsuario();
+        resp.send(resposta);
+    } catch (err) {
+        resp.status(400).send({
+            erro: err.message
+        })
+    }
+})
+
+
+ export default server;
