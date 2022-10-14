@@ -6,8 +6,10 @@ import Data from "./components/flashDeals/data"
 
 import Conta from "./pages/conta/Conta"
 
-import CadastrarP from "./pages/adimin/CadastrarP"
-import ConsultarP from "./pages/adimin/ConsultarP"
+import CadastrarP from "./pages/adimin/cadastrarP"
+import ConsultarP from "./pages/adimin/consultarP"
+
+
 
 
 
@@ -28,8 +30,9 @@ export default function Index() {
               </Route>
             
               <Route>
-                <Route path='/cadastrarP' element={<CadastrarP />} />
-                <Route path='/consultarP' element={<ConsultarP />} />
+                <Route path="cadastrarp" element={<CadastrarP />} />
+                <Route path="consultarp" element={<ConsultarP />} />
+                <Route path="consultarp" element={<ConsultarP />} />
               </Route>
           
           </Routes>

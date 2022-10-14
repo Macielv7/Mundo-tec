@@ -44,22 +44,22 @@ const Index = ({ productItems, addToCart,  }) => {
                     <div class="os">
 
                         <div class="lk">
-                            <h1>Gamer </h1>
-                            <img src="./img/g.png" alt="" />
+                            <h1>Periféricos </h1>
+                            <img src="./img/perifericos.png" alt="" />
 
 
                         </div>
 
                         <div class="lk">
-                            <h1>Telefones</h1>
-                            <img src="./img/g.png" alt="" />
+                            <h1>Celular</h1>
+                            <img src="./img/celular.png" alt="" />
 
 
                         </div>
 
                         <div class="lk" >
-                            <h1>Casa inteligente</h1>
-                            <img src="./img/g.png" alt="" />
+                            <h1>TV</h1>
+                            <img src="./img/tv.png" alt="" />
 
 
                         </div>
@@ -69,21 +69,21 @@ const Index = ({ productItems, addToCart,  }) => {
 
                     <div class="os">
                         <div class="lk">
-                            <h1>Gamer </h1>
-                            <img src="./img/g.png" alt="" />
+                            <h1>Casa Inteligente </h1>
+                            <img src="./img/casa.png" alt="" />
 
 
                         </div>
 
                         <div class="lk">
-                            <h1>Telefones</h1>
-                            <img src="./img/g.png" alt="" />
+                            <h1>Hardware</h1>
+                            <img src="./img/hader.png" alt="" />
 
 
                         </div>
 
                         <div class="lk" >
-                            <h1>Casa inteligente</h1>
+                            <h1>Games</h1>
                             <img src="./img/g.png" alt="" />
 
 
@@ -92,22 +92,22 @@ const Index = ({ productItems, addToCart,  }) => {
 
                     <div class="os">
                         <div class="lk">
-                            <h1>Gamer </h1>
-                            <img src="./img/g.png" alt="" />
+                            <h1>Espaço Gamer </h1>
+                            <img src="./img/espacogamr.png" alt="" />
 
 
                         </div>
 
                         <div class="lk">
-                            <h1>Telefones</h1>
-                            <img src="./img/g.png" alt="" />
+                            <h1>Câmeras e Drones</h1>
+                            <img src="./img/cameras.png" alt="" />
 
 
                         </div>
 
                         <div class="lk" >
-                            <h1>Casa inteligente</h1>
-                            <img src="./img/g.png" alt="" />
+                            <h1>Áudio</h1>
+                            <img src="./img/audio.png" alt="" />
 
 
                         </div>

@@ -3,7 +3,7 @@ import './index.scss'
 import { toast } from 'react-toastify';
 
 
-
+import Menu from "../../../components/menu"
 import { listarDepartamentos } from '../../../api/departamentoAPI.js'
 import { useEffect, useState } from 'react'
 import { alterarProduto, buscarProdutoPorId, salvarImagens, salvarProduto } from '../../../api/produtoAPI.js';
@@ -126,6 +126,7 @@ export default function Produto() {
 
     return (
         <div className='pagina-admin-produto'>
+            <Menu />
             <h1> {id ? 'Alterar Produto' : 'Novo Produto'} </h1>
 
             <div className='form-container'>

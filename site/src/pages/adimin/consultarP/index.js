@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import 'react-confirm-alert/src/react-confirm-alert.css'
 import { confirmAlert } from 'react-confirm-alert'
 import { listarTodosProdutos, buscarProdutoNome, deletaProduto } from '../../../api/produtoAPI.js';
-
+import Menu from "../../../components/menu"
 
 
 export default function ConsEstoque() {
@@ -72,7 +72,9 @@ export default function ConsEstoque() {
 
 
     return (
+        
         <div className='pagina-admin-consultar-produto'>
+            <Menu/>
             <h1> Catálogo de Produtos </h1>
 
             <div className='cont-busca-estoque'>

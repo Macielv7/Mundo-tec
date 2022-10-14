@@ -36,7 +36,7 @@ const Search = ({ CartItem }) => {
           </div>
 
           <div className='logo width '>
-            <a href="/home
+            <a href="/cadastrarp
             
             ">
             <img src="./img/logo.png" />

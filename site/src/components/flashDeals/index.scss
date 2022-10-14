@@ -39,13 +39,15 @@
 }
 .price button {
   display: flex;
-  top: 0;
+  top: 0px;
+  align-items: center;
+  justify-content: center;
   background: none;
-  color: #e94560;
   font-size: 20px;
   transition: 0.5s;
   border: 1px solid rgb(3 0 71 / 9%);
-  width: 135px;
+  width: 200px;
+  margin-left: 15px;
   height: 35px;
   border-radius: 5px;
 }
