@@ -1,58 +1,219 @@
-import { buscarImagem } from '../../../api/produtoAPI.js'
-import Menu from "../../../components/menu"
 import './index.scss'
 
+import { toast } from 'react-toastify';
 
-export default function Index(props) {
+
+
+import { listarDepartamentos } from '../../../api/departamentoAPI.js'
+import { useEffect, useState } from 'react'
+import { alterarProduto, buscarProdutoPorId, salvarImagens, salvarProduto } from '../../../api/produtoAPI.js';
+import { useParams } from 'react-router-dom';
+import { API_URL } from '../../../api/config';
+
+export default function Produto() {
+    const [idProduto, setIdProduto] = useState();
+    
+    const [nome, setNome] = useState('');
+    const [preco, setPreco] = useState('');
+    const [desconto, setDesconto] = useState('');
+    const [valorantigo, setvalorAntigo] = useState('');
+    const [marca, setMarca] = useState('');
+    
+
+    const [imagem1, setImagem1] = useState();
+    const [imagem2, setImagem2] = useState();
+    const [imagem3, setImagem3] = useState();
+    const [imagem4, setImagem4] = useState();
+
+
+
+    const [idDepartamento, setIdDepartamento] = useState();
+    const [departamentos, setDepartamentos] = useState([]);
+
+    const [catSelecionadas, setCatSelecionadas] = useState([]);
+
+
+    const { id } = useParams();
+
+
+    async function salvar() {
+        try {
+            const prevoProduto = Number(preco.replace(',', '.'));
+
+            if (!id) {
+                const r = await salvarProduto(nome, prevoProduto, desconto, valorantigo, marca,  idDepartamento, catSelecionadas);
+                await salvarImagens(r.id, imagem1, imagem2, imagem3, imagem4);
+    
+                toast.dark('Produto cadastrado com sucesso');
+            }
+            else {
+                await alterarProduto(id, nome, prevoProduto, desconto, valorantigo, marca,  idDepartamento, catSelecionadas);
+                await salvarImagens(id, imagem1, imagem2, imagem3, imagem4);
+    
+                toast.dark('Produto alterado com sucesso');
+            }
+
+            
+        }
+        catch (err) {
+            toast.error(err.response.data.erro);
+        }
+    }
+
+
+
+    async function carregarDepartamentos() {
+        const r = await listarDepartamentos();
+        setDepartamentos(r);
+    }
+
+
+    async function carregarProduto() {
+        if (!id) return;
+
+        const r = await buscarProdutoPorId(id);
+        setIdProduto(r.info.id);
+        setNome(r.info.produto);
+        setPreco(r.info.preco.toString());
+        setDesconto(r.info.desconto.toString());
+        setvalorAntigo(r.info.valoantigo.toString());
+        setMarca(r.info.marca);
+
+        setIdDepartamento(r.info.departamento);
+
+        if (r.imagens.length > 0) {
+            setImagem1(r.imagens[0]);
+        }
+
+        if (r.imagens.length > 1) {
+            setImagem2(r.imagens[1]);
+        }
+
+        if (r.imagens.length > 2) {
+            setImagem3(r.imagens[2]);
+        }
+
+        if (r.imagens.length > 3) {
+            setImagem4(r.imagens[3]);
+        }
+    }
+
+
+    function escolherImagem(inputId) {
+        document.getElementById(inputId).click();
+    }
+
+    function exibirImagem(imagem) {
+        if (imagem == undefined) {
+            return '/img/icons8-add-image-64.png';
+        }
+        else if (typeof (imagem) == 'string') {
+            return `${API_URL}/${imagem}`
+        }
+        else {
+            return URL.createObjectURL(imagem);
+        }
+    }
+
+
+
+    useEffect(() => {
+
+        carregarDepartamentos();
+        carregarProduto();
+    }, [])
+
+
     return (
-        <main className='page page-consultar'>
-            <Menu/>
-            <div className='container'>
-               
-                
-                <div className='conteudo'>
+        <div className='pagina-admin-produto'>
+            <h1> {id ? 'Alterar Produto' : 'Novo Produto'} </h1>
 
-                    <div className='caixa-busca'>
-                        <input type="text" placeholder='Buscar produtos por nome' />
-                        <img src='/img/icon-buscar.svg' alt='buscar' />
+            <div className='form-container'>
+
+                <div className='form'>
+
+                    <div>
+                        <label> Produto: </label>
+                        <input type='text' value={nome} onChange={e => setNome(e.target.value)} />
                     </div>
-                    
 
+                    <div>
+                        <label> Preço: </label>
+                        <input type='text' value={preco} onChange={e => setPreco(e.target.value)} />
+                    </div>
 
-                    <div className='card-container'>
-
-
-                        <div className='comp-card'>
-                            <div className='card'>
-                                <div className='acoes'>
-
-                                    <img src='/img/' alt='editar' />
-                                    
-                                    <img src='/img/icons8-remover-24.png' alt='remover' />
-                                    
-                                </div>
-                                <div>
-                                <img src={buscarImagem(props.produto.imagem)} alt='' />
-                                <h1> {props.produto.nome} </h1>
-                                    <s className='lancamento'>{props.valorantigo.preco && props.produto.valorantigo.substr(0, 10)}</s>
-                                </div>
-                                <div>
-                                    <div className='avaliacao'>{props.produto.preco}</div>
-                                    <button className='disponivel'>Adicionar</button>
-                                </div>
-                            </div>
-
-                            
-                        </div>
-
-                        
-                        
+                    <div>
+                        <label> Desconto: </label>
+                        <input type='text' checked={desconto} onChange={e => setDesconto(e.target.checked)} />
                     </div>
 
 
+
+                    <div>
+                        <label>Departamento:</label>
+                        <select value={idDepartamento} onChange={e => setIdDepartamento(e.target.value)}>
+                            <option selected disabled hidden>Selecione</option>
+
+                            {departamentos.map(item =>
+                                <option value={item.id}> {item.departamento} </option>
+                            )}
+                        </select>
+                    </div>
+
+                    <div>
+                        <label> antigo: </label>
+                        <input type='text' value={valorantigo} onChange={e => setvalorAntigo(e.target.value)} />
+                    </div>
+
+                    <div>
+                        <label> marca: </label>
+                        <input type='text' checked={marca} onChange={e => setMarca(e.target.checked)} />
+                    </div>
+
                     
+
+
+
+                    <div>
+                        <button onClick={salvar}> Salvar </button>
+                    </div>
+
                 </div>
+
+
+
+                <div className='image-container'>
+                    
+                    <div>
+                        <img src={exibirImagem(imagem1)} alt="" onClick={() => escolherImagem('imagem1')} />
+                        {imagem1 ? <span onClick={() => setImagem1()}>Remover</span> : ''}
+                    </div>
+                    <div>
+                        <img src={exibirImagem(imagem2)} alt="" onClick={() => escolherImagem('imagem2')} />
+                        {imagem2 ? <span onClick={() => setImagem2()}>Remover</span> : ''}
+                    </div>
+                    <div>
+                        <img src={exibirImagem(imagem3)} alt="" onClick={() => escolherImagem('imagem3')} />
+                        {imagem3 ? <span onClick={() => setImagem3()}>Remover</span> : ''}
+                    </div>
+                    <div>
+                        <img src={exibirImagem(imagem4)} alt="" onClick={() => escolherImagem('imagem4')} />
+                        {imagem4 ? <span onClick={() => setImagem4()}>Remover</span> : ''}
+                    </div>
+                    
+
+                    
+                    <input type='file' id='imagem1' onChange={e => setImagem1(e.target.files[0])} />
+                    <input type='file' id='imagem2' onChange={e => setImagem2(e.target.files[0])} />
+                    <input type='file' id='imagem3' onChange={e => setImagem3(e.target.files[0])} />
+                    <input type='file' id='imagem4' onChange={e => setImagem4(e.target.files[0])} />
+                </div>
+
+                
+
+                
+                
             </div>
-        </main>
+        </div>
     )
 }

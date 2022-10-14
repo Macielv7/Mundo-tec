@@ -1,75 +1,43 @@
-import { API_URL } from './config.js';
-
-import axios from 'axios';
+import { API_URL } from '../api/config'
+import axios from 'axios'
 
 const api = axios.create({
     baseURL: API_URL
 })
 
-export async function cadastrarProduto(idDepartamento, nome, preco,valorantigo, desconto){
-    const r = await api.post('/produto', {
-        departamento: idDepartamento,
-        nome: nome,
-        preco: preco,
-        antigo: valorantigo,
-        desconto: desconto,
-    })
-
+export async function salvarProduto(nome, preco, desconto, valorantigo, marca, idDepartamento ) {
+    const r = await api.post('/produto', { nome, preco, desconto, valorantigo, marca, idDepartamento });
     return r.data;
 }
 
-export async function salvarImagens(id, imagem ){
-    let form = new FormData();
-    form.append('capa', imagem);
-
-
-    const resposta = await api.put(`/produto/${id}/capa`, FormData, {
-        headers:{       
-            'Content-Type': 'multipart/form-data'
-        }
-    });
-
-    return resposta.data
-}
-
-
-export async function listarTodosProdutos() {
-    const resposta = await api.get('/produto');
-    return resposta.data;
-}
-
-export async function prodPromoImperdivel(){
-    const resposta = await api.get('/promocao');
-    return resposta.data
-}
-
-export async function prodMaisVendidos(){
-    const resposta = await api.get('/maisvendidos');
-    return resposta.data
-}
-
-export async function depSelecionar(){
-    const resposta = await api.get('/departamentos');
-    return resposta.data
-}
-
-export async function buscarProdutoNome(nome) {
-    const resposta = await api.get(`/produto/busca?nome=${nome}`);
-    return resposta.data;
-}
-
-
-export function buscarImagem(imagem) {
-    return `${api.getUri()}/${imagem}`
-   
-}
-
-export async function alterarProduto(id, nome, preco, desconto, categorias,valorantigo) {
-    await api.put('/admin/produto/' + id, { nome, preco, desconto, categorias,valorantigo });
+export async function alterarProduto(id, nome, preco, destaque, idDepartamento, categorias) {
+    await api.put('/admin/produto/' + id, { nome, preco, destaque, idDepartamento, categorias });
 }
 
 export async function buscarProdutos() {
     const r = await api.get('/admin/produto');
+    return r.data;
+}
+
+export async function salvarImagens(id, imagem1, imagem2, imagem3, imagem4) {
+    
+    let form = new FormData();
+    form.append('imagens', imagem1);
+    form.append('imagens', imagem2);
+    form.append('imagens', imagem3);
+    form.append('imagens', imagem4);
+
+    const r = await api.put(`/produto/${id}/imagem`, form, {
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        }
+    });
+
+    return r.data;
+}
+
+export async function removerProduto(id) {
+    const r = await api.delete('/admin/produto/' + id);
     return r.data;
 }
 
@@ -78,9 +46,23 @@ export async function buscarProdutoPorId(id) {
     return r.data;
 }
 
+export async function listarProdutosInicio() {
+    const r = await api.get('/api/produto');
+    return r.data;
+}
+
+
+export async function listarTodosProdutos() {
+    const resposta = await api.get('/adm/produto')
+    return resposta.data;
+}
+
+export async function buscarProdutoNome(nome) {
+    const resposta = await api.get(`/produto/busca?nome=${nome}`);
+    return resposta.data;
+}
 
 export async function deletaProduto(id){
     const resposta = await api.delete(`/produto/${id}`);
     return resposta.status;
   }
-

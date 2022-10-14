@@ -13,6 +13,7 @@ const SampleNextArrow = (props) => {
     </div>
   )
 }
+
 const SamplePrevArrow = (props) => {
   const { onClick } = props
   return (
@@ -23,6 +24,7 @@ const SamplePrevArrow = (props) => {
     </div>
   )
 }
+
 const FlashCard = ({ productItems, addToCart }) => {
   const [count, setCount] = useState(0)
   const increment = () => {
@@ -49,7 +51,10 @@ const FlashCard = ({ productItems, addToCart }) => {
                 <div className='img'>
                   <span className='discount'>{productItems.discount}% Off</span>
                   <img src={productItems.cover} alt='' />
-                  
+                  <div className='product-like'>
+                    <label>{count}</label> <br />
+                    <i className='fa-regular fa-heart' onClick={increment}></i>
+                  </div>
                 </div>
                 <div className='product-details'>
                   <h3>{productItems.name}</h3>

@@ -1,4 +1,4 @@
-import { listarCategorias } from "../repository/categoria.js";
+import { listarDestaque } from "../repository/destaque.js";
 
 
 import { Router } from "express";
@@ -6,9 +6,9 @@ const server = Router();
 
 
 
-server.get('/api/categoria', async (req, resp) => {
+server.get('/api/destaque', async (req, resp) => {
     try {
-        const linhas = await listarCategorias();
+        const linhas = await listarDestaque();
         resp.send(linhas);
     }
     catch (err) {

@@ -1,27 +1,121 @@
 import './index.scss';
 
-export default function Index() {
+import {toast} from 'react-toastify';
+import { useEffect, useState } from 'react';
+import 'react-confirm-alert/src/react-confirm-alert.css'
+import { confirmAlert } from 'react-confirm-alert'
+import { listarTodosProdutos, buscarProdutoNome, deletaProduto } from '../../../api/produtoAPI.js';
+
+
+
+export default function ConsEstoque() {
+
+    const [produto, setProduto] = useState([]);
+    const [filtro, setFiltro] = useState('');
+   
+
+    async function filtrar(){
+        const x = await buscarProdutoNome(filtro);
+        setProduto(x);
+    } 
+
+    async function carregarTodosProdutos() {
+        const r = await listarTodosProdutos();
+        setProduto(r);
+    }
+
+
+
+    async function removerProduto (id, nome){
+
+        confirmAlert({
+         
+            title: 'Remover Produto',
+            message: `deseja remover o Produto ${id, nome}?`,
+            buttons: [
+                {
+                    label:'sim',
+                    onClick: async () => {
+                        const filtro = await deletaProduto (id,nome);
+                          if(filtro === ''){
+                            carregarTodosProdutos()
+                         
+                      }
+                          else
+                          filtrar();
+                          toast.dark('Produto removido')
+                    }
+                },
+                {
+                    label:'Não'
+                }
+            ]
+        })   
+    }
+
+    useEffect(() => {
+        carregarTodosProdutos();
+    }, [])
+
+    async function deletaProduto(id) {
+       
+        try{ 
+            
+
+            toast.dark("Produto Removido com Sucesso");
+        }
+        catch(err) {
+         toast.error(err.response.data.erro);
+        }
+
+}
+
+
     return (
-        <div className='comp-detalhe'>
-            <img src='https://ingresso-a.akamaihd.net/img/cinema/cartaz/7766-cartaz.jpg' alt='' />
-            <div className='box-info'>
-                <h1>Harry Potter e a Pedra Filosofal</h1>
-                <div className='info'>
-                    <h3>Lançamento</h3>
-                    <p>15/02/2020</p>
-                </div>
-                <div className='info'>
-                    <h3>Sinopse</h3>
-                    <p className='sinopse'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur rhoncus pulvinar finibus. Etiam et finibus magna. Duis scelerisque hendrerit sem. Nullam cursus lectus at magna iaculis, eget egestas nibh malesuada. Aliquam ipsum magna, pharetra at dictum at, convallis et erat. Sed auctor euismod dolor in varius. Mauris in nunc eget risus tristique tempor. Sed semper euismod arcu, in euismod turpis volutpat non. Curabitur consequat pharetra purus id aliquet. Phasellus sagittis vitae urna quis placerat. Maecenas gravida risus ac vestibulum facilisis.</p>
-                </div>
-                <div className='info'>
-                    <h3>Avaliação</h3>
-                    <p>15/2020</p>
-                </div>
-                <div className='info'>
-                    <h3>Disponível</h3>
-                </div>
+        <div className='pagina-admin-consultar-produto'>
+            <h1> Catálogo de Produtos </h1>
+
+            <div className='cont-busca-estoque'>
+                        <input className='input-pesquisa-estoque' placeholder='Buscar por nome' value={filtro} onChange={e => setFiltro(e.target.value)}/>
+                        <button className='botao-pesquisa-estoque' onClick={filtrar}>
+                           
+                        </button>
+                    </div>
+
+            <div className='form'>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>nome</th>
+                            <th>Preço</th>
+                            <th>Desconto</th>
+                            <th>Departamento</th>
+                            <th>valorantigo</th>
+                            <th>Marca</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {produto.map(item =>
+                            <tr>
+                                <td> {item.id} </td>
+                                <td> {item.nome} </td>
+                                <td>R$ {item.preco}</td>
+                                <td> {item.desconto} </td>
+                                <td> {item.departamento} </td>
+                                <td> {item.valorantigo} </td>
+                                <td> {item.marca} </td>
+
+                                
+                                <td><span onClick={() => removerProduto(item.id)}>Remover</span></td>
+                            </tr>    
+                        )}
+                    </tbody>
+                </table>
+
             </div>
         </div>
     )
 }
+

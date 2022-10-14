@@ -5,7 +5,7 @@ const api = axios.create({
     baseURL: API_URL
 })
 
-export async function listarCategorias() {
+export async function listarDestaque() {
     const r = await api.get('/api/categoria');
     return r.data;
 }

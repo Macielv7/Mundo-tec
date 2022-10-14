@@ -1,6 +1,6 @@
 import 'dotenv/config'
 
-import categoria from './controller/categoria.js';
+import destaque from './controller/destaque.js';
 import departamento from './controller/departamento.js'
 import produto from './controller/produto.js'
 import usuario from './controller/usuariocontroler.js'
@@ -16,7 +16,7 @@ server.use(express.json());
 
 
 server.use(usuario)
-server.use(categoria);
+server.use(destaque);
 server.use(departamento);
 server.use(produto);
  

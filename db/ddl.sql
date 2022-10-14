@@ -1,28 +1,8 @@
-CREATE DATABASE Tec;
-USE Tec;
+create database oi;
+use oi;
 
-drop database tec;
+drop database oi;
 
-select * from tb_login;   
-
-insert into tb_login (nm_doutor, ds_gmail, ds_senha)
-values ('micka','adm', 123);
-
-CREATE TABLE TB_PRODUTO(
-ID_PRODUTO               INT PRIMARY KEY AUTO_INCREMENT,
-ID_DEPARTAMENTO          INT,
-NM_PRODUTO               VARCHAR(200),
-NM_CATEGORIA			 VARCHAR(200),
-VL_PRECO                 DECIMAL(5,2),
-VL_DESCONTO              DECIMAL(5,2),
-DT_DISPONIVEL	 		 BOOLEAN,
-IMG_PRODUTO       		 VARCHAR(800),
-
-FOREIGN KEY(ID_DEPARTAMENTO) REFERENCES TB_DEPARTAMENTO (ID_DEPARTAMENTO)
-);
-
-
-select * FROM TB_PRODUTO;
 
 
 create table tb_departamento (
@@ -30,23 +10,58 @@ create table tb_departamento (
     nm_departamento    varchar(200)
 );
 
-create table tb_categoria (
-	id_categoria		int primary key auto_increment,
-    nm_categoria		varchar(200)
+insert into tb_departamento (nm_departamento)
+values ( 'Periféricos');
+insert into tb_departamento (nm_departamento)
+values ( 'Celulares');
+insert into tb_departamento (nm_departamento)
+values ( 'TV');
+insert into tb_departamento (nm_departamento)
+values ( 'Casa Inteligente');
+insert into tb_departamento (nm_departamento)
+values ( 'Hardware');
+insert into tb_departamento (nm_departamento)
+values ( 'Games');
+insert into tb_departamento (nm_departamento)
+values ( 'Espaço Gamer');
+insert into tb_departamento (nm_departamento)
+values ( 'Câmeras e Drones');
+insert into tb_departamento (nm_departamento)
+values ( 'Áudio');
+
+create table tb_produto(
+id_produto               int primary key auto_increment,
+id_departamento          int,
+nm_produto               varchar(200),
+vl_preco                 decimal(10,2),
+vl_desconto              decimal(10,2),
+dt_valorantigo	 		 decimal(10,2),
+ds_marca             	 varchar(200),
+
+foreign key (id_departamento) references tb_departamento (id_departamento)
 );
 
-create table tb_produto_categoria (
-	id_produto_categoria	int primary key auto_increment,
-    id_categoria			int,
+select * from tb_produto;
+
+
+create table tb_destaque (
+	id_destaque		int primary key auto_increment,
+    nm_destaque		varchar(200)
+);
+
+create table tb_produto_destaque (
+	id_produto_destaque	int primary key auto_increment,
+    id_destaque			int,
     id_produto				int,
-    foreign key (id_categoria) references tb_categoria (id_categoria),
+    foreign key (id_destaque) references tb_detaque (id_destaque),
     foreign key (id_produto) references tb_produto (id_produto)
 );
 
+insert into tb_destaque (nm_destaque)
+values ( 'Mais vendidos');
+insert into tb_destaque (nm_destaque)
+values ( 'Lançamentos');
 
-select * from tb_categoria;
-
-select * from tb_departamento;
 
 create table tb_produto_imagem (
 	id_produto_imagem	    int primary key auto_increment,
@@ -56,38 +71,44 @@ create table tb_produto_imagem (
 );
 
 
-CREATE TABLE TB_USUARIO(
-ID_USUARIO        INT PRIMARY KEY AUTO_INCREMENT,
-NM_USUARIO        VARCHAR(100),
-DS_CPF            VARCHAR(14),
-DS_EMAIL          VARCHAR(100),
-DS_GENERO         VARCHAR(100),
-DS_TELEFONE       VARCHAR(100),
-DS_SENHA          VARCHAR(100)
+select * from tb_produto_imagem;
+
+
+create table tb_usuario (
+	id_usuario			int primary key auto_increment,
+    nm_usuario			varchar(200),
+    dt_nascimento		date,
+    ds_telefone			varchar(200),
+    ds_cpf				varchar(200),
+    ds_genero			varchar(200)
+);
+
+create table tb_login_usuario (
+	id_login_usuario	    int primary key auto_increment,
+    id_usuario				int,
+    ds_email	  			varchar(800),
+    ds_senha	  			varchar(800),
+    bt_trocar				boolean,
+    cod_reset				varchar(20),
+    dt_expiracao_cod		datetime,
+    foreign key (id_usuario) references tb_usuario (id_usuario)
 );
 
 
-create table tb_usuario_endereco(
-    id_usuario_endereco     int primary key auto_increment,
-    id_usuario               int,
-    DS_CEP                   varchar(100),
-    nm_numero                int,
-    NM_ESTADO                varchar(100),
-    DS_CASA                  varchar(8),
-    NM_CIDADE                varchar(300),
-    DS_COMPLEMENTO           varchar(200),
-    NM_BAIRRO                varchar(100),
-    foreign key (id_usuario)  references tb_usuario (id_usuario)
-)
+ select tb_produto.id_produto        as id,
+            nm_produto                      as produto,
+            vl_preco                        as preco,
+            bt_desconto                     as desconto,
+            nm_departamento                 as departamento,
+            dt_valorantigo                  as valorantigo,
+            ds_marca                        as marca
+       
+         order   by tb_produto.id_produto,
+                nm_produto,
+                vl_preco,
+                vl_desconto ,
+                nm_departamento,
+                dt_valorantigo,
+                ds_marca
+        
 
-CREATE TABLE TB_ADMIN_LOGIN(
-ID_ADMIN_LOGIN   INT PRIMARY KEY AUTO_INCREMENT,
-DS_EMAIL         VARCHAR(100),
-DS_SENHA         VARCHAR(100)
-);
-
-CREATE TABLE TB_LOGIN(
-ID_LOGIN         INT PRIMARY KEY AUTO_INCREMENT,
-ID_USUARIO       INT,
-FOREIGN KEY (ID_USUARIO) REFERENCES TB_USUARIO (ID_USUARIO)
-);
