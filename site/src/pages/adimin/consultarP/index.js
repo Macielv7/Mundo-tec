@@ -2,17 +2,16 @@ import './index.scss';
 
 import {toast} from 'react-toastify';
 import { useEffect, useState } from 'react';
-import 'react-confirm-alert/src/react-confirm-alert.css'
-import { confirmAlert } from 'react-confirm-alert'
-import { listarTodosProdutos, buscarProdutoNome, deletaProduto } from '../../../api/produtoAPI.js';
 import Menu from "../../../components/menu"
 
+
+
+import { listarTodosProdutos, buscarProdutoNome, } from '../../../api/produtoAPI.js';
 
 export default function ConsEstoque() {
 
     const [produto, setProduto] = useState([]);
     const [filtro, setFiltro] = useState('');
-   
 
     async function filtrar(){
         const x = await buscarProdutoNome(filtro);
@@ -24,43 +23,15 @@ export default function ConsEstoque() {
         setProduto(r);
     }
 
-
-
-    async function removerProduto (id, nome){
-
-        confirmAlert({
-         
-            title: 'Remover Produto',
-            message: `deseja remover o Produto ${id, nome}?`,
-            buttons: [
-                {
-                    label:'sim',
-                    onClick: async () => {
-                        const filtro = await deletaProduto (id,nome);
-                          if(filtro === ''){
-                            carregarTodosProdutos()
-                         
-                      }
-                          else
-                          filtrar();
-                          toast.dark('Produto removido')
-                    }
-                },
-                {
-                    label:'Não'
-                }
-            ]
-        })   
-    }
-
     useEffect(() => {
         carregarTodosProdutos();
     }, [])
 
-    async function deletaProduto(id) {
+    async function deletarProduto(id) {
        
         try{ 
-            
+          
+            await carregarTodosProdutos();
 
             toast.dark("Produto Removido com Sucesso");
         }
@@ -70,22 +41,26 @@ export default function ConsEstoque() {
 
 }
 
-
     return (
-        
-        <div className='pagina-admin-consultar-produto'>
-            <Menu/>
-            <h1> Catálogo de Produtos </h1>
-
-            <div className='cont-busca-estoque'>
+        <main className='cont-main-estoque'>
+            <section className='cont-cabecalho-estoque'>
+                <Menu/>
+            </section>
+            <section className='cont-001-estoque'>
+                <div className='cont-titulo-busca'>
+                    <div className='cont-titulo-estoque'>
+                       
+                        <h1 className='titulo-estoque'>
+                            Consultar Produtos
+                        </h1>
+                    </div>
+                    <div className='cont-busca-estoque'>
                         <input className='input-pesquisa-estoque' placeholder='Buscar por nome' value={filtro} onChange={e => setFiltro(e.target.value)}/>
                         <button className='botao-pesquisa-estoque' onClick={filtrar}>
-                           
+                            
                         </button>
                     </div>
-
-            <div className='form'>
-
+                </div>
                 <table>
                     <thead>
                         <tr>
@@ -99,25 +74,30 @@ export default function ConsEstoque() {
                         </tr>
                     </thead>
                     <tbody>
+
                         {produto.map(item =>
                             <tr>
-                                <td> {item.id} </td>
-                                <td> {item.nome} </td>
-                                <td>R$ {item.preco}</td>
-                                <td> {item.desconto} </td>
-                                <td> {item.departamento} </td>
-                                <td> {item.valorantigo} </td>
-                                <td> {item.marca} </td>
+                                <td>{item.idDepartamento}</td>
+                                <td>{item.nomeProduto}</td>
+                                <td>{item.valorProduto}</td>
+                                <td>{item.valorDesconto}</td>
+                                <td>{item.avaliacao}</td>
+                                <td>{item.fabricante}</td>
+                                <td>{item.estoque}</td>
+                                <td>{item.informações}</td>
+                                <td>{item.descricao}</td>
+                                <td>{item.garantia}</td>
+                                <td>
 
-                                
-                                <td><span onClick={() => removerProduto(item.id)}>Remover</span></td>
-                            </tr>    
+                                    
+                                </td>
+                            </tr>
+
                         )}
+
                     </tbody>
                 </table>
-
-            </div>
-        </div>
+            </section>
+        </main>
     )
 }
-

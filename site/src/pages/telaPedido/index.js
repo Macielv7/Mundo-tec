@@ -9,7 +9,7 @@ import { buscarProdutoPorId  } from '../../api/produtoAPI.js';
 import { API_URL } from '../../api/config';
 
 export default function ProdutoDetalhe() {
-    const [produto, setProduto] = useState({ categorias: [], imagens: [], info: {} })
+    const [produto, setProduto] = useState({  imagens: [], info: {} })
     const [imagemPrincipal, setImagemPrincipal] = useState(0);
 
     const { id } = useParams();
@@ -74,12 +74,20 @@ export default function ProdutoDetalhe() {
                     </div>
                 </div>
                 <div className='detalhes'>
-                <div className='preco-label'> PREÇO </div>
-                    <div className='preco'> R$ {produto.info.preco} </div>
+                
+                <div className='preco-label'> marca</div>
+                    <div className='preco'> {produto.info.marca} </div>
+
+                    <div className='preco-label'> nome </div>
+                    <div className='preco'> {produto.info.nome} </div>
                     
+                    <div className='preco-label'> valorantigo</div>
+                    <div className='preco'> <s>{produto.info.valorantigo}</s> </div>
+
                     <div className='preco-label'> PREÇO </div>
                     <div className='preco'> R$ {produto.info.preco} </div>
-                    
+
+                
                     <button onClick={adicionarAoCarrinho}> Adicionar ao Carrinho </button>
                 </div>
                 

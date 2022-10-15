@@ -87,12 +87,10 @@ server.get('/admin/produto/:id', async (req, resp) => {
         const id = req.params.id;
 
         const produto = await buscarProdutoPorId(id);
-        const Destaques = await buscarProdutoDestaque(id);
         const imagens = await buscarProdutoImagens(id);
 
         resp.send({
             info: produto,
-            Destaques: Destaques,
             imagens: imagens
         })
     }

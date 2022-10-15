@@ -1,79 +1,92 @@
-import storage from 'local-storage'
-import { useState } from 'react';
 
-import { useNavigate, Link } from 'react-router-dom';
 
 import './index.scss'
 
-export default function Index(props) {
+export default function Index() {
     
-    const navigate = useNavigate();
-
-    function sairClick() {
-        storage.remove('usuario-logado');
-        navigate('/');
-    }
-
-    function verificarMenuSelecionado(menu) {
-        if (menu === props.selecionado)
-            return 'selecionado'
-        else
-            return '';
-    }
-
+    
 
     return (
-        <nav className="comp-menu">
-            <div>
-                <div className='logo'>
-                    <img src="/img/logo.png" alt="logo" />
-                </div>
-
-                <div className='menu-items'>
+        <nav class="sidebar close">
+        <header>
+            <div class="image-text">
+                <span class="image">
                     
-                <Link to='/home' className={verificarMenuSelecionado('Dashboard')}>
-                        <img src="/img/logo.png" alt="home" />
-                        <div>Dashboard</div>
-                    </Link>
-                    <Link to='/adm4' className={verificarMenuSelecionado('Cadastrar')}>
-                        <img src="/img/logo.png" alt="home" />
-                        <div>Cadastrar</div>
-                    </Link>
-                    <Link to='/adm3' className={verificarMenuSelecionado('home')}>
-                        <img src="/img/logo.png" alt="home" />
-                        <div>Altera </div>
-                    </Link>
-                    <Link to='/consultarP' className={verificarMenuSelecionado('home')}>
-                        <img src="/img/logo.png" alt="home" />
-                        <div>Consultar</div>
-                    </Link>
-                    <Link to='/cadastrarP' className={verificarMenuSelecionado('home')}>
-                        <img src="/img/logo.png" alt="home" />
-                        <div>Home</div>
-                    </Link>
+                </span>
+
+                <div class="text logo-text">
+                    <span class="name">Codinglab</span>
+                    <span class="profession">Web developer</span>
                 </div>
-             
             </div>
 
-            <div className='menu-items'>
-                <p>configura</p>
-                <Link to='/admin' className={verificarMenuSelecionado('home')}>
-                        <img src="/img/logo.png" alt="home" />
-                        <div>Home</div>
-                    </Link>
+           
+        </header>
 
-                    <Link to='/admin' className={verificarMenuSelecionado('home')}>
-                        <img src="/img/logo.png" alt="home" />
-                        <div>Home</div>
-                    </Link>
+        <div class="menu-bar">
+            <div class="menu">
 
-                    <Link to='/admin' className={verificarMenuSelecionado('home')}>
-                        <img src="/img/logo.png" alt="home" />
-                        <div>Home</div>
-                    </Link>
+               
+
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-home-alt icon' ></i>
+                            <span class="text nav-text">Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-bar-chart-alt-2 icon' ></i>
+                            <span class="text nav-text">Cadastrar</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="/cadastrar">
+                            <i class='bx bx-bell icon'></i>
+                            <span class="text nav-text">Consultar</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="/consultar">
+                            <i class='bx bx-pie-chart-alt icon' ></i>
+                            <span class="text nav-text">Analytics</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-heart icon' ></i>
+                            <span class="text nav-text">Likes</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-wallet icon' ></i>
+                            <span class="text nav-text">Wallets</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div> 
+            <hr/>
+
+            <div class="bottom-content">
+                <li class="">
+                    <a href="#">
+                        <i class='bx bx-log-out icon' ></i>
+                        <span class="text nav-text">Logout</span>
+                    </a>
+                </li>
+
+                
             </div>
+        </div>
 
-              
-        </nav>
+    </nav>
     )
 }

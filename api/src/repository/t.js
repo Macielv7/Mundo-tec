@@ -104,7 +104,7 @@ export async function removerProduto(id) {
 }
 export async function removerProduto(id) {
     const comando =
-        `DELETE FROM tb_produto 
+        `DELETE FROM tb_produ'to 
                WHERE id_produto = ? `;
     
     const [resposta] = await con.query(comando, [id]);
