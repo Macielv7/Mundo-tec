@@ -2,39 +2,67 @@
 
 import React from "react"
 import "./index.scss"
+import { useEffect, useState } from 'react';
 
-import FlashDeals from "../../components/flashDeals/FlashDeals"
-
+import { listarProdutosInicio } from '../../api/produtoAPI'
+import Rodape from "../../components/rodape"
 import Header from "../../components/header"
+import FlashCard from "../../components/flashDeals/FlashCard"
 
 
 
 
 
-const Index = ({ productItems, addToCart,  }) => {
+
+export default function Index () {
+    const [produtos, setProdutos] = useState([]);
+
+    async function listar() {
+        const r = await listarProdutosInicio();
+        setProdutos(r);
+    }
+
+
+    useEffect(() => {
+        listar();
+    }, [])
+
+
+
+
     return (
         <>
 
        <Header />
+       
 
-       <div class="nome">
-            <img src="/img/p (1).png" alt=""/>
-        </div>
-
-            <FlashDeals productItems={productItems} addToCart={addToCart} />
-            <div className="con">
-                <img src="./img/cadeira.jfif" alt="" />
-                <img src="./img/cadeira.jfif" alt="" />
+       <div className="produtos-container">
+                
+                    {produtos.map(item =>
+                       
+               <FlashCard  item={item}/>
+                
+               )}
             </div>
-            <FlashDeals productItems={productItems} addToCart={addToCart} />
+
+       
+            
+           
+           
 
             <div className='texto-cabecalho'>
                 <div>
 
+                
 
-                    <div class="img">
-                        <img src="./img/pp.png" height="322px" alt="" />
-                    </div>
+                    
+
+                   
+                    
+               
+                    
+
+
 
                     <div class="tt">
                         <h1>Departamento</h1>
@@ -156,6 +184,9 @@ const Index = ({ productItems, addToCart,  }) => {
 
                     </div>
                     <hr />
+
+                    <Rodape/>
+
                 </div>
             </div>
 
@@ -163,4 +194,3 @@ const Index = ({ productItems, addToCart,  }) => {
     )
 }
 
-export default Index

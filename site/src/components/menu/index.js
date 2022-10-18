@@ -37,21 +37,21 @@ export default function Index() {
                     </li>
 
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="/adimin/cadastrar">
                             <i class='bx bx-bar-chart-alt-2 icon' ></i>
                             <span class="text nav-text">Cadastrar</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
-                        <a href="/cadastrar">
+                        <a href="/consultar">
                             <i class='bx bx-bell icon'></i>
                             <span class="text nav-text">Consultar</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
-                        <a href="/consultar">
+                        <a href="#">
                             <i class='bx bx-pie-chart-alt icon' ></i>
                             <span class="text nav-text">Analytics</span>
                         </a>

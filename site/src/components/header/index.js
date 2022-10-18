@@ -50,11 +50,12 @@ const Search = ({ CartItem }) => {
           </div>
 
           <div className='icon f_flex width'>
-            <i className='fa fa-user icon-circle'></i>
+            <img src="/img/icons8-usuário-homem-com-círculo-24.png" />
             <div className='cart'>
             
             </div>
           </div>
+
 
          
         </div>

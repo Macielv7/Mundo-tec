@@ -53,7 +53,7 @@ export async function listarProdutosInicio() {
 
 
 export async function listarTodosProdutos() {
-    const resposta = await api.get('/adm/produto')
+    const resposta = await api.get('/produto')
     return resposta.data;
 }
 
@@ -62,7 +62,7 @@ export async function buscarProdutoNome(nome) {
     return resposta.data;
 }
 
-export async function deletaProduto(id){
+export async function RemoverProduto(id){
     const resposta = await api.delete(`/produto/${id}`);
     return resposta.status;
   }

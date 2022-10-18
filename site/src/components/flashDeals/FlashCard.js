@@ -3,6 +3,11 @@ import Slider from "react-slick"
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+import { API_URL } from '../../api/config';
+import './index.scss'
+
+import { useNavigate } from 'react-router-dom'
+
 const SampleNextArrow = (props) => {
   const { onClick } = props
   return (
@@ -25,7 +30,20 @@ const SamplePrevArrow = (props) => {
   )
 }
 
-const FlashCard = ({ productItems, addToCart }) => {
+export default function  FlashCard  ( props )   {
+
+    const navigate = useNavigate();
+    
+    function exibir(imagem) {
+        if (!imagem)
+            return `/logo.png`;
+        else 
+            return `${API_URL}/${imagem}`
+    }
+
+    
+
+
   const [count, setCount] = useState(0)
   const increment = () => {
     setCount(count + 1)
@@ -44,30 +62,30 @@ const FlashCard = ({ productItems, addToCart }) => {
   return (
     <>
       <Slider {...settings}>
-        {productItems.map((productItems) => {
+     
           return (
             <div className='box'>
               <div className='product mtop'>
                 <div className='img'>
-                  <span className='discount'>{productItems.discount}% Off</span>
-                  <img src={productItems.cover} alt='' />
+                  <span className='discount'>{props.item.desconto}% Off</span>
+                  <img src={exibir(props.item.imagem)} alt='' />
                   <div className='product-like'>
                     <label>{count}</label> <br />
                     <i className='fa-regular fa-heart' onClick={increment}></i>
                   </div>
                 </div>
                 <div className='product-details'>
-                  <h3>{productItems.name}</h3>
+                  <h3>{props.item.produto}</h3>
                   <div className='rate'>
-                    <s>900</s>
+                    <s>{props.item.valorantigo}</s>
                   </div>
                   <div className='price'>
-                    <h4>R${productItems.price}.00 </h4>
+                    <h4>R${props.item.price}.00 </h4>
                    
                   </div>
                   <div className='price'>
                      
-                    <button onClick={() => addToCart(productItems)}>
+                    <button>
                       <i className=''></i>
                     </button>
                   </div>
@@ -75,10 +93,8 @@ const FlashCard = ({ productItems, addToCart }) => {
               </div>
             </div>
           )
-        })}
+       
       </Slider>
     </>
   )
 }
-
-export default FlashCard

@@ -74,27 +74,49 @@ export async function salvarProdutoImagem(idProduto, imagemPath) {
 
 export async function buscarProdutos() {
     const comando = `
-        select tb_produto.id_produto        as id
-            nm_produto                      as produto
-            vl_preco                        as preco
-            bt_desconto                     as desconto
-            nm_departamento                 as departamento
-            dt_valorantigo                  as valorantigo
+        select tb_produto.id_produto        as id,
+            nm_produto                      as produto,
+            vl_preco                        as preco,
+            nm_departamento                 as departamento,
+            dt_valorantigo                  as valorantigo,
             ds_marca                        as marca
-       
-            by tb_produto.id_produto
-                nm_produto
-                vl_preco
-                vl_desconto 
-                nm_departamento
-                dt_valorantigo
+
+            from tb_produto 
+        inner join tb_departamento on tb_produto.id_departamento = tb_departamento.id_departamento
+
+        group 
+            by tb_produto.id_produto,
+                nm_produto,
+                vl_preco,
+                nm_departamento,
+                dt_valorantigo,
                 ds_marca
+
+         
         `
 
     const [registros] = await con.query(comando);
     return registros;
 }
 
+export async function buscarPorNome(nome) {
+    
+    const comando =
+    `select 
+            nm_produto            produto
+            vl_preco              preco
+            bt_desconto           desconto
+            nm_departamento       departamento
+            dt_valorantigo        valorantigo
+            ds_marca              marca
+    from   id_produto        id
+    where nm_produto like ?`;
+
+          
+    
+    const [linhas] = await con.query(comando, [`%${nome}%`]);
+    return linhas;
+}
 
 
 export async function buscarProdutoPorId(id) {
@@ -195,21 +217,26 @@ export async function removerProdutoImagensDiferentesDe(imagens) {
 
 export async function listarProdutosInicio() {
     const comando = `
-        select tb_produto.id_produto		id,
+               select tb_produto.id_produto		id,
                nm_produto					produto,
                vl_preco						preco,
                nm_departamento				departamento,
+                dt_valorantigo 				valorantigo,    
+            ds_marca						marca,
                min(ds_imagem)				imagem
+
           from tb_produto
     inner join tb_departamento on tb_produto.id_departamento = tb_departamento.id_departamento
      left join tb_produto_imagem on tb_produto_imagem.id_produto = tb_produto.id_produto
+
          group 
             by tb_produto.id_produto,
                nm_produto,
                vl_preco,
-               nm_departamento
+               nm_departamento,
+                dt_valorantigo ,    
+                ds_marca
     `
-
     const [registros] = await con.query(comando);
     return registros;
 }

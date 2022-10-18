@@ -1,7 +1,7 @@
 import multer from 'multer'
 import { Router } from 'express';
 
-import { alterarProduto, buscarProdutoDestaque, buscarProdutoImagens, buscarProdutoPorId, buscarProdutos, removerProduto, removerProdutoDestaque, removerProdutoImagens, removerProdutoImagensDiferentesDe, salvarProduto, salvarProdutoDestaque, salvarProdutoImagem } from '../repository/produto.js';
+import { alterarProduto, buscarProdutoDestaque, buscarProdutoImagens, buscarProdutoPorId, buscarProdutos, listarProdutosInicio, removerProduto, removerProdutoDestaque, removerProdutoImagens, removerProdutoImagensDiferentesDe, salvarProduto, salvarProdutoDestaque, salvarProdutoImagem } from '../repository/produto.js';
 import { buscarDestaquePorId } from '../repository/destaque.js';
 
 
@@ -63,18 +63,46 @@ server.get('/admin/produto', async (req, resp) => {
     }
 })
 
+server.get('/api/produto', async (req, resp) => {
+    try {
+        const r = await listarProdutosInicio();
+        resp.send(r);
+    }
+    catch (err) {
+        resp.status(400).send({
+            erro: err.message
+        })
+    }
+})
+
 
 server.delete('/admin/produto/:id', async (req, resp) => {
     try {
         const id = req.params.id;
 
-        await removerProdutoDestaque(id);
         await removerProdutoImagens(id);
         await removerProduto(id);
 
         resp.status(204).send();
     }
     catch (err) {
+        resp.status(400).send({
+            erro: err.message
+        })
+    }
+})
+
+server.get('/produto/busca', async (req, resp) => {
+    try {
+        const { nome } = req.query;
+        
+        const resposta = await buscarPorNome(nome);
+
+        if (!resposta)
+            resp.status(404).send([])
+        else
+            resp.send(resposta);
+    } catch (err) {
         resp.status(400).send({
             erro: err.message
         })
@@ -128,5 +156,7 @@ server.put('/admin/produto/:id', async (req, resp) => {
         })
     }
 })
+
+
 
 export default server;
