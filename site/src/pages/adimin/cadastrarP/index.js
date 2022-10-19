@@ -181,38 +181,39 @@ export default function Produto() {
 
                 </div>
 
-                <div className='imagens'>
-                <div className='opcoes'>
+                <div className='image-container'>
                     
-                <img src={exibirImagem(imagem1)} alt="" onClick={() => escolherImagem('imagem1')} />
+                    <div>
+                        <img src={exibirImagem(imagem1)} alt="" onClick={() => escolherImagem('imagem1')} />
                         {imagem1 ? <span onClick={() => setImagem1()}>Remover</span> : ''}
-                       
-
+                    </div>
+                    <div>
                         <img src={exibirImagem(imagem2)} alt="" onClick={() => escolherImagem('imagem2')} />
-                        {imagem1 ? <span onClick={() => setImagem1()}>Remover</span> : ''}
-
-
+                        {imagem2 ? <span onClick={() => setImagem2()}>Remover</span> : ''}
+                    </div>
+                    <div>
                         <img src={exibirImagem(imagem3)} alt="" onClick={() => escolherImagem('imagem3')} />
-                        {imagem1 ? <span onClick={() => setImagem1()}>Remover</span> : ''}
-                        
+                        {imagem3 ? <span onClick={() => setImagem3()}>Remover</span> : ''}
+                    </div>
+                    <div>
+                        <img src={exibirImagem(imagem4)} alt="" onClick={() => escolherImagem('imagem4')} />
+                        {imagem4 ? <span onClick={() => setImagem4()}>Remover</span> : ''}
+                    </div>
+                    
+
+                    
+                    <input type='file' id='imagem1' onChange={e => setImagem1(e.target.files[0])} />
+                    <input type='file' id='imagem2' onChange={e => setImagem2(e.target.files[0])} />
+                    <input type='file' id='imagem3' onChange={e => setImagem3(e.target.files[0])} />
+                    <input type='file' id='imagem4' onChange={e => setImagem4(e.target.files[0])} />
                 </div>
-            
-                <div className='atual'>
-
-                <img src={exibirImagem(imagem4)} alt="" onClick={() => escolherImagem('imagem4')} />
-                        {imagem1 ? <span onClick={() => setImagem1()}>Remover</span> : ''}
-
-                        <input type='file' id='imagem4' onChange={e => setImagem4(e.target.files[0])} />
-                
-                </div>
-                
-            </div>
-
-                
 
                 
                 
             </div>
-        </div>
+                
+                
+            </div>
+        
     )
 }

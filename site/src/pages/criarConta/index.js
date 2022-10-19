@@ -79,27 +79,27 @@ export default function Index() {
                     <input  type="text"value={nome} onChange={e => setNome(e.target.value)}  placeholder="Digite seu nome" required/>
                 </div>
 
-                <div class="input-box">
+                <div class="input-boxx">
                     <label for="lastname">CPF</label>
                     <input id="lastname" type="nu" value={cpf} onChange={e => setCpf(e.target.value)}  placeholder="0000.000.000" required/>
                 </div>
-                <div class="input-box">
+                <div class="input-boxx">
                     <label for="email">Telefone</label>
                     <input id="phone" type="phone" value={telefone} onChange={e => setTelefone(e.target.value)}  placeholder="(xx) xxxx-xxxx" required/>
                 </div>
 
-                <div class="input-box">
+                <div class="input-boxx">
                     <label for="number">Criar sua senha</label>
                     <input  id="password" type="password" value={senha} onChange={e => setSenha(e.target.value)}  placeholder="Digite sua senha" required/>
                 </div>
 
-                <div class="input-box">
+                <div class="input-boxx">
                     <label for="password">Email</label>
                     <input  id="email" type="email" value={email} onChange={e => setEmail(e.target.value)}  placeholder="@gmail.com" required/>
                 </div>
 
 
-                <div class="input-box">
+                <div class="input-boxx">
                     <label for="confirmPassword">Confirme sua Senha</label>
                     <input id="confirmPassword" type="password" value={confirmar} onChange={e => setConfirmar(e.target.value)} placeholder="Comfime sua senha" required/>
                 </div>

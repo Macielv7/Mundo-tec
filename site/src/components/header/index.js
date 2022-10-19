@@ -36,21 +36,21 @@ const Search = ({ CartItem }) => {
           </div>
 
           <div className='logo width '>
-            <a href="/cadastrarp
-            
-            ">
+            <a href="/">
             <img src="./img/logo.png" />
             </a>
           </div>
 
-          <div className='search-box f_flex'>
+          <div className='search-boxx f_flex'>
           <i class="fa fa-user-circle-o" ></i>
             <input type='text' placeholder='Search and hit enter...' />
             
           </div>
 
           <div className='icon f_flex width'>
+          <a href="/criarconta">
             <img src="/img/icons8-usuário-homem-com-círculo-24.png" />
+            </a>
             <div className='cart'>
             
             </div>

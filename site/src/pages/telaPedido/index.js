@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Storage from 'local-storage'
 import { toast } from 'react-toastify'
+import Header from "../../components/header"
 
 import { buscarProdutoPorId  } from '../../api/produtoAPI.js';
 import { API_URL } from '../../api/config';
@@ -61,8 +62,9 @@ export default function ProdutoDetalhe() {
 
     return (
         <div className='pagina-detalhe-produto'>
+            <Header/>
             <div className='produto'>
-
+                
                 <div className='imagens'>
                     <div className='opcoes'>
                         {produto.imagens.map((item, pos) => 

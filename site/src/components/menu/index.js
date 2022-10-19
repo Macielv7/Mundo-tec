@@ -77,7 +77,7 @@ export default function Index() {
 
             <div class="bottom-content">
                 <li class="">
-                    <a href="#">
+                    <a href="/conta">
                         <i class='bx bx-log-out icon' ></i>
                         <span class="text nav-text">Logout</span>
                     </a>
