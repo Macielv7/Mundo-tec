@@ -1,5 +1,7 @@
+
+
+import { API_URL } from '../../api/config';
 import './index.scss'
-import { API_URL } from '../../api/config'
 
 import { useNavigate } from 'react-router-dom'
 
@@ -9,25 +11,24 @@ export default function FlashCard(props) {
 
     function exibir(imagem) {
         if (!imagem)
-            return;
+            return `/logo.png`;
         else 
             return `${API_URL}/${imagem}`
     }
 
-   
+    
 
     function abrirDetalhes(id) {
-        navigate('/produto/' + id + '/detalhe')
+        navigate('/tela/' + id + '/pedido')
     }
 
     return (
         <div className='comp-card-produto' onClick={() => abrirDetalhes(props.item.id)}>
-            <img src={`${API_URL}/${props.item.imagem}`} alt="" />
+            <img src={exibir(props.item.imagem)} alt="" />
             <div>
                 
-                <div> {props.item.marca} </div>
+                <div> {props.item.departamento} </div>
                 <div> {props.item.produto} </div>
-                <div> {props.item.valorantigo} </div>
                 <div> R$ {props.item.preco} </div>
             </div>
         </div>

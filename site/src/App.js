@@ -37,7 +37,7 @@ export default function Index() {
               <Route>
                 <Route path="cadastrarp" element={<CadastrarP />} />
                 <Route path="consultarp" element={<ConsultarP />} />
-                <Route path="telapedido" element={<TelaPedido />} />
+                <Route path="/tela/:id/pedido" element={<TelaPedido />} />
                 <Route path="carrinho" element={<Carrinho />} />
                 <Route path="car" element={<FlashDeals />} />
                 

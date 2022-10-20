@@ -110,7 +110,7 @@ server.get('/produto/busca', async (req, resp) => {
 })
 
 
-server.get('/admin/produto/:id', async (req, resp) => {
+server.get('/api/produto/:id', async (req, resp) => {
     try {
         const id = req.params.id;
 
