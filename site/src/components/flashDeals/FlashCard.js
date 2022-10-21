@@ -17,6 +17,7 @@ export default function FlashCard(props) {
     }
 
     
+    
 
     function abrirDetalhes(id) {
         navigate('/tela/' + id + '/pedido')
@@ -30,7 +31,7 @@ export default function FlashCard(props) {
                 
                 <div> {props.item.departamento} </div>
                 <div> {props.item.produto} </div>
-                
+               
                 <div> R$ {props.item.preco} </div>
             </div>
         </div>
