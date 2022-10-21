@@ -18,8 +18,8 @@ export default function Index() {
                 </span>
 
                 <div class="text logo-text">
-                    <span class="name">Codinglab</span>
-                    <span class="profession">Web developer</span>
+                    <span class="name">MUNDO TEC</span>
+                    <span class="profession">administrativo</span>
                 </div>
             </div>
 
