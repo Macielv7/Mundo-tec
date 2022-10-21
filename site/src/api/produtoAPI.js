@@ -66,3 +66,7 @@ export async function RemoverProduto(id){
     const resposta = await api.delete(`/produto/${id}`);
     return resposta.status;
   }
+
+  export function pegarImagem(imagem) {
+    return `http://localhost:5000/${imagem}`
+}

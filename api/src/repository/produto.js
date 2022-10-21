@@ -124,6 +124,7 @@ export async function buscarProdutoPorId(id) {
     select id_produto                      as id,
     nm_produto                      as produto,
     vl_preco                        as preco,
+    dt_valorantigo                  as valorantigo,
     tb_produto.id_departamento      as departamento,
     nm_departamento                 as nomeDepartamento
 from tb_produto 

@@ -10,7 +10,7 @@ import cors from "cors";
 
 const server = express();
 
-server.use('/storage/capaProduto', express.static('storage/capaProduto') );
+server.use('/storage/produto', express.static('storage/produto') );
 server.use(cors());
 server.use(express.json());
 

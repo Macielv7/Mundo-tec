@@ -27,11 +27,15 @@ export default function FlashCard(props) {
             <img src={exibir(props.item.imagem)} alt="" />
             <div>
                 
+                
                 <div> {props.item.departamento} </div>
                 <div> {props.item.produto} </div>
+                
                 <div> R$ {props.item.preco} </div>
             </div>
         </div>
+
+    
     )
 }
 

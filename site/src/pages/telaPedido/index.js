@@ -1,10 +1,10 @@
 import './index.scss'
-
+import Header from "../../components/header"
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Storage from 'local-storage'
 import { toast } from 'react-toastify'
-import Header from "../../components/header"
+
 import { buscarProdutoPorId } from '../../api/produtoAPI';
 import { API_URL } from '../../api/config';
 
@@ -25,7 +25,7 @@ export default function ProdutoDetalhe() {
             return API_URL + '/' + produto.imagens[imagemPrincipal];
         }
         else {
-            return '/logo.png';
+            return '/download.png';
         }
     }
 
@@ -34,6 +34,24 @@ export default function ProdutoDetalhe() {
     }
 
 
+    function adicionarAoCarrinho() {
+        let carrinho = [];
+        if (Storage('carrinho')) {
+            carrinho = Storage('carrinho');
+        }
+
+
+        if (!carrinho.find(item => item.id === id)) {
+            carrinho.push({
+                id: id,
+                qtd: 1
+            })
+
+            Storage('carrinho', carrinho);
+        }
+
+        toast.dark('Produto adicionado ao carrinho!');
+    }
 
 
     useEffect(() => {
@@ -45,6 +63,7 @@ export default function ProdutoDetalhe() {
         <div className='pagina-detalhe-produto'>
             <Header/>
             <div className='produto'>
+                    
 
                 <div className='imagens'>
                     <div className='opcoes'>
@@ -58,13 +77,12 @@ export default function ProdutoDetalhe() {
                 </div>
                 <div className='detalhes'>
                     <div className='nome'> {produto.info.produto} </div>
-                    <div className='preco'> R$ {produto.info.preco} </div>
                     <div className='departamento'> {produto.info.nomeDepartamento} </div>
                     
-                    <div className='preco-label'> PREÇO </div>
+                    <div className='antigo'> <s> R$ {produto.info.valorantigo} </s> </div>
                     <div className='preco'> R$ {produto.info.preco} </div>
                     
-                    <button > Adicionar ao Carrinho </button>
+                    <button onClick={adicionarAoCarrinho}> Adicionar ao Carrinho </button>
                 </div>
                 
             </div>
