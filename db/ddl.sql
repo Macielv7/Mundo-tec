@@ -1,7 +1,7 @@
-create database oi;
-use oi;
+create database oo;
+use oo;
 
-drop database oi;
+drop database oo;
 
 
 
@@ -9,6 +9,8 @@ create table tb_departamento (
 	id_departamento	   int primary key auto_increment,
     nm_departamento    varchar(200)
 );
+
+select * from tb_departamento;
 
 insert into tb_departamento (nm_departamento)
 values ( 'Periféricos');
@@ -44,25 +46,6 @@ foreign key (id_departamento) references tb_departamento (id_departamento)
 select * from tb_produto;
 
 
-create table tb_destaque (
-	id_destaque		int primary key auto_increment,
-    nm_destaque		varchar(200)
-);
-
-create table tb_produto_destaque (
-	id_produto_destaque	int primary key auto_increment,
-    id_destaque			int,
-    id_produto				int,
-    foreign key (id_destaque) references tb_detaque (id_destaque),
-    foreign key (id_produto) references tb_produto (id_produto)
-);
-
-insert into tb_destaque (nm_destaque)
-values ( 'Mais vendidos');
-insert into tb_destaque (nm_destaque)
-values ( 'Lançamentos');
-
-
 create table tb_produto_imagem (
 	id_produto_imagem	    int primary key auto_increment,
     id_produto				int,
@@ -70,6 +53,23 @@ create table tb_produto_imagem (
     foreign key (id_produto) references tb_produto (id_produto)
 );
 
+select tb_produto.id_produto		id,
+               nm_produto					produto,
+               vl_preco						preco,
+               nm_departamento				departamento,
+                dt_valorantigo 				valorantigo,    
+            ds_marca						marca,
+               min(ds_imagem)				imagem
+          from tb_produto
+    inner join tb_departamento on tb_produto.id_departamento = tb_departamento.id_departamento
+     left join tb_produto_imagem on tb_produto_imagem.id_produto = tb_produto.id_produto
+         group 
+            by tb_produto.id_produto,
+               nm_produto,
+               vl_preco,
+               nm_departamento,
+                dt_valorantigo ,    
+            ds_marca;
 
 select * from tb_produto_imagem;
 
@@ -95,20 +95,47 @@ create table tb_login_usuario (
 );
 
 
- select tb_produto.id_produto        as id,
-            nm_produto                      as produto,
-            vl_preco                        as preco,
-            bt_desconto                     as desconto,
-            nm_departamento                 as departamento,
-            dt_valorantigo                  as valorantigo,
-            ds_marca                        as marca
-       
-         order   by tb_produto.id_produto,
-                nm_produto,
-                vl_preco,
-                vl_desconto ,
-                nm_departamento,
-                dt_valorantigo,
-                ds_marca
-        
+create table tb_usuario_endereco(
+    id_usuario_endereco     int primary key auto_increment,
+    id_usuario               int,
+    ds_cep                   varchar(100),
+    nm_numero                int,
+    nm_estado                varchar(100),
+    ds_casa                  varchar(8),
+    nm_cidade                varchar(300),
+    ds_complemento           varchar(200),
+    nm_bairro                varchar(100),
+    foreign key (id_usuario)  references tb_usuario (id_usuario)
+);
 
+select*from tb_usuario_endereco;
+
+
+ select tb_produto.id_produto,
+            nm_produto,         
+            vl_preco,      
+                 
+            nm_departamento,          
+            dt_valorantigo ,    
+            ds_marca           
+ from tb_produto
+ inner join tb_departamento on tb_produto.id_departamento = tb_departamento.id_departamento
+        group
+        by tb_produto.id_produto,
+		nm_produto,         
+            vl_preco,      
+                    
+            nm_departamento,          
+            dt_valorantigo ,    
+            ds_marca       ;
+            
+            
+            
+            select id_produto                      as id,
+                nm_produto                      as produto,
+                vl_preco                        as preco,
+                dt_valorantigo                  as valorantigo,
+                tb_produto.id_departamento      as departamento,
+                nm_departamento                 as nomeDepartamento
+        from tb_produto 
+        inner join tb_departamento on tb_departamento.id_departamento = tb_produto.id_departamento

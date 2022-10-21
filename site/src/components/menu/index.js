@@ -1,4 +1,7 @@
+import storage from 'local-storage'
+import { useState } from 'react';
 
+import { useNavigate, Link } from 'react-router-dom';
 
 import './index.scss'
 
@@ -30,44 +33,46 @@ export default function Index() {
 
                 <ul class="menu-links">
                     <li class="nav-link">
-                        <a href="#">
+                    <Link to='/cadastrarp' >
                             <i class='bx bx-home-alt icon' ></i>
                             <span class="text nav-text">Dashboard</span>
-                        </a>
+                            </Link>
                     </li>
 
+                    
+
                     <li class="nav-link">
-                        <a href="/adimin/cadastrar">
+                    <Link to='/cadastrarp' >
                             <i class='bx bx-bar-chart-alt-2 icon' ></i>
                             <span class="text nav-text">Cadastrar</span>
-                        </a>
+                            </Link>
                     </li>
 
                     <li class="nav-link">
-                        <a href="/consultar">
+                    <Link to='/consultarp' >
                             <i class='bx bx-bell icon'></i>
                             <span class="text nav-text">Consultar</span>
-                        </a>
+                            </Link>
                     </li>
 
                     <li class="nav-link">
                         <a href="#">
                             <i class='bx bx-pie-chart-alt icon' ></i>
-                            <span class="text nav-text">Analytics</span>
+                            <span class="text nav-text">....</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
                         <a href="#">
                             <i class='bx bx-heart icon' ></i>
-                            <span class="text nav-text">Likes</span>
+                            <span class="text nav-text">.....</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
                         <a href="#">
                             <i class='bx bx-wallet icon' ></i>
-                            <span class="text nav-text">Wallets</span>
+                            <span class="text nav-text">.....</span>
                         </a>
                     </li>
 
@@ -77,10 +82,10 @@ export default function Index() {
 
             <div class="bottom-content">
                 <li class="">
-                    <a href="/conta">
+                <Link to='/' >
                         <i class='bx bx-log-out icon' ></i>
-                        <span class="text nav-text">Logout</span>
-                    </a>
+                        <span class="text nav-text">Sair</span>
+                    </Link>
                 </li>
 
                 

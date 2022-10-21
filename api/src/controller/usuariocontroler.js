@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { cadastrorUsuario, imagemUsuario, listarUsuario, loginUsuario } from "../repository/usuarioRepositorio.js"
 import multer from 'multer';
+import { listar, salvar } from "../repository/usuarioRepositorio.js";
 
 
 const server = Router();
@@ -79,4 +80,39 @@ server.get('/usuario', async (req, resp) => {
 })
 
 
+
+ 
+ 
+ server.get('/api/usuario/:id/endereco', async (req, resp) => {
+     try {
+         const id = req.params.id;
+         
+         const r = await listar(id);
+         
+         resp.send(r);
+     }
+     catch (err) {
+         resp.status(400).send({
+             erro: err.message
+         })
+     }
+ })
+ 
+ 
+ 
+ server.post('/api/usuario/:id/endereco', async (req, resp) => {
+     try {
+         const id = req.params.id;
+         const endereco = req.body;
+ 
+         const r = await salvar(id, endereco);
+         resp.status(204).send();
+     }
+     catch (err) {
+         resp.status(400).send({
+             erro: err.message
+         })
+     }
+ })
+ 
  export default server;

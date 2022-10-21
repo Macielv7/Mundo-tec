@@ -33,3 +33,14 @@ export async function listarUsuario(){
     const resposta = await api.get('/usuario');
     return resposta.data;
   }
+
+  export async function salvar(idUsuario, referencia, cep, logradouro, bairro, cidade, estado, numero, complemento) {
+    const r = await api.post('/api/usuario/' + idUsuario + '/endereco', { referencia, cep, logradouro, bairro, cidade, estado, numero, complemento });
+    return r.data;
+}
+
+
+export async function listar(idUsuario) {
+    const r = await api.get('/api/usuario/' + idUsuario + '/endereco');
+    return r.data;
+}

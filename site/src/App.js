@@ -1,8 +1,6 @@
-
 import "./App.css"
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
-import Data from "./components/flashDeals/data"
 
 import Conta from "./pages/conta/Conta"
 
@@ -15,13 +13,12 @@ import Carrinho from "./pages/carrinho"
 
 import CriarConta from "./pages/criarConta"
 
-import FlashDeals from "./components/flashDeals/FlashDeals"
+import Endereco from "./pages/endereco"
 
 
 
 
 
-const { productItems } = Data
 
 
 export default function Index() {
@@ -31,7 +28,7 @@ export default function Index() {
           <Routes>
       
               <Route>
-                <Route path='/' element={<Conta productItems={productItems} />} />
+                <Route path='/' element={<Conta  />} />
               </Route>
             
               <Route>
@@ -39,7 +36,7 @@ export default function Index() {
                 <Route path="consultarp" element={<ConsultarP />} />
                 <Route path="/tela/:id/pedido" element={<TelaPedido />} />
                 <Route path="carrinho" element={<Carrinho />} />
-                <Route path="car" element={<FlashDeals />} />
+                <Route path="endereco" element={<Endereco />} />
                 
               </Route>
 

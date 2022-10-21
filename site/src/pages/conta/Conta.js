@@ -5,7 +5,7 @@ import "./index.scss"
 import { useEffect, useState } from 'react';
 
 import { listarProdutosInicio } from '../../api/produtoAPI'
-import Rodape from "../../components/rodape"
+
 import Header from "../../components/header"
 import FlashCard from "../../components/flashDeals/FlashCard"
 
@@ -185,7 +185,7 @@ export default function Index () {
                     </div>
                     <hr />
 
-                    <Rodape/>
+               
 
                 </div>
             </div>

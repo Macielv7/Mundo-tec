@@ -48,3 +48,34 @@ export async function listarUsuario() {
     const [linhas] =  await con.query(comando);
     return linhas;
 }
+
+
+export async function listar(idUsuario) {
+    const comando = `
+     select id_usuario_endereco		id,
+            ds_cep                  cep,
+            nm_numero                numero,
+            nm_estado               estado,
+            ds_casa                  casa,
+            nm_cidade              cidade,
+            ds_complemento           complemento,
+            nm_bairro               bairro,
+       from tb_usuario_endereco 
+      where id_usuario = ?
+    `
+
+    const [registros] = await con.query(comando, [idUsuario]);
+    return registros;
+}
+
+
+
+export async function salvar(idUsuario, endereco) {
+    const comando = `
+    insert into tb_usuario_endereco (id_usuario, ds_cep, nm_numero, nm_estado, ds_casa, nm_cidade, ds_complemento, nm_bairro)
+                             values (?, ?, ?, ?, ?, ?, ?, ?)
+    `
+
+    const [info] = await con.query(comando, [idUsuario, endereco.referencia, endereco.cep, endereco.logradouro, endereco.bairro, endereco.cidade, endereco.estado, endereco.numero, endereco.complemento]);
+    return info.insertId;
+}
