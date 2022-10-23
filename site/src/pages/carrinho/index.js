@@ -1,42 +1,87 @@
+import './index.scss'
 
-import "./index.scss"
-import Header from "../../components/header"
+import { useEffect, useState } from 'react'
+import Storage from 'local-storage'
+import { buscarProdutoPorId } from '../../api/produtoAPI';
+
+import { useNavigate } from 'react-router-dom';
+
+export default function Carrinho() {
+    const [itens, setItens] = useState([]);
+
+
+    const navigate = useNavigate();
+
+    function irPedido() {
+        navigate('/pedido')
+    }
 
 
 
-export default function Index() {
+    function qtdItens() {
+        return itens.length;
+    }
+
+    function calcularValorTotal() {
+        let total = 0;
+        for (let item of itens) {
+            total = total + item.produto.info.preco * item.qtd;
+        }
+        return total;
+    }
+
+
+
+    async function carregarCarrinho() {
+        let carrinho = Storage('carrinho');
+        if (carrinho) {
+
+            let temp = [];
+            
+            for (let produto of carrinho) {
+                let p = await buscarProdutoPorId(produto.id);
+                
+                temp.push({
+                    produto: p,
+                    qtd: produto.qtd
+                })
+            }
+
+            setItens(temp);
+        }
+
+    }
+
+    useEffect(() => {
+        carregarCarrinho();
+    }, [])
+
+
     return (
-        <div className='pagina-detalhe-produto'>
-            <Header/>
-        <div className='produto'>
+        <div className='pagina-carrinho'>
 
-            <div className='imagens'>
-                <div className='opcoes'>
-                    
-                        <img src="./img/notebook-asus-amd-ryzen-5-3500u-8gb-ram-ssd-256gb-15-6-radeon-vega-8-windows-11-home-cinza-m515da-br1213w_1651244602_m.jpg" />
-                        <img src="./img/notebook-asus-amd-ryzen-5-3500u-8gb-ram-ssd-256gb-15-6-radeon-vega-8-windows-11-home-cinza-m515da-br1213w_1651244602_m.jpg" />
-                        <img src="./img/notebook-asus-amd-ryzen-5-3500u-8gb-ram-ssd-256gb-15-6-radeon-vega-8-windows-11-home-cinza-m515da-br1213w_1651244602_m.jpg" />
+            <h1> Carrinho </h1>
+
+            <div className='carrinho'>
+
+                <div className='itens'>
+
+         
+
                 </div>
-                <div className='atual'>
+
                 
-                <img src="./img/notebook-asus-amd-ryzen-5-3500u-8gb-ram-ssd-256gb-15-6-radeon-vega-8-windows-11-home-cinza-m515da-br1213w_1651244602_m.jpg" />
-                
+                <div className='resumo'>
+                    <h1> Subtotal </h1>
+                    <h3> ({qtdItens()} itens) </h3>
+                    <p> R$ {calcularValorTotal()} </p>
+                    <button onClick={irPedido}> Fechar Pedido </button>
                 </div>
+
+
             </div>
 
-            <div className='detalhes'>
-                    <div className='nome'>  </div>
-                    
-                    
-                    <div className='preco-label'>  </div>
-                    <div className='preco'> </div>
-                    
-                    <button > Adicionar ao Carrinho </button>
-                </div>
-
-            
-            
         </div>
-    </div>
     )
 }
+

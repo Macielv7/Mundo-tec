@@ -4,8 +4,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import Conta from "./pages/conta/Conta"
 
-import CadastrarP from "./pages/adimin/cadastrarP"
-import ConsultarP from "./pages/adimin/consultarP"
+import CadastrarP from "./pages/adimin/CadastrarP"
+import ConsultarP from "./pages/adimin/ConsultarP"
 
 
 import TelaPedido from "./pages/telaPedido"
@@ -36,6 +36,7 @@ export default function Index() {
                 <Route path="/tela/:id/pedido" element={<TelaPedido />} />
                 <Route path="carrinho" element={<Carrinho />} />
                 <Route path="endereco" element={<Endereco />} />
+                <Route path='cadastrarp/:id' element={<CadastrarP />} />
                 
                 
               </Route>

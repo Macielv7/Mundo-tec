@@ -29,8 +29,6 @@ export default function Index() {
         <div class="menu-bar">
             <div class="menu">
 
-               
-
                 <ul class="menu-links">
                     <li class="nav-link">
                     <Link to='/cadastrarp' >
