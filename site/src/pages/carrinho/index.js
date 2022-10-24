@@ -38,7 +38,7 @@ export default function Carrinho() {
     return (
         <div className='pagina-carrinho'>
 
-            <h1> Carrinho </h1>
+            <h1> PRODUTO E FRETE </h1>
 
             <div className='carrinho'>
 
@@ -65,6 +65,20 @@ export default function Carrinho() {
                     <button > IR PARA PAGAMENTO </button>
 
                     <button > CONTINUAR COMPRANDO </button>
+                </div>
+
+                <div className='cupom'>
+                    <label>adicionar cupom:</label>
+                    <i class="fa fa-check-square-o" ></i>
+                   <input type="CUPOM"  placeholder="Digite seu cupom"></input>
+                </div>
+
+                <div className='frete'>
+                  
+                    <h3>FRETE</h3>
+                <input type="checkbox" class="campo-checkbox"/><span>Expressa : até 3 dias úteis </span>   <br />
+                <input type="checkbox" class="campo-checkbox"/><span>Padrão: até 6 dias úteis</span>
+
                 </div>
 
 

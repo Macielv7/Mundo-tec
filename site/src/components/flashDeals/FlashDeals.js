@@ -2,6 +2,12 @@ import React, { useState } from "react"
 import Slider from "react-slick"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
+import Produto from "../../pages/adimin/cadastrarP"
+
+import { API_URL } from '../../api/config';
+import './index.scss'
+
+import { useNavigate } from 'react-router-dom'
 
 const SampleNextArrow = (props) => {
   const { onClick } = props
@@ -23,7 +29,16 @@ const SamplePrevArrow = (props) => {
     </div>
   )
 }
+const FlashCard = () => {
 
+  const [produto, setProduto] = useState([]);
+
+  const navigate = useNavigate();
+
+  const [count, setCount] = useState(0)
+  const increment = () => {
+    setCount(count + 1)
+  }
   const settings = {
     dots: false,
     infinite: true,
@@ -37,41 +52,33 @@ const SamplePrevArrow = (props) => {
   return (
     <>
       <Slider {...settings}>
-        
+      {Produto.map((props) => {
           return (
-            <section className='flash'>
-        <div className='container'>
-          <div className='heading f_flex'>
-            <i className='fa fa-bolt'></i>
-            <h1>Flash Delas</h1>
-          </div>
             <div className='box'>
               <div className='product mtop'>
                 <div className='img'>
-                  <span className='discount'>{props.item.preco}% Off</span>
-                  <img src={props.item.preco} alt='' />
+                 
+                  <img src="./img/logo.png" alt='' />
                  
                 </div>
                 <div className='product-details'>
                   <h3>{props.item.preco}</h3>
-                  
+                 
                   <div className='price'>
                     <h4>${props.item.preco}.00 </h4>
                     
-                    <button >
+                    <button>
                       <i className='fa fa-plus'></i>
                     </button>
                   </div>
                 </div>
               </div>
             </div>
-            </div>
-      </section>
           )
-       
+        })}
       </Slider>
     </>
   )
-
+}
 
 export default FlashCard

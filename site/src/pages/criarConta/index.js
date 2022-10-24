@@ -89,8 +89,8 @@ export default function Index() {
                 </div>
 
                 <div class="input-boxx">
-                    <label for="number">Criar sua senha</label>
-                    <input  id="password" type="password" value={senha} onChange={e => setSenha(e.target.value)}  placeholder="Digite sua senha" required/>
+                    <label for="number">Criar sua senha</label> 
+                    <input  id="password" type="password" value={senha} onChange={e => setSenha(e.target.value)}  placeholder="Digite sua senha"required/>
                 </div>
 
                 <div class="input-boxx">
