@@ -3,33 +3,11 @@ import './index.scss'
 import { useEffect, useState } from 'react'
 import Storage from 'local-storage'
 import { buscarProdutoPorId } from '../../api/produtoAPI';
-
+import CarrinhoCard from '../../components/carrinhoCard';
 import { useNavigate } from 'react-router-dom';
 
 export default function Carrinho() {
     const [itens, setItens] = useState([]);
-
-
-    const navigate = useNavigate();
-
-    function irPedido() {
-        navigate('/pedido')
-    }
-
-
-
-    function qtdItens() {
-        return itens.length;
-    }
-
-    function calcularValorTotal() {
-        let total = 0;
-        for (let item of itens) {
-            total = total + item.produto.info.preco * item.qtd;
-        }
-        return total;
-    }
-
 
 
     async function carregarCarrinho() {
@@ -39,10 +17,10 @@ export default function Carrinho() {
             let temp = [];
             
             for (let produto of carrinho) {
-                let p = await buscarProdutoPorId(produto.id);
+                let info = await buscarProdutoPorId(produto.id);
                 
                 temp.push({
-                    produto: p,
+                    produto: info,
                     qtd: produto.qtd
                 })
             }
@@ -66,16 +44,27 @@ export default function Carrinho() {
 
                 <div className='itens'>
 
-         
+                {itens.map(item =>
+                       
+                       <CarrinhoCard  
+                       item={item}
+                      
+                      />
+                       )}
 
                 </div>
 
                 
                 <div className='resumo'>
-                    <h1> Subtotal </h1>
-                    <h3> ({qtdItens()} itens) </h3>
-                    <p> R$ {calcularValorTotal()} </p>
-                    <button onClick={irPedido}> Fechar Pedido </button>
+                    <h1> PREÇOS TOTAL </h1>
+                    <div className='total'>
+                    <h3>total: </h3>
+                    <p> R$ 9899 </p>
+                    </div>
+
+                    <button > IR PARA PAGAMENTO </button>
+
+                    <button > CONTINUAR COMPRANDO </button>
                 </div>
 
 

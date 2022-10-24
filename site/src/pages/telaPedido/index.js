@@ -54,6 +54,7 @@ export default function ProdutoDetalhe() {
     }
 
 
+
     useEffect(() => {
         carregarPagina(); 
     }, [])
