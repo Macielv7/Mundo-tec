@@ -34,8 +34,21 @@ export async function listarUsuario(){
     return resposta.data;
   }
 
-  export async function salvar(idUsuario, referencia, cep, logradouro, bairro, cidade, estado, numero, complemento) {
-    const r = await api.post('/api/usuario/' + idUsuario + '/endereco', { referencia, cep, logradouro, bairro, cidade, estado, numero, complemento });
+
+export async function logar(email, senha) {
+    const r = await api.post('/api/login', { email, senha });
+    return r.data;
+}
+
+
+
+//endereco
+
+
+
+
+export async function salvar(idUsuario, ds_cep, nm_numero ,nm_estado  , ds_casa ,nm_cidade  ,ds_complemento ,nm_bairro) {
+    const r = await api.post('/api/usuario/' + idUsuario + '/endereco', {  ds_cep, nm_numero ,nm_estado  , ds_casa ,nm_cidade  ,ds_complemento ,nm_bairro  });
     return r.data;
 }
 

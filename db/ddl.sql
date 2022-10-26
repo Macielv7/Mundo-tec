@@ -1,7 +1,7 @@
-create database oo;
-use oo;
+create database mundotec;
+use mundotec;
 
-drop database oo;
+drop database mundotec;
 
 
 
@@ -43,6 +43,7 @@ ds_marca             	 varchar(200),
 foreign key (id_departamento) references tb_departamento (id_departamento)
 );
 
+
 select * from tb_produto;
 
 
@@ -53,23 +54,7 @@ create table tb_produto_imagem (
     foreign key (id_produto) references tb_produto (id_produto)
 );
 
-select tb_produto.id_produto		id,
-               nm_produto					produto,
-               vl_preco						preco,
-               nm_departamento				departamento,
-                dt_valorantigo 				valorantigo,    
-            ds_marca						marca,
-               min(ds_imagem)				imagem
-          from tb_produto
-    inner join tb_departamento on tb_produto.id_departamento = tb_departamento.id_departamento
-     left join tb_produto_imagem on tb_produto_imagem.id_produto = tb_produto.id_produto
-         group 
-            by tb_produto.id_produto,
-               nm_produto,
-               vl_preco,
-               nm_departamento,
-                dt_valorantigo ,    
-            ds_marca;
+
 
 select * from tb_produto_imagem;
 
@@ -77,11 +62,17 @@ select * from tb_produto_imagem;
 create table tb_usuario (
 	id_usuario			int primary key auto_increment,
     nm_usuario			varchar(200),
-    dt_nascimento		date,
     ds_telefone			varchar(200),
     ds_cpf				varchar(200),
-    ds_genero			varchar(200)
+    ds_email	  		varchar(800),
+    ds_genero			varchar(200),
+    ds_senha			varchar(200),
+    ds_confirmar		varchar(200)
 );
+
+select*from tb_usuario;
+select*from tb_login_usuario;
+
 
 create table tb_login_usuario (
 	id_login_usuario	    int primary key auto_increment,
@@ -93,6 +84,9 @@ create table tb_login_usuario (
     dt_expiracao_cod		datetime,
     foreign key (id_usuario) references tb_usuario (id_usuario)
 );
+
+select md5('123');
+
 
 
 create table tb_usuario_endereco(
@@ -111,31 +105,4 @@ create table tb_usuario_endereco(
 select*from tb_usuario_endereco;
 
 
- select tb_produto.id_produto,
-            nm_produto,         
-            vl_preco,      
-                 
-            nm_departamento,          
-            dt_valorantigo ,    
-            ds_marca           
- from tb_produto
- inner join tb_departamento on tb_produto.id_departamento = tb_departamento.id_departamento
-        group
-        by tb_produto.id_produto,
-		nm_produto,         
-            vl_preco,      
-                    
-            nm_departamento,          
-            dt_valorantigo ,    
-            ds_marca       ;
-            
-            
-            
-            select id_produto                      as id,
-                nm_produto                      as produto,
-                vl_preco                        as preco,
-                dt_valorantigo                  as valorantigo,
-                tb_produto.id_departamento      as departamento,
-                nm_departamento                 as nomeDepartamento
-        from tb_produto 
-        inner join tb_departamento on tb_departamento.id_departamento = tb_produto.id_departamento
+

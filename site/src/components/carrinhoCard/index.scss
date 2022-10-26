@@ -3,8 +3,7 @@
     flex-direction: row;
     align-items: center;
 
-    
-    height: 125px;
+    height: 120px;
     margin: 10px 0em;
     padding: 1.5em 3.5em 1.5em 2.5em;
     background-color: #D9D9D9;
@@ -40,16 +39,9 @@
 
     .qtd-box {
         display: flex;
-        flex-grow: 0.1;
+        flex-grow: 1;
         justify-content: space-evenly;
         align-items: center;
-    }
-
-    .i{
-        width: 0.0725rem;
-    height: 5.5rem;
-    background: rgb(0, 85, 255);
-    display: flex;
     }
 
     .qtd {
@@ -60,6 +52,23 @@
         label {
             font-weight: 500;
         }
+    }
+
+    .i{
+        width: 0.0625rem;
+    height: 2.5rem;
+    background: rgb(0, 85, 255);
+    margin: 0px 0.5rem;
+
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    list-style: none;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: Poppins, sans-serif !important;
+
+    display: block;
     }
 
     .subtotal div:nth-child(1) {
@@ -77,7 +86,7 @@
 
     .detalhes {
 
-        
+      
 
         .nome {
             font-size: 18px;
@@ -142,5 +151,3 @@
 
 
 }
-
-

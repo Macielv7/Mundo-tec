@@ -21,7 +21,7 @@
     }
 
     .resumo {
-       
+        
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -88,6 +88,10 @@
 
     }
     
+    button :hover{
+        background-color:rgb(14, 0, 92);
+    }
+
     .cupom{
         display: flex;
         flex-direction: column;

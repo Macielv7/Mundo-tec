@@ -1,5 +1,6 @@
 import { Router } from "express";
-import { cadastrorUsuario, imagemUsuario, listarUsuario, loginUsuario } from "../repository/usuarioRepositorio.js"
+import {login} from "../repository/usuarioRepositorio.js"
+import { cadastrorUsuario, imagemUsuario, listarUsuario} from "../repository/usuarioRepositorio.js"
 import multer from 'multer';
 import { listar, salvar } from "../repository/usuarioRepositorio.js";
 
@@ -27,26 +28,30 @@ server.post('/cadastrousuario', async (req,resp) => {
  })
 
 
-server.post('/usuario/login', async (req, resp) => {
+ server.post('/api/login', async (req, resp) => {
     try {
-        const {email, senha} = req.body;
-        
-        const resposta = await loginUsuario (email, senha)
-        if(!resposta){
-            throw new Error('Credenciais inválidas')
+        const { email, senha } = req.body;
+
+        const r = await login(email, senha);
+        if (!r) {
+            throw new Error('Credenciais inválidas');
         }
-      
-        resp.status(200).send(
-        resposta
-        )
-        
-    } 
+
+        resp.send({
+            id: r.id,
+            nome: r.nome
+        })
+    }
     catch (err) {
-        resp.status(401).send({
-            Erro: err.message
+        resp.status(400).send({
+            erro: err.message
         })
     }
 })
+
+
+
+
 
 server.put('/cadastroUsuario/:id/capa', upload.single('capa') ,async (req, resp) => {
     try{
@@ -82,37 +87,19 @@ server.get('/usuario', async (req, resp) => {
 
 
  
- 
- server.get('/api/usuario/:id/endereco', async (req, resp) => {
-     try {
-         const id = req.params.id;
-         
-         const r = await listar(id);
-         
-         resp.send(r);
-     }
-     catch (err) {
-         resp.status(400).send({
-             erro: err.message
-         })
-     }
- })
- 
- 
- 
- server.post('/api/usuario/:id/endereco', async (req, resp) => {
-     try {
-         const id = req.params.id;
-         const endereco = req.body;
- 
-         const r = await salvar(id, endereco);
-         resp.status(204).send();
-     }
-     catch (err) {
-         resp.status(400).send({
-             erro: err.message
-         })
-     }
- })
+server.post('/api/usuario/:id/endereco', async (req, resp) => {
+    try {
+        const id = req.params.id;
+        const endereco = req.body;
+
+        const r = await salvar(id, endereco);
+        resp.status(204).send();
+    }
+    catch (err) {
+        resp.status(400).send({
+            erro: err.message
+        })
+    }
+})
  
  export default server;

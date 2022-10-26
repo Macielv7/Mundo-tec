@@ -10,17 +10,21 @@ export async function cadastrorUsuario(usuario) {
     return usuario;
 }
 
-export async function loginUsuario (email, senha){
-    const comando=
+
+export async function login(email, senha) {
+    const comando = `
+     select tb_usuario.id_usuario		id,
+            nm_usuario					nome
+       from tb_usuario
+       inner join tb_login_usuario on tb_login_usuario.id_usuario = tb_usuario.id_usuario
+      where ds_email = ?
+        and ds_senha = md5(?)
     `
-    select  id_usuario	  id,
-            ds_email	email
-    from	tb_uasuario
-    where	ds_email   = ?
-    and	    ds_senha   = ? `
-    const [linha] = await con.query(comando, [email, senha] )
-    return linha[0];
+
+    const [registros] = await con.query(comando, [email, senha]);
+    return registros[0];
 }
+
 
 export async function imagemUsuario(imagem, id){
     const comando = `UPDATE tb_usuario

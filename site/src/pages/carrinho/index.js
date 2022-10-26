@@ -4,10 +4,29 @@ import { useEffect, useState } from 'react'
 import Storage from 'local-storage'
 import { buscarProdutoPorId } from '../../api/produtoAPI';
 import CarrinhoCard from '../../components/carrinhoCard';
+import Header from "../../components/header"
 import { useNavigate } from 'react-router-dom';
 
 export default function Carrinho() {
     const [itens, setItens] = useState([]);
+
+
+    const navigate = useNavigate();
+
+    function irPedido() {
+        navigate('/pedido')
+    }
+
+
+
+    function calcularValorTotal() {
+        let total = 0;
+        for (let item of itens) {
+            total = total + item.produto.info.preco * item.qtd;
+        }
+        return total;
+    }
+
 
 
     async function carregarCarrinho() {
@@ -17,10 +36,10 @@ export default function Carrinho() {
             let temp = [];
             
             for (let produto of carrinho) {
-                let info = await buscarProdutoPorId(produto.id);
+                let p = await buscarProdutoPorId(produto.id);
                 
                 temp.push({
-                    produto: info,
+                    produto: p,
                     qtd: produto.qtd
                 })
             }
@@ -37,6 +56,7 @@ export default function Carrinho() {
 
     return (
         <div className='pagina-carrinho'>
+            <Header/>
 
             <h1> PRODUTO E FRETE </h1>
 
@@ -44,45 +64,30 @@ export default function Carrinho() {
 
                 <div className='itens'>
 
-                {itens.map(item =>
-                       
-                       <CarrinhoCard  
-                       item={item}
-                      
-                      />
-                       )}
+                    {itens.map(item => 
+                        <CarrinhoCard
+                            item={item}
+                            
+                            carregarCarrinho={carregarCarrinho} />
+                    )}
 
                 </div>
 
                 
                 <div className='resumo'>
-                    <h1> PREÇOS TOTAL </h1>
+                    <h1> PREÇOS TOTAL   </h1>
                     <div className='total'>
-                    <h3>total: </h3>
-                    <p> R$ 9899 </p>
+                    <h3>  valor total: </h3>
+                    <p> R$ {calcularValorTotal()} </p>
                     </div>
 
-                    <button > IR PARA PAGAMENTO </button>
+                    <button onClick={irPedido}> IR PARA PAGAMENTO </button>
 
-                    <button > CONTINUAR COMPRANDO </button>
+                    <button onClick={irPedido}> CONTINUAR COMPRANDO </button>
                 </div>
-
-                <div className='cupom'>
-                    <label>adicionar cupom:</label>
-                    <i class="fa fa-check-square-o" ></i>
-                   <input type="CUPOM"  placeholder="Digite seu cupom"></input>
-                </div>
-
-                <div className='frete'>
-                  
-                    <h3>FRETE</h3>
-                <input type="checkbox" class="campo-checkbox"/><span>Expressa : até 3 dias úteis </span>   <br />
-                <input type="checkbox" class="campo-checkbox"/><span>Padrão: até 6 dias úteis</span>
-
-                </div>
-
-
             </div>
+
+            
 
         </div>
     )
