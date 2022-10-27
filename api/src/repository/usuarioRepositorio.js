@@ -1,7 +1,7 @@
 import { con } from "./connection.js";
 
 export async function cadastrorUsuario(usuario) {
-    const comando = `insert into tb_uasuario (nm_usuario, ds_cpf, ds_genero, ds_email, ds_telefone, ds_senha, ds_confirmar)
+    const comando = `insert into tb_usuario (nm_usuario, ds_cpf, ds_genero, ds_email, ds_telefone, ds_senha, ds_confirmar)
     values ( ?, ?, ?, ?, ?, ?, ? );`
 
     const [resposta] = await con.query(comando,[usuario.usuario,usuario.cpf,usuario.genero,usuario.email,usuario.telefone,usuario.senha,usuario.confirmar]);
@@ -76,7 +76,7 @@ export async function listar(idUsuario) {
 
 export async function salvar(idUsuario, endereco) {
     const comando = `
-    insert into tb_usuario_endereco (id_usuario, ds_cep, nm_numero, nm_estado, ds_casa, nm_cidade, ds_complemento, nm_bairro)
+    insert into tb_usuario_endereco (id_usuario, ds_cep, nm_numero, nm_estado, ds_rua, nm_cidade, ds_complemento, nm_bairro)
                              values (?, ?, ?, ?, ?, ?, ?, ?)
     `
 

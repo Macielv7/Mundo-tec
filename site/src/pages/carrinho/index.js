@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import Storage from 'local-storage'
 import { buscarProdutoPorId } from '../../api/produtoAPI';
 import CarrinhoCard from '../../components/carrinhoCard';
+import EderecoCard from '../../components/ederecoCard';
 import Header from "../../components/header"
 import { useNavigate } from 'react-router-dom';
 
@@ -60,6 +61,28 @@ export default function Carrinho() {
 
             <h1> PRODUTO E FRETE </h1>
 
+            <div className='pagina-pedido'>
+          
+
+
+            <div className='info'>
+                <div>
+                    <h2>SELECIONE O ENDEREÇO</h2>
+
+                    <div className='enderecos'>
+
+                        
+                            <EderecoCard  />
+                        
+                    </div>
+
+                    <button > Novo </button>
+
+                </div>
+
+                </div>
+        </div>
+
             <div className='carrinho'>
 
                 <div className='itens'>
@@ -72,6 +95,7 @@ export default function Carrinho() {
                     )}
 
                 </div>
+
 
                 
                 <div className='resumo'>

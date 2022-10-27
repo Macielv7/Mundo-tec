@@ -10,6 +10,7 @@ import ConsultarP from "./pages/adimin/ConsultarP"
 
 import TelaPedido from "./pages/telaPedido"
 import Carrinho from "./pages/carrinho"
+import TelaInicial from "./pages/telaInicial"
 
 
 import CriarConta from "./pages/criarConta"
@@ -39,6 +40,7 @@ export default function Index() {
                 <Route path="endereco" element={<Endereco />} />
                 <Route path='cadastrarp/:id' element={<CadastrarP />} />
                 <Route path='LOGINUSUARIO' element={< LoginUsuario />} />
+                <Route path='talainicio' element={< TelaInicial />} />
                 
                 
               </Route>

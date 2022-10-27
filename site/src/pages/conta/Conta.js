@@ -5,7 +5,7 @@ import "./index.scss"
 import { useEffect, useState } from 'react';
 
 import { listarProdutosInicio } from '../../api/produtoAPI'
-
+import Rodape from "../../components/rodape"
 import Header from "../../components/header"
 import FlashCard from "../../components/flashDeals/FlashCard"
 
@@ -44,9 +44,20 @@ export default function Index () {
                 
                )}
             </div>
+            <div className="con">
+                <img src="./img/cadeira.jfif" alt="" />
+                <img src="./img/cadeira.jfif" alt="" />
+            </div>
 
 
-       
+            <div className="produtos-container">
+                
+                {produtos.map(item =>
+                   
+           <FlashCard  item={item}/>
+            
+           )}
+        </div>
             
            
            
@@ -58,7 +69,9 @@ export default function Index () {
 
                     
 
-                   
+                <div class="img">
+                        <img src="./img/pp.png" height="322px" alt="" />
+                    </div>
                     
                
                     
@@ -186,7 +199,7 @@ export default function Index () {
                     </div>
                     <hr />
 
-               
+               <Rodape/>
 
                 </div>
             </div>
