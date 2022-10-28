@@ -4,8 +4,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import Conta from "./pages/conta/Conta"
 
-import CadastrarP from "./pages/adimin/CadastrarP"
-import ConsultarP from "./pages/adimin/ConsultarP"
+import CadastrarP from "./pages/adimin/cadastrarP"
+import ConsultarP from "./pages/adimin/consultarP"
 
 
 import TelaPedido from "./pages/telaPedido"
@@ -14,6 +14,8 @@ import TelaInicial from "./pages/telaInicial"
 
 
 import CriarConta from "./pages/criarConta"
+
+import Usuario1 from "./pages/usuario/usuario1"
 
 import LoginUsuario from "./pages/loginUsuario"
 import Endereco from "./pages/endereco"
@@ -49,6 +51,8 @@ export default function Index() {
 
               <Route>
                 <Route path='criarconta' element={<CriarConta  />} />
+
+                <Route path='usuario1' element={<Usuario1  />} />
               </Route>
           
           </Routes>
@@ -56,3 +60,6 @@ export default function Index() {
   )
 }
 
+
+//git config -–global user.name "nome completo"
+//git config -–global user.email "emaildogit@email.com"

@@ -2,12 +2,6 @@ import React, { useState } from "react"
 import Slider from "react-slick"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
-import Produto from "../../pages/adimin/cadastrarP"
-
-import { API_URL } from '../../api/config';
-import './index.scss'
-
-import { useNavigate } from 'react-router-dom'
 
 const SampleNextArrow = (props) => {
   const { onClick } = props
@@ -29,12 +23,7 @@ const SamplePrevArrow = (props) => {
     </div>
   )
 }
-const FlashCard = () => {
-
-  const [produto, setProduto] = useState([]);
-
-  const navigate = useNavigate();
-
+const FlashCard = ({ productItems, addToCart }) => {
   const [count, setCount] = useState(0)
   const increment = () => {
     setCount(count + 1)
@@ -52,20 +41,20 @@ const FlashCard = () => {
   return (
     <>
       <Slider {...settings}>
-      {Produto.map((props) => {
+        {productItems.map((productItems) => {
           return (
             <div className='box'>
               <div className='product mtop'>
                 <div className='img'>
-                 
+                  <span className='discount'>89% Off</span>
                   <img src="./img/logo.png" alt='' />
                  
                 </div>
                 <div className='product-details'>
-                  <h3>{props.item.preco}</h3>
-                 
+                  <h3>notebook</h3>
+                  
                   <div className='price'>
-                    <h4>${props.item.preco}.00 </h4>
+                    <h4>$9000.00 </h4>
                     
                     <button>
                       <i className='fa fa-plus'></i>

@@ -36,6 +36,21 @@ export default function Index () {
        <Header />
        
 
+
+       <div class="tudo">
+        <div class="nome">
+            <img src="" alt=""/>
+        </div>
+        <div className="mo">
+
+        <div class="oi">
+            <img src="./img/branco.png" alt=""/>
+        </div>
+        </div>
+</div>
+   
+
+
        <div className="produtos-container">
                 
                     {produtos.map(item =>

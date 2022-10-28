@@ -18,9 +18,6 @@ export default function Carrinho() {
     const [enderecos, setEnderecos] = useState([]);
     const [exibirEndereco, setExibirEndereco] = useState(false);
 
-    const [idEndereco, setIdEndereco] = useState();
-    
-
 
     const navigate = useNavigate();
 
