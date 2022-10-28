@@ -1,15 +1,20 @@
 import './index.scss'
 
 import { useEffect, useState } from 'react'
-import Storage from 'local-storage'
+import { API_URL } from '../../api/config'
+import Storage, { set } from 'local-storage'
 import { buscarProdutoPorId } from '../../api/produtoAPI';
+import { listar } from '../../api/usuario'
 import CarrinhoCard from '../../components/carrinhoCard';
 import EderecoCard from '../../components/ederecoCard';
 import Header from "../../components/header"
 import { useNavigate } from 'react-router-dom';
 
+
+
 export default function Carrinho() {
     const [itens, setItens] = useState([]);
+    const [enderecos, setEnderecos] = useState([]);
 
 
     const navigate = useNavigate();
@@ -18,7 +23,13 @@ export default function Carrinho() {
         navigate('/pedido')
     }
 
+   
 
+    async function carregarEnderecos() {
+        const id = Storage('cliente-logado').id;
+        const r = await listar(id);
+        setEnderecos(r);
+    }
 
     function calcularValorTotal() {
         let total = 0;
@@ -52,6 +63,8 @@ export default function Carrinho() {
 
     useEffect(() => {
         carregarCarrinho();
+        carregarEnderecos();
+        
     }, [])
 
 
@@ -71,8 +84,9 @@ export default function Carrinho() {
 
                     <div className='enderecos'>
 
-                        
-                            <EderecoCard  />
+                        {enderecos.map(item =>
+                            <EderecoCard  item={item}/>
+                            )}
                         
                     </div>
 

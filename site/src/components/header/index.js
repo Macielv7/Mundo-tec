@@ -3,6 +3,8 @@ import './index.scss'
 import { Link } from "react-router-dom"
 
 const Search = ({ CartItem }) => {
+
+ 
  
 
 
@@ -56,7 +58,7 @@ const Search = ({ CartItem }) => {
             </div>
           </div>
 
-
+   
          
         </div>
       </section>

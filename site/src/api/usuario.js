@@ -47,8 +47,8 @@ export async function logar(email, senha) {
 
 
 
-export async function salvar(idUsuario, ds_cep, nm_numero ,nm_estado  , ds_rua ,nm_cidade  ,ds_complemento ,nm_bairro) {
-    const r = await api.post('/api/usuario/' + idUsuario + '/endereco', {  ds_cep, nm_numero ,nm_estado  , ds_rua ,nm_cidade  ,ds_complemento ,nm_bairro  });
+export async function salvar(idUsuario, cep, rua, bairro, cidade, estado, numero, complemento) {
+    const r = await api.post('/api/usuario/' + idUsuario + '/endereco', {  cep, rua, bairro, cidade, estado, numero, complemento });
     return r.data;
 }
 

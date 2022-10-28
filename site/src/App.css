@@ -1,71 +1,98 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 * {
-  padding: 0;
-  margin: 0;
   box-sizing: border-box;
+  margin: 0px;
+  font-family: 'Roboto';
 }
-html {
-  scroll-behavior: smooth;
+
+h1 {
+  margin-bottom: 1em;
 }
-body {
-  font-family: "Poppins", sans-serif;
-  background-color: #ffffff;
+
+textarea {
+  resize: none;
 }
-.background {
-  background: #f6f9fc;
-  padding: 50px 0;
+
+input, select {
+  outline: none;
+  border: 1px solid rgb(92, 92, 92);
+  user-select: none;
+
+  border-radius: 5px;
+  font-size: 1em;
+  padding: .5em;
+  width: 100%;
 }
-.container {
-  max-width: 90%;
-  margin: auto;
+
+input[type=checkbox] {
+  width: auto;
+  align-self: flex-start;
 }
-.d_flex {
-  display: flex;
-  justify-content: space-between;
-}
-.c_flex {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.f_flex {
-  display: flex;
-  
-}
-a {
-  text-decoration: none;
-  color: black;
-}
-li {
-  list-style: none;
-}
-.uppercase {
+
+button {
+  outline: none;
+  border: none;
+  background-color: #672dc3;
+  color: #fff;
+  padding: .8em 1.5em;
+  border-radius: 2em;
+  transition: .3s;
+
+  font-size: 14px;
+  font-weight: 600;
   text-transform: uppercase;
 }
-.capitalize {
-  text-transform: capitalize;
+button:hover {
+  background-color: #5a2da2;
 }
-.RText {
-  text-align-last: right;
+
+
+
+
+
+
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
 }
-input,
+
+.form > div {
+  display: flex;
+  align-items: center;
+  margin: .2em;
+}
+.form > div label {
+  min-width: 8em;
+  text-align: right;
+  margin-right: 1em;
+}
+.form > div:last-child {
+  margin-top: 1em;
+  justify-content: center;
+}
+
+.form-container {
+  display: flex;
+}
+
+.btn-right {
+  justify-content: space-between;
+}
+
 button {
-  border: none;
-  outline: none;
-  background-color: none;
+  cursor: pointer;
 }
-.row {
-  width: 50%;
-}
-.icon-circle {
-  width: 50px;
-  height: 50px;
-  line-height: 50px;
-  background: #f3f5f9;
-  margin-left: 20px;
-  text-align: center;
-  border-radius: 50%;
-}
-.boxShadow {
-  box-shadow: rgb(43 52 69 / 10%) 0px 4px 16px;
+
+@media (max-width: 425px) {
+  .form > div {
+      flex-direction: column;
+      align-items: flex-start;
+      margin: .7em .2em;
+  }
+  .form > div label {
+      min-width: auto;
+  }
+
 }

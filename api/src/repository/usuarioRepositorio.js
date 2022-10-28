@@ -56,14 +56,15 @@ export async function listarUsuario() {
 
 export async function listar(idUsuario) {
     const comando = `
-     select id_usuario_endereco		id,
-            ds_cep                  cep,
-            nm_numero                numero,
-            nm_estado               estado,
-            ds_casa                  casa,
-            nm_cidade              cidade,
-            ds_complemento           complemento,
-            nm_bairro               bairro,
+    
+      select id_usuario_endereco		id,
+            ds_cep					cep,
+            nm_numero               numero,
+            ds_rua			rua,
+            nm_bairro				bairro,
+            nm_cidade				cidade,
+            nm_estado				estado,
+            ds_complemento			complemento
        from tb_usuario_endereco 
       where id_usuario = ?
     `
@@ -72,14 +73,12 @@ export async function listar(idUsuario) {
     return registros;
 }
 
-
-
 export async function salvar(idUsuario, endereco) {
     const comando = `
-    insert into tb_usuario_endereco (id_usuario, ds_cep, nm_numero, nm_estado, ds_rua, nm_cidade, ds_complemento, nm_bairro)
+    insert into tb_usuario_endereco (id_usuario,  ds_cep, ds_rua, nm_bairro, nm_cidade, nm_estado, nm_numero, ds_complemento)
                              values (?, ?, ?, ?, ?, ?, ?, ?)
     `
 
-    const [info] = await con.query(comando, [idUsuario, endereco.referencia, endereco.cep, endereco.logradouro, endereco.bairro, endereco.cidade, endereco.estado, endereco.numero, endereco.complemento]);
+    const [info] = await con.query(comando, [idUsuario,  endereco.cep, endereco.rua, endereco.bairro, endereco.cidade, endereco.estado, endereco.numero, endereco.complemento]);
     return info.insertId;
 }
