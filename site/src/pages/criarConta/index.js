@@ -3,7 +3,7 @@ import './index.scss';
 
 import storage from 'local-storage'
 import { useState } from 'react';
-
+import Header from "../../components/header"
 import { toast } from 'react-toastify';
 import { cadastroUsuario, loginUsuario } from '../../api/usuario.js';
 import axios  from 'axios'
@@ -63,7 +63,8 @@ export default function Index() {
  return (
     <div class="containerr">
         
-    <div class="formm">
+    <div class="formmmm">
+    <Header/>
         <form >
         
             <div class="form-headerr">

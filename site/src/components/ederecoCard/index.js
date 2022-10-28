@@ -1,16 +1,15 @@
 import './index.scss'
 
-export default function CardEndereco({ item: { id, rua, cep, bairro, cidade, estado, numero, complemento }, selecionar, selecionado }) {
+export default function CardEndereco() {
 
     return (
         <div className='comp-card-endereco'
-             onClick={() => selecionar(id)}
-            style={{ borderColor: selecionado ? '#b512da' : '#a3a3a3' }}
+            
         >
             <div className='tipo'></div>
             <div>
-                <div className='end'>{rua}, {numero} - {complemento}</div>
-                <div className='cep'>{cep} - {bairro}, {cidade}/{estado}</div>
+                <div className='end'>yu, nm - io</div>
+                <div className='cep'>io - io, io/lk</div>
             </div>
         </div>
     )

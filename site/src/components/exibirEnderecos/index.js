@@ -6,8 +6,9 @@ import { toast } from 'react-toastify'
 
 export default function ModalEndereco({ exibir, fechar }) {
 
+
     const [cep, setCEP] = useState('');
-    const [rua, setrua] = useState('');
+    const [rua, setRua] = useState('');
     const [numero, setNumero] = useState('');
     const [complemento, setComplemento] = useState('');
     const [bairro, setBairro] = useState('');
@@ -18,7 +19,7 @@ export default function ModalEndereco({ exibir, fechar }) {
     async function salvarEndereco() {
         try {
             const id = Storage('cliente-logado').id;
-            const r = await salvar(id,  cep, rua, bairro, cidade, estado, numero, complemento);
+            const r = await salvar(id, cep, rua, bairro, cidade, estado, numero, complemento);
             toast.dark('Endereço salvo');
 
             fechar();
@@ -36,7 +37,7 @@ export default function ModalEndereco({ exibir, fechar }) {
                     <h1> Novo Endereço </h1>
 
                     <div className='form'>
-                        
+                       
                         <div>
                             <label> &nbsp; </label>
                         </div>
@@ -45,8 +46,8 @@ export default function ModalEndereco({ exibir, fechar }) {
                             <input type='text' value={cep}  onChange={e => setCEP(e.target.value)}  />
                         </div>
                         <div>
-                            <label> rua: </label>
-                            <input type='text' value={rua}  onChange={e => setrua(e.target.value)}  />
+                            <label> Logradouro: </label>
+                            <input type='text' value={rua}  onChange={e => setRua(e.target.value)}  />
                         </div>
                         <div>
                             <label> Número: </label>

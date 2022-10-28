@@ -26,6 +26,19 @@ export async function login(email, senha) {
 }
 
 
+export async function loginUsuario (email, senha){
+    const comando=
+    `
+    select  id_usuario	  id,
+            ds_email	email
+    from	tb_usuario
+    where	ds_email   = ?
+    and	    ds_senha   = ? `
+    const [linha] = await con.query(comando, [email, senha] )
+    return linha[0];
+}
+
+
 export async function imagemUsuario(imagem, id){
     const comando = `UPDATE tb_usuario
                     SET img_usuario = ?

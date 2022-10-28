@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&family=Open+Sans:wght@300;400;500;600&display=swap');
 * {
-    padding: 0;
-    margin: 0;
+    
     box-sizing: border-box;
     font-family: 'Inter', sans-serif;
     
@@ -15,14 +14,14 @@
 
 
 
-.formm {
-    width: 60%;
+.formmmm {
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: #fff;
-    padding: 3rem;
+   
 }
 
 .form-headerr {
@@ -55,7 +54,7 @@
 .input-boxx {
     display: flex;
     flex-direction: column;
-    margin-bottom: 1.1rem;
+    
 }
 
 .input-boxx input {

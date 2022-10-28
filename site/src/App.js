@@ -14,6 +14,7 @@ import TelaInicial from "./pages/telaInicial"
 
 
 import CriarConta from "./pages/criarConta"
+
 import LoginUsuario from "./pages/loginUsuario"
 import Endereco from "./pages/endereco"
 
@@ -41,6 +42,7 @@ export default function Index() {
                 <Route path='cadastrarp/:id' element={<CadastrarP />} />
                 <Route path='LOGINUSUARIO' element={< LoginUsuario />} />
                 <Route path='talainicio' element={< TelaInicial />} />
+                
                 
                 
               </Route>

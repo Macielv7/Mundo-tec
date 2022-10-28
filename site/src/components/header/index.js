@@ -50,7 +50,7 @@ const Search = ({ CartItem }) => {
           </div>
 
           <div className='icon f_flex width'>
-          <a href="/criarconta">
+          <a href="/loginusuario">
             <img src="/img/icons8-usuário-homem-com-círculo-24.png" />
             </a>
             <div className='cart'>

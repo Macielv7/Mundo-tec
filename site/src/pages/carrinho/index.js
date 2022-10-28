@@ -7,6 +7,7 @@ import { buscarProdutoPorId } from '../../api/produtoAPI';
 import { listar } from '../../api/usuario'
 import CarrinhoCard from '../../components/carrinhoCard';
 import EderecoCard from '../../components/ederecoCard';
+import ExibirEnderecos from '../../components/exibirEnderecos';
 import Header from "../../components/header"
 import { useNavigate } from 'react-router-dom';
 
@@ -15,6 +16,10 @@ import { useNavigate } from 'react-router-dom';
 export default function Carrinho() {
     const [itens, setItens] = useState([]);
     const [enderecos, setEnderecos] = useState([]);
+    const [exibirEndereco, setExibirEndereco] = useState(false);
+
+    const [idEndereco, setIdEndereco] = useState();
+    
 
 
     const navigate = useNavigate();
@@ -29,6 +34,16 @@ export default function Carrinho() {
         const id = Storage('cliente-logado').id;
         const r = await listar(id);
         setEnderecos(r);
+    }
+
+    
+    function exibirNovoEndereco() {
+        setExibirEndereco(true);
+    }
+
+    function fecharNovoEndereco() {
+        setExibirEndereco(false);
+        carregarEnderecos();
     }
 
     function calcularValorTotal() {
@@ -75,7 +90,7 @@ export default function Carrinho() {
             <h1> PRODUTO E FRETE </h1>
 
             <div className='pagina-pedido'>
-          
+            <ExibirEnderecos exibir={exibirEndereco} fechar={fecharNovoEndereco} />
 
 
             <div className='info'>
@@ -85,12 +100,13 @@ export default function Carrinho() {
                     <div className='enderecos'>
 
                         {enderecos.map(item =>
-                            <EderecoCard  item={item}/>
+                            <EderecoCard item={item}
+                             />
                             )}
                         
                     </div>
 
-                    <button > Novo </button>
+                    <button  onClick={exibirNovoEndereco}> Novo </button>
 
                 </div>
 
