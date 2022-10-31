@@ -21,7 +21,7 @@ export async function cadastroUsuario(nome, cpf,  genero, email, telefone, senha
     return r.data;
 }
 
-export async function loginUsuario(email, senha){
+export async function login(email, senha){
     const a = await api.post('/usuario/login',{
         email: email,
         senha: senha

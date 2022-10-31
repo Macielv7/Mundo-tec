@@ -28,32 +28,13 @@ server.post('/cadastrousuario', async (req,resp) => {
  })
 
 
- server.post('/api/login', async (req, resp) => {
-    try {
-        const { email, senha } = req.body;
 
-        const r = await login(email, senha);
-        if (!r) {
-            throw new Error('Credenciais inválidas');
-        }
 
-        resp.send({
-            id: r.id,
-            nome: r.nome
-        })
-    }
-    catch (err) {
-        resp.status(400).send({
-            erro: err.message
-        })
-    }
-})
-
-server.post('/usuario/login', async (req, resp) => {
+server.post('/apii/login', async (req, resp) => {
     try {
         const {email, senha} = req.body;
         
-        const resposta = await loginUsuario (email, senha)
+        const resposta = await login (email, senha)
         if(!resposta){
             throw new Error('Credenciais inválidas')
         }
