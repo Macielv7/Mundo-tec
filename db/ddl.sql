@@ -70,11 +70,13 @@ create table tb_usuario (
     ds_confirmar		varchar(200)
 );
 
+ DELETE FROM tb_usuario;
+
 select*from tb_usuario;
 select*from tb_login_usuario;
 
 
-create table tb_login_usuario (
+create table  tb_login_usuario (
 	id_login_usuario	    int primary key auto_increment,
     id_usuario				int,
     ds_email	  			varchar(800),
@@ -89,20 +91,21 @@ select md5('123');
 
 
 
-create table tb_usuario_endereco(
+create table   tb_usuario_endereco(
     id_usuario_endereco     int primary key auto_increment,
     id_usuario               int,
     ds_cep                   varchar(100),
+    ds_rua					 varchar(200),
     nm_numero                int,
     nm_estado                varchar(100),
-    ds_casa                  varchar(8),
     nm_cidade                varchar(300),
     ds_complemento           varchar(200),
     nm_bairro                varchar(100),
     foreign key (id_usuario)  references tb_usuario (id_usuario)
 );
 
+insert into tb_usuario_endereco(id_usuario,ds_cep,ds_rua,nm_numero,nm_estado,nm_cidade,ds_complemento,nm_bairro)
+values(1,'75674-756','rua um','34','sp','sao paulo','casa','cocaia');
+
 select*from tb_usuario_endereco;
-
-
 

@@ -4,6 +4,11 @@
 	box-sizing: border-box;
 }
 
+body{
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+}
+
 .wave{
 	position: fixed;
 	bottom: 0;
@@ -16,17 +21,15 @@
     width: 100vw;
     height: 100vh;
     display: grid;
-    grid-template-columns: repeat(2, 2fr);
+    grid-template-columns: repeat(2, 1fr);
     grid-gap :7rem;
     padding: 0 2rem;
 }
 
 .img{
 	display: flex;
+	justify-content: flex-end;
 	align-items: center;
-	background-size: 150px;
-	margin-top: 20px;
-	justify-items: end;
 }
 
 .login-content{
@@ -40,22 +43,22 @@
 	width: 500px;
 }
 
-.formm{
-	width: 390px;
-}
-
-.invalido{
-	color: red;
+.conteudooo{
+	width: 360px;
 }
 
 .login-content img{
     height: 100px;
 }
 
+.err{
+      color: rgb(255, 0, 0);
+     }
+
 .login-content h2{
 	margin: 15px 0;
 	color: #333;
-	
+	text-transform: uppercase;
 	font-size: 2.9rem;
 }
 
@@ -104,7 +107,7 @@
 	bottom: -2px;
 	width: 0%;
 	height: 2px;
-	background-color: #040051;
+	background-color: #38d39f;
 	transition: .4s;
 }
 
@@ -126,7 +129,7 @@
 }
 
 .input-div.focus > .i > i{
-	color: #dededf;
+	color: #38d39f;
 }
 
 .input-div > div > input{
@@ -157,21 +160,20 @@ a{
 	transition: .3s;
 }
 
+
+
 a:hover{
-	color: #040051;
+	color: #120061;
 }
 
-
-.btn {
+.btn{
 	display: block;
 	width: 100%;
 	height: 50px;
-	border-radius: 15px;
+	border-radius: 25px;
 	outline: none;
 	border: none;
-	
-
-	background-color: #040051;
+	background-image: linear-gradient(to right, #00005a, #120061, #120061);
 	background-size: 200%;
 	font-size: 1.2rem;
 	color: #fff;
@@ -180,6 +182,9 @@ a:hover{
 	margin: 1rem 0;
 	cursor: pointer;
 	transition: .5s;
+}
+.btn:hover{
+	background-position: right;
 }
 
 
@@ -221,5 +226,3 @@ a:hover{
 		justify-content: center;
 	}
 }
-
-

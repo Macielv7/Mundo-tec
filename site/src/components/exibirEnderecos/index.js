@@ -46,7 +46,7 @@ export default function ModalEndereco({ exibir, fechar }) {
                             <input type='text' value={cep}  onChange={e => setCEP(e.target.value)}  />
                         </div>
                         <div>
-                            <label> Logradouro: </label>
+                            <label> Rua: </label>
                             <input type='text' value={rua}  onChange={e => setRua(e.target.value)}  />
                         </div>
                         <div>
