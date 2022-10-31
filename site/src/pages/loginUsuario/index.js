@@ -67,7 +67,7 @@ export default function Index() {
 						</div>
 						<a href="#">Esqueceu senha</a>
 
-
+						<button className='btn' type="button" onClick={loginClick} > Entrar </button>
 
 						<a href="/criarconta">Faça seu cadastro</a>
 
@@ -75,7 +75,7 @@ export default function Index() {
 					<div className='err'>
 						{erro}
 					</div>
-					<button className='btn' type="button" onClick={loginClick} > Entrar </button>
+					
 				</div>
 			</div>
 

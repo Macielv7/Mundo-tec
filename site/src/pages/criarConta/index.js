@@ -1,5 +1,5 @@
 import React from 'react';
-import './index.scss';
+
 
 import storage from 'local-storage'
 import { useState } from 'react';
@@ -57,75 +57,75 @@ export default function Index(){
 
     return(
         <main className="Cadastrarusu">
-            <div class="container">
+            <div className="container">
        
-        <div class="f">
+        <div className="f">
           
-                <div class="form-header">
-                    <div class="title">
+                <div className="form-header">
+                    <div className="title">
                         <h1>Faça o seu Cadastro</h1>
                         <p>Preencha os campos para podermos realizar o cadastro</p>
                     </div>
                    
                 </div>
 
-                <div class="input-group">
-                    <div class="input-box">
+                <div className="input-group">
+                    <div className="input-box">
                         <label for="firstname">Primeiro Nome</label>
                         <input  type="text"  placeholder="Digite seu primeiro nome" value={nome} onChange={e => setNome(e.target.value)}/>
                     </div>
 
-                    <div class="input-box">
+                    <div className="input-box">
                         <label for="lastname">cpf</label>
                         <input type="text"  placeholder="Digite seu cpf" value={cpf} onChange={e => setCpf(e.target.value)} />
                     </div>
-                    <div class="input-box">
+                    <div className="input-box">
                         <label for="email">Telefone</label>
                         <input  type="email"  placeholder="  (xx) xxxx-xxxx" value={telefone} onChange={e => setTelefone(e.target.value)}/>
                     </div>
 
-                    <div class="input-box">
+                    <div className="input-box">
                         <label for="number">Criar senha</label>
                         <input type="tel" placeholder="Digite sua senha" value={senha} onChange={e => setSenha(e.target.value)}/>
                     </div>
 
-                    <div class="input-box">
+                    <div className="input-box">
                         <label for="password">E-mail</label>
                         <input  type="password"  placeholder="Digite seu e-mail"  value={email} onChange={e => setEmail(e.target.value)}  />
                     </div>
 
 
-                    <div class="input-box">
+                    <div className="input-box">
                         <label for="confirmPassword">Confirme sua Senha</label>
                         <input type="password"  placeholder="Digite sua senha novamente" value={confirmar} onChange={e => setConfirmar(e.target.value)}/>
                     </div>
 
                 </div>
 
-                <div class="gender-inputs">
-                    <div class="gender-title">
+                <div className="gender-inputs">
+                    <div className="gender-title">
                         <h6>Gênero</h6>
                     </div>
 
-                    <div class="gender-group">
-                        <div class="gender-input">
+                    <div className="gender-group">
+                        <div className="gender-input">
                             <input id="female" type="radio" name="gender"/>
                             <label for="female">Feminino</label>
                         </div>
 
-                        <div class="gender-input">
+                        <div className="gender-input">
                             <input id="male" type="radio" name="gender"/>
                             <label for="male">Masculino</label>
                         </div>
 
-                        <div class="gender-input">
+                        <div className="gender-input">
                             <input id="none" type="radio" name="gender"/>
                             <label for="none">Prefiro não dizer</label>
                         </div>
                     </div>
                 </div>
 
-                <div class="continue-button">
+                <div className="continue-button">
                     <button onClick={salvarClick}>Continuar</button>
                 </div>
           
