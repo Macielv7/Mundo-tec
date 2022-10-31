@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import { cadastrorUsuario, imagemUsuario, listarUsuario ,login} from "../repository/usuarioRepositorio.js"
+import { cadastrorUsuario, listarUsuario ,login} from "../repository/usuarioRepositorio.js"
 import multer from 'multer';
 import { listar, salvar } from "../repository/usuarioRepositorio.js";
 
@@ -9,7 +9,7 @@ const server = Router();
 const upload = multer({ dest: 'storage/capaUsuario'})
 
 
-server.post('/cadastrousuario', async (req,resp) => {
+server.post('/cadastro/usuario', async (req,resp) => {
     try {
       const usuario = req.body;
       const x = await cadastrorUsuario(usuario);
@@ -25,12 +25,12 @@ server.post('/cadastrousuario', async (req,resp) => {
      })
         
     }
- })
+})
 
 
 
 
-server.post('/apii/login', async (req, resp) => {
+server.post('/api/login', async (req, resp) => {
     try {
         const {email, senha} = req.body;
         
@@ -53,28 +53,6 @@ server.post('/apii/login', async (req, resp) => {
 
 
 
-
-
-server.put('/cadastroUsuario/:id/capa', upload.single('capa') ,async (req, resp) => {
-    try{
-        if(!req.file)
-        throw new Error('Escolhar a imagem do usuario.');
-        const {id} = req.params;
-        const imagem = req.file.path;
-
-        const resposta = await imagemUsuario(imagem, id);
-        if(resposta != 1)
-            throw new Error('A imagem não pode ser salva.');
-
-        resp.status(204).send();
-    }
-    catch(err){
-        resp.status(401).send({
-            erro: err.message
-        })   
-    }
-})
-
 server.get('/usuario', async (req, resp) => {
     try {
         const resposta = await listarUsuario();
@@ -88,7 +66,10 @@ server.get('/usuario', async (req, resp) => {
 
 
 
- 
+
+//ENDEREÇO  
+
+
 server.post('/api/usuario/:id/endereco', async (req, resp) => {
     try {
         const id = req.params.id;

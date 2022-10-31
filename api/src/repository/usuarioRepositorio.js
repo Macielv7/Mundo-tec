@@ -25,17 +25,6 @@ export async function login (email, senha){
 
 
 
-
-
-export async function imagemUsuario(imagem, id){
-    const comando = `UPDATE tb_usuario
-                    SET img_usuario = ?
-                    WHERE id_usuario = ?`;
-
-    const [resposta] = await con.query(comando,[imagem, id]);
-    return resposta.affectedRows;
-}
-
 export async function listarUsuario() {
     const comando =
     `select 
@@ -46,14 +35,16 @@ export async function listarUsuario() {
     ds_telefone,
     ds_genero,
     ds_senha,
-    ds_confirmar,
-    img_imagem
+    ds_confirmar
     from tb_usuario;`
     
     const [linhas] =  await con.query(comando);
     return linhas;
 }
 
+
+
+//ENDEREÇO
 
 export async function listar(idUsuario) {
     const comando = `
