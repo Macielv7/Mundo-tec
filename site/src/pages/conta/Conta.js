@@ -32,7 +32,7 @@ export default function Index () {
 
 
     return (
-        <>
+        <main className="home-inicio">
 
        <Header />
        
@@ -85,7 +85,7 @@ export default function Index () {
 
                     
 
-                <div class="img">
+                <div className="imagem-oferta">
                         <img src="./img/pp.png" height="322px" alt="" />
                     </div>
                     
@@ -220,7 +220,7 @@ export default function Index () {
                 </div>
             </div>
 
-        </>
+        </main>
     )
 }
 

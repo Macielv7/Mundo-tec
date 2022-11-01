@@ -8,7 +8,7 @@ export default function Index() {
   	 <div class="container">
   	 	<div class="row">
   	 		<div class="footer-col">
-  	 			<h4>company</h4>
+  	 			<h4>Inicio</h4>
   	 			<ul>
   	 				<li><a href="#">.......</a></li>
   	 				<li><a href="#">.......</a></li>
@@ -17,7 +17,7 @@ export default function Index() {
   	 			</ul>
   	 		</div>
   	 		<div class="footer-col">
-  	 			<h4>get help</h4>
+  	 			<h4>Sobre nos</h4>
   	 			<ul>
   	 				<li><a href="#">.......</a></li>
   	 				<li><a href="#">.......</a></li>
@@ -27,7 +27,7 @@ export default function Index() {
   	 			</ul>
   	 		</div>
   	 		<div class="footer-col">
-  	 			<h4>online shop</h4>
+  	 			<h4>Suporte</h4>
   	 			<ul>
   	 				<li><a href="#">.......</a></li>
   	 				<li><a href="#">.......</a></li>
@@ -36,7 +36,7 @@ export default function Index() {
   	 			</ul>
   	 		</div>
   	 		<div class="footer-col">
-  	 			<h4>follow us</h4>
+  	 			<h4>Redes sociais</h4>
   	 			<div class="social-links">
 				   <a href="#"><i className='fab fa-facebook-f'></i></a>
   	 				<a href="#"><i class="fab fa-twitter"></i></a>
