@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import { listarProdutosInicio } from '../../api/produtoAPI'
 
 import Header from "../../components/header"
+import Rodape from "../../components/rodape"
 import FlashCard from "../../components/flashDeals/FlashCard"
 
 
@@ -214,7 +215,7 @@ export default function Index () {
                     </div>
                     <hr />
 
-              
+                    <Rodape/>    
 
                 </div>
             </div>

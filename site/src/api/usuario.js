@@ -21,7 +21,7 @@ export async function cadastroUsuario(nome, cpf,  genero, email, telefone, senha
     return r.data;
 }
 
-export async function login(email, senha){
+export async function loooginn(email, senha){
     const a = await api.post('/usuario/login',{
         email: email,
         senha: senha
@@ -38,6 +38,14 @@ export async function listarUsuario(){
 export async function logar(email, senha) {
     const r = await api.post('/api/login', { email, senha });
     return r.data;
+}
+
+export async function login(email, senha){
+    const a = await api.post('/usuario/login',{
+        email: email,
+        senha: senha
+    });
+    return a.data;
 }
 
 

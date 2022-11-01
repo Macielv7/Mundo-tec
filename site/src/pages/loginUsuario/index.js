@@ -1,10 +1,10 @@
-import { logar } from '../../api/usuario';
+import { logar, login } from '../../api/usuario';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './login.scss'
 import Storage from 'local-storage'
 import Header from "../../components/header"
-import { toast } from 'react-toastify';
+
 
 export default function Index() {
 
@@ -15,31 +15,31 @@ export default function Index() {
 
 	const navigate = useNavigate();
 
-    async function loginClick() {
-        try {
-            const r = await logar(email, senha);
-            Storage('cliente-logado', r);
-            toast.dark('Usuário logado', { autoClose: 400, hideProgressBar: true });
+   
+	async function loginClick() {
 
-            setTimeout(() => {
-                navigate('/');
-            }, 1500);
-            
-        }
-        catch (err) {
-            toast.error(err.response.data.erro);
-        }
-    }
-
+		try{
+		  const r = await logar(email,senha)
+		  Storage('usuario-logado', r)
+		  navigate('/');
+	  
+		}
+	  
+		catch(err){
+		  if(err.response.status === 401){
+			  setErro(err.response.data.erro)
+		  }
+	  }
+	  }
 
 
 	return (
-		<main className='page-login'>
+		<main className='page-login-usu'>
 
 			<Header />
 
 			<img class="wave" src="./img/wave.png" />
-			<div class="container">
+			<div class="contaiiner">
 				<div class="img">
 					<img src="./img/Mobile login-bro.png" />
 				</div>
@@ -72,6 +72,8 @@ export default function Index() {
 						<a href="/criarconta">Faça seu cadastro</a>
 
 					</div>
+
+					
 					<div className='err'>
 						{erro}
 					</div>
