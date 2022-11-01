@@ -6,11 +6,14 @@ import Conta from "./pages/conta/Conta"
 
 import CadastrarP from "./pages/adimin/cadastrarP"
 import ConsultarP from "./pages/adimin/consultarP"
+import ConsultarCard from "./pages/adimin/consultarCard"
 
 
 import TelaPedido from "./pages/telaPedido"
 import Carrinho from "./pages/carrinho"
 import TelaInicial from "./pages/telaInicial"
+
+import Departamento from "./pages/departamento"
 
 
 import CriarConta from "./pages/criarConta"
@@ -38,12 +41,14 @@ export default function Index() {
                 <Route path="cadastrarp" element={<CadastrarP />} />
                 <Route path='/cadastrarp/:id' element={<CadastrarP />} />
                 <Route path="consultarp" element={<ConsultarP />} />
+                <Route path="consultarcard" element={<ConsultarCard />} />
                 <Route path="/tela/:id/pedido" element={<TelaPedido />} />
                 <Route path="carrinho" element={<Carrinho />} />
                 
                 <Route path='cadastrarp/:id' element={<CadastrarP />} />
                 <Route path='LOGINUSUARIO' element={< LoginUsuario />} />
                 <Route path='talainicio' element={< TelaInicial />} />
+                <Route path='departamento' element={< Departamento />} />
                 
                 
                 

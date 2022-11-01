@@ -96,10 +96,10 @@ export default function Carrinho() {
 
                     <div className='enderecos'>
 
-                        {enderecos.map(item =>
-                            <EderecoCard item={item}
+                      
+                            <EderecoCard 
                              />
-                            )}
+                           
                         
                     </div>
 
@@ -122,8 +122,6 @@ export default function Carrinho() {
                     )}
 
                 </div>
-
-
                 
                 <div className='resumo'>
                     <h1> PREÇOS TOTAL   </h1>
@@ -136,6 +134,7 @@ export default function Carrinho() {
 
                     <button onClick={irPedido}> CONTINUAR COMPRANDO </button>
                 </div>
+               
             </div>
 
             

@@ -17,7 +17,8 @@ export default function Index() {
 
                     <div className='caixa-busca'>
                         
-                    
+                    <input type="text" placeholder='Buscar Produto por nome'  />
+                        <img src='/img/icons8-remover-24.png'  />
                       
                     </div>
                     
@@ -33,7 +34,8 @@ export default function Index() {
                                     <div className='card'>
                                     <div className='acoes'>
 
-                                        
+                                        <img src='/img/icons8-lápis-64.png'  /> 
+                                        <img src='/img/icons8-remover-24.png'  />
                                         
                                     </div>
                                     <div>
