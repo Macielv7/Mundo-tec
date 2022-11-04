@@ -1,0 +1,128 @@
+
+
+/*---------category----------*/
+.contentWidth {
+  width: 77%;
+}
+.category {
+  box-shadow: rgb(43 52 69 / 10%) 0px 4px 16px;
+  background-color: #fff;
+  width: 23%;
+  height: 510px;
+  padding: 15px 0;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+.category img {
+  width: 30px;
+  height: 30px;
+  margin-top: 10px;
+  object-fit: contain;
+}
+.category span {
+  margin: 10px 20px;
+  text-transform: capitalize;
+}
+.category .box {
+  transition: 0.5s;
+  padding: 0 20px;
+}
+.category .box:hover {
+  background-color: #ffe1e6;
+  cursor: pointer;
+}
+
+/*---------category----------*/
+.btn-primary {
+  background: #575353;
+  padding: 13px 40px;
+  font-weight: bold;
+  color: #fff;
+  border-radius: 5px;
+}
+.top {
+  margin-top: 80px;
+}
+.mtop {
+  margin-top: 40px;
+}
+.heading i {
+  color: #5e494d;
+  margin: 10px;
+}
+.discount {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #04006d;
+  padding: 3px 10px;
+  font-size: 12px;
+  border-radius: 50px;
+  color: #fff;
+  margin: 10px;
+}
+/*---------product-----------*/
+.product {
+  background: #fff;
+  padding: 20px;
+  position: relative;
+  border-radius: 8px;
+  box-shadow: rgb(3 0 71 / 9%) 0px 1px 3px;
+  margin: 10px;
+}
+.product h3 {
+  font-weight: 400;
+  font-size: 17px;
+}
+.product .rate i {
+  font-size: 15px;
+  color: #ffcd4e;
+  margin: 5px 5px 5px 0;
+}
+.product .price {
+  display: flex;
+  justify-content: space-between;
+  color: #000000;
+}
+.oo {
+  background: none;
+  color: #888888;
+  font-size: 20px;
+  transition: 0.5s;
+  border: 1px solid rgb(3 0 71 / 9%);
+  width: 195px;
+  justify-content: center;
+  align-items: center;
+  height: 35px;
+  border-radius: 5px;
+  
+  margin-left: 30px;
+
+}
+.oo:hover {
+  cursor: pointer;
+  background-color: #04006d;
+  color: #fff;
+}
+.product-like {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 10px;
+  opacity: 0;
+  transition: 0.5s;
+}
+.product-like label {
+  background-color: #0f3460;
+  padding: 1px 10px;
+  font-size: 12px;
+  color: white;
+  border-radius: 50px;
+}
+.product-like i {
+  font-size: 20px;
+  margin: 10px 3px;
+}
+.product:hover .product-like {
+  opacity: 1;
+}

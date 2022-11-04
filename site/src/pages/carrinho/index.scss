@@ -116,22 +116,5 @@
      
     }
 
-    @media (max-width: 1280px) {
-
-        .carrinho {
-            flex-direction: column;
-        }
-
-        .resumo {
-            margin: 20px 0px;
-        }
-    }
-
-
-    @media (max-width: 868px) {
-        .resumo {
-            width: 100%;
-        }
-    }
 
 }

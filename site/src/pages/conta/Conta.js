@@ -44,9 +44,7 @@ export default function Index () {
         </div>
         <div className="mo">
 
-        <div class="oi">
-            <img src="./img/branco.png" alt=""/>
-        </div>
+       
         </div>
 </div>
    
