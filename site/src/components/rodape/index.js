@@ -3,7 +3,7 @@ import './index.scss'
 
 export default function Index() {
     return (
-        <nav className="comp-rodape">
+        <main className="comp-rodape">
             <footer class="footer">
   	 <div class="container">
   	 	<div class="row">
@@ -47,6 +47,6 @@ export default function Index() {
   	 	</div>
   	 </div>
   </footer>
-        </nav>
+        </main>
     )
 }

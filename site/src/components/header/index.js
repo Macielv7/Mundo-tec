@@ -9,15 +9,12 @@ const Search = ({ CartItem }) => {
 
 
   return (
-    <>
+    <main className="componts-header">
       <section className='search'>
-
-     
-
 
         <div className='containerr c_flex'>
 
-        <div class="hamburger-menu">
+        <div class="menu-lado">
               <input id="menu__toggle" type="checkbox" />
               <label class="menu__btn" for="menu__toggle">
                 <span></span>
@@ -49,7 +46,7 @@ const Search = ({ CartItem }) => {
             
           </div>
 
-          <div className='icon f_flex width'>
+          <div className='bt'>
           <a href="/loginusuario">
             <img src="/img/icons8-usuário-homem-com-círculo-24.png" />
             </a>
@@ -58,11 +55,19 @@ const Search = ({ CartItem }) => {
             </div>
           </div>
 
+ <div className='bt'>
+          <a href="/carrinho">
+            <img src="/img/carri.png" />
+            </a>
+            <div className='cart'>
+            
+            </div>
+          </div>
    
          
         </div>
       </section>
-    </>
+    </main>
   )
 }
 

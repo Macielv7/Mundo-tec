@@ -6,7 +6,7 @@
     height: 120px;
     margin: 10px 0em;
     padding: 1.5em 3.5em 1.5em 2.5em;
-    background-color: #ffffff;
+    background-color: #D9D9D9;
     box-shadow: 0px 0px 10px 2px #e0e0e0;
 
     .produto-container {
@@ -57,7 +57,7 @@
     .i{
         width: 0.0625rem;
     height: 2.5rem;
-    background: rgb(0, 85, 255);
+    background: rgb(0, 0, 0);
     margin: 0px 0.5rem;
 
     margin: 0px;
@@ -76,12 +76,14 @@
         font-weight: 500;
     }
 
-    .excluir {
-        font-size: 14px;
-        text-transform: uppercase;
-        font-weight: 700;
-        text-decoration: underline;
-        cursor: pointer;
+    .lixo {
+    display: flex;
+    align-items: center;
+   
+    margin-bottom: 48px;
+
+    cursor: pointer;
+
     }
 
     .detalhes {

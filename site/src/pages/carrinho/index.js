@@ -133,11 +133,10 @@ export default function Carrinho() {
                     <button onClick={irPedido}> IR PARA PAGAMENTO </button>
 
                     <button onClick={irPedido}> CONTINUAR COMPRANDO </button>
-                </div>
-               
-            </div>
 
-            
+                </div>
+
+            </div>
 
         </div>
     )

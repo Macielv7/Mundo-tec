@@ -34,6 +34,7 @@ export default function CarrinhoCard({ item: { produto: { info, imagens }, qtd }
         carregarCarrinho();
     }
 
+    
 
 
     return (
@@ -46,8 +47,9 @@ export default function CarrinhoCard({ item: { produto: { info, imagens }, qtd }
                         </div>
                     </div>
                     <div className='detalhes'>
+                     <div className='departamento'> {info.nomeDepartamento} </div>
                         <div className='nome'> {info.produto} </div>
-                        <div className='departamento'> {info.nomeDepartamento} </div>
+                       
 
                     </div>
                 </div>
@@ -57,11 +59,16 @@ export default function CarrinhoCard({ item: { produto: { info, imagens }, qtd }
                         
                         <div>R$  {calcularSubtotal()}</div>
                         <div>(A vista no PIX)</div>
-
+                              
                     </div>
-                   
+                    
                 </div>
+                
+                <div className='lixo'>
+                        <img src="./img/icons8-remover-24.png"  />
+                        </div>
             </div>
+            
         </div>
     )
 }
