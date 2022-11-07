@@ -1,124 +1,66 @@
-.contentWidth {
-  width: 77%;
-}
-.category {
-  box-shadow: 0px 0px 10px 2px #000000;
-  background-color: #fff;
-  width: 23%;
-  height: 510px;
-  padding: 15px 0;
-  border-radius: 5px;
-  margin-top: 5px;
-}
-.category img {
-  width: 30px;
-  height: 30px;
-  margin-top: 10px;
-  object-fit: contain;
-}
-.category span {
-  margin: 10px 20px;
-  text-transform: capitalize;
-}
-.category .box {
-  transition: 0.5s;
-  padding: 0 20px;
-}
-.category .box:hover {
-  background-color: #ffe1e6;
-  cursor: pointer;
+.App {
+  text-align: center;
 }
 
-/*---------category----------*/
-.btn-primary {
-  background: #575353;
-  padding: 13px 40px;
-  font-weight: bold;
-  color: #fff;
-  border-radius: 5px;
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
 }
-.top {
-  margin-top: 80px;
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
 }
-.mtop {
-  margin-top: 40px;
-}
-.heading i {
-  color: #5e494d;
-  margin: 10px;
-}
-.discount {
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: #04006d;
-  padding: 3px 10px;
-  font-size: 12px;
-  border-radius: 50px;
-  color: #fff;
-  margin: 10px;
-}
-/*---------product-----------*/
-.product {
-  background: #fff;
-  padding: 20px;
-  position: relative;
-  border-radius: 8px;
-  box-shadow: rgb(3 0 71 / 9%) 0px 1px 3px;
-  margin: 10px;
-}
-.product h3 {
-  font-weight: 400;
-  font-size: 17px;
-}
-.product .rate i {
-  font-size: 15px;
-  color: #ffcd4e;
-  margin: 5px 5px 5px 0;
-}
-.product .price {
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
   display: flex;
-  justify-content: space-between;
-  color: #000000;
-}
-.oo {
-  background: none;
-  color: #888888;
-  font-size: 20px;
-  transition: 0.5s;
-  border: 1px solid rgb(3 0 71 / 9%);
-  width: 195px;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  height: 35px;
-  border-radius: 5px;
-  margin-top: 15px;
-  margin-left: 30px;
-
-}
-.oo:hover {
-  cursor: pointer;
-  background-color: #04006d;
-  color: #fff;
-}
-.product-like {
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin: 10px;
-  opacity: 0;
-  transition: 0.5s;
-}
-.product-like label {
-  padding: 1px 10px;
-  font-size: 12px;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
   color: white;
-  border-radius: 50px;
 }
-.product-like i {
-  font-size: 20px;
-  margin: 10px 3px;
+
+.App-link {
+  color: #61dafb;
 }
-.product:hover .product-like {
-  opacity: 1;
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
+
+button {
+    padding: 5px 15px;
+    border-radius: 50px;
+    border: 0;
+    background-color: white;
+    box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-size: 15px;
+    transition: all .5s ease;
+   }
+   
+   button:hover {
+    letter-spacing: 3px;
+    background-color: hsl(261deg 80% 48%);
+    color: hsl(0, 0%, 100%);
+    box-shadow: rgb(93 24 220) 0px 7px 29px 0px;
+   }
+   
+   button:active {
+    letter-spacing: 3px;
+    background-color: hsl(261deg 80% 48%);
+    color: hsl(0, 0%, 100%);
+    box-shadow: rgb(93 24 220) 0px 0px 0px 0px;
+    transform: translateY(10px);
+    transition: 100ms;
+   }

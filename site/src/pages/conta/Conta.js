@@ -5,7 +5,7 @@ import "./index.scss"
 import { useEffect, useState } from 'react';
 
 import { listarProdutosInicio } from '../../api/produtoAPI'
-
+import { useNavigate } from 'react-router-dom';
 import Header from "../../components/header"
 import Rodape from "../../components/rodape"
 import FlashCard from "../../components/flashDeals/FlashCard"
@@ -16,7 +16,11 @@ import FlashCard from "../../components/flashDeals/FlashCard"
 
 
 export default function Index () {
+  
+
     const [produtos, setProdutos] = useState([]);
+
+    const navigate = useNavigate();
 
     async function listar() {
         const r = await listarProdutosInicio();
@@ -27,8 +31,6 @@ export default function Index () {
     useEffect(() => {
         listar();
     }, [])
-
-
 
 
     return (
@@ -52,11 +54,12 @@ export default function Index () {
 
        <div className="produtos-container">
                 
-                    {produtos.map(item =>
-                       
-               <FlashCard  item={item}/>
+                   
+       {produtos.map(item => 
+                    <FlashCard item={item} />
+                )}
                 
-               )}
+             
             </div>
             <div className="con">
                 <img src="./img/cadeira.jfif" alt="" />
@@ -66,11 +69,13 @@ export default function Index () {
 
             <div className="produtos-container">
                 
-                {produtos.map(item =>
-                   
-           <FlashCard  item={item}/>
+              
+              
+            {produtos.map(item => 
+                    <FlashCard item={item} />
+                )}
             
-           )}
+         
         </div>
             
            

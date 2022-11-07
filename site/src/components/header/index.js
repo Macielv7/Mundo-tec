@@ -1,20 +1,15 @@
 import React from "react"
 import './index.scss'
-import { Link } from "react-router-dom"
 
-const Search = ({ CartItem }) => {
-
- 
- 
-
+export default function Header () {
 
   return (
     <main className="componts-header">
       <section className='search'>
 
-        <div className='containerr c_flex'>
+<div className='containerr c_flex'>
 
-        <div class="menu-lado">
+<div class="menu-lado">
               <input id="menu__toggle" type="checkbox" />
               <label class="menu__btn" for="menu__toggle">
                 <span></span>
@@ -34,41 +29,33 @@ const Search = ({ CartItem }) => {
 
           </div>
 
-          <div className='logo width '>
-            <a href="/">
-            <img src="./img/logo.png" />
-            </a>
-          </div>
+  <div className='logo width '>
+    <a href="/">
+    <img src="./img/logo.png" />
+    </a>
+  </div>
 
-          <div className='search-boxx f_flex'>
-          <i class="fa fa-user-circle-o" ></i>
-            <input type='text' placeholder='Search and hit enter...' />
-            
-          </div>
+  <div className='search-boxx '>
+  <i class="fa fa-user-circle-o" ></i>
+    <input type='text' placeholder='Search and hit enter...' />
+    
+  </div>
 
-          <div className='bt'>
-          <a href="/loginusuario">
-            <img src="/img/icons8-usuário-homem-com-círculo-24.png" />
-            </a>
-            <div className='cart'>
-            
-            </div>
-          </div>
+  <div className='bt'>
+  <a href="/loginusuario">
+    <img src="/img/icons8-usuário-homem-com-círculo-24.png" />
+    </a>
+    <img src="/img/carri.png" />
+    <div className='cart'>
+    
+    </div>
+  </div>
 
- <div className='bt'>
-          <a href="/carrinho">
-            <img src="/img/carri.png" />
-            </a>
-            <div className='cart'>
-            
-            </div>
-          </div>
-   
-         
-        </div>
-      </section>
+
+
+ 
+</div>
+</section>
     </main>
   )
 }
-
-export default Search

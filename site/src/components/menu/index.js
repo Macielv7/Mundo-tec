@@ -10,7 +10,8 @@ export default function Index() {
     
 
     return (
-        <nav class="sidebar close">
+      
+        <nav class=" menuuu">
         <header>
             <div class="image-text">
                 <span class="image">
@@ -91,5 +92,6 @@ export default function Index() {
         </div>
 
     </nav>
+
     )
 }

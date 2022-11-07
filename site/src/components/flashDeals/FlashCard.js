@@ -1,12 +1,12 @@
 import Slider from "react-slick"
-import "slick-carousel/slick/slick.css"
-import "slick-carousel/slick/slick-theme.css"
-import React, { useState } from "react"
+import "slick-carousel/slick/slick.scss"
+import "slick-carousel/slick/slick-theme.scss"
 
 import { API_URL } from '../../api/config';
-import './index.scss'
+import "./index.scss"
 
 import { useNavigate } from 'react-router-dom'
+
 
 export default function FlashCard(props) {
 
@@ -14,82 +14,45 @@ export default function FlashCard(props) {
 
     function exibir(imagem) {
         if (!imagem)
-            return `/logo.png`;
+            return `/produto-padrao.png`;
         else
             return `${API_URL}/${imagem}`
     }
+
 
     function abrirDetalhes(id) {
         navigate('/tela/' + id + '/pedido')
     }
 
-    const SampleNextArrow = (props) => {
-        const { onClick } = props
-        return (
-            <div className='control-btn' onClick={onClick}>
-                <button className='next'>
-                    <i className='fa fa-long-arrow-alt-right'></i>
-                </button>
-            </div>
-        )
-    }
-    
-    const SamplePrevArrow = (props) => {
-        const { onClick } = props
-        return (
-            <div className='control-btn' onClick={onClick}>
-                <button className='prev'>
-                    <i className='fa fa-long-arrow-alt-left'></i>
-                </button>
-            </div>
-        )
-    }
-
-    const [count, setCount] = useState('🤍')
-    const increment = () => {
-        setCount(count + 1)
-    }
-
-    const settings = {
-        dots: false,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        nextArrow: <SampleNextArrow />,
-        prevArrow: <SamplePrevArrow />,
-    }
-
     return (
-        <>
-            <Slider {...settings}>
 
-                <div className='box'>
-                    <div className='product mtop'>
-                        <div className='img' onClick={() => abrirDetalhes(props.item.id)}>
-                            <span className='discount'>90% Off</span>
-                            <img src={exibir(props.item.imagem)} alt="" />
-                            <div className='product-like'>
-                                <label>{count}</label> <br />
-                                <i className='fa-regular fa-heart' onClick={increment}></i>
-                            </div>
-                        </div>
-                        <div className='product-details'>
-                            <h3>{props.item.produto}</h3>
+        <div className="f1">
 
-                            <div className='price'>R${props.item.preco}</div>
-                            <div className='price'> <s>R${props.item.valorantigo}</s></div>
+            <Slider
+                dots={false}
+                infinite={true}
+                speed={500}
+                slidesToShow={4}
+                slidesToScroll={1}
+            >
 
-                            <button className="oo">
-                                <i className='fa fa-plus'></i>
-                            </button>
-                        </div>
 
+                <div className='comp-card-produto' onClick={() => abrirDetalhes(props.item.id)}>
+                    <img src={exibir(props.item.imagem)} alt="" />
+                    <div>
+                        <div> {props.item.departamento} </div>
+                        <div> {props.item.produto} </div>
+                        <div> R$ {props.item.preco} </div>
                     </div>
                 </div>
 
-            </Slider>
-        </>
-    )
-}
+                
 
+
+            </Slider>
+
+        </div>
+
+    )
+
+}

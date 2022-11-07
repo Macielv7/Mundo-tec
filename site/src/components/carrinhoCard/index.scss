@@ -54,21 +54,21 @@
         }
     }
 
-    .i{
+    .i {
         width: 0.0625rem;
-    height: 2.5rem;
-    background: rgb(0, 0, 0);
-    margin: 0px 0.5rem;
+        height: 2.5rem;
+        background: rgb(0, 0, 0);
+        margin: 0px 0.5rem;
 
-    margin: 0px;
-    padding: 0px;
-    border: none;
-    list-style: none;
-    box-sizing: border-box;
-    font-size: 16px;
-    font-family: Poppins, sans-serif !important;
+        margin: 0px;
+        padding: 0px;
+        border: none;
+        list-style: none;
+        box-sizing: border-box;
+        font-size: 16px;
+        font-family: Poppins, sans-serif !important;
 
-    display: block;
+        display: block;
     }
 
     .subtotal div:nth-child(1) {
@@ -77,18 +77,18 @@
     }
 
     .lixo {
-    display: flex;
-    align-items: center;
-   
-    margin-bottom: 48px;
+        display: flex;
+        align-items: center;
 
-    cursor: pointer;
+        margin-bottom: 48px;
+
+        cursor: pointer;
 
     }
 
     .detalhes {
 
-      
+
 
         .nome {
             font-size: 18px;

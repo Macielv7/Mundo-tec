@@ -43,14 +43,11 @@
     }
 
 
-
-
-
-
     @media (max-width: 425px) {
-        .form > div label {
+        .form>div label {
             min-width: auto;
         }
+
         .conteudo {
             overflow: scroll;
             height: 80vh;
@@ -60,4 +57,3 @@
 
 
 }
-

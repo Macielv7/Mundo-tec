@@ -23,9 +23,12 @@ export default function ProdutoDetalhe() {
     function exibirImagemPrincipal() {
         if (produto.imagens.length > 0) {
             return API_URL + '/' + produto.imagens[imagemPrincipal];
+
         }
+        
         else {
             return '/download.png';
+            
         }
     }
 
