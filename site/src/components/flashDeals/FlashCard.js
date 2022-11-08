@@ -1,6 +1,7 @@
-import Slider from "react-slick"
-import "slick-carousel/slick/slick.scss"
-import "slick-carousel/slick/slick-theme.scss"
+import React from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css"
+import "slick-carousel/slick/slick-theme.css"
 
 import { API_URL } from '../../api/config';
 import "./index.scss"
@@ -26,13 +27,13 @@ export default function FlashCard(props) {
 
     return (
 
-        <div className="f1">
+        <div className="FlashCard">
 
             <Slider
                 dots={false}
                 infinite={true}
                 speed={500}
-                slidesToShow={4}
+                slidesToShow={1}
                 slidesToScroll={1}
             >
 
@@ -45,9 +46,6 @@ export default function FlashCard(props) {
                         <div> R$ {props.item.preco} </div>
                     </div>
                 </div>
-
-                
-
 
             </Slider>
 
