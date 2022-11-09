@@ -29,13 +29,7 @@ export default function FlashCard(props) {
 
         <div className="FlashCard">
 
-            <Slider
-                dots={false}
-                infinite={true}
-                speed={500}
-                slidesToShow={1}
-                slidesToScroll={1}
-            >
+       
 
 
                 <div className='comp-card-produto' onClick={() => abrirDetalhes(props.item.id)}>
@@ -47,7 +41,7 @@ export default function FlashCard(props) {
                     </div>
                 </div>
 
-            </Slider>
+            
 
         </div>
 

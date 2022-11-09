@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 
 import InfoUsuario from "./components/infoUsuario"
-import Conta from "./pages/conta/Conta"
+import Conta from "./pages/conta"
 
 import CadastrarP from "./pages/adimin/cadastrarP"
 import ConsultarP from "./pages/adimin/consultarP"

@@ -1,15 +1,16 @@
 import './index.scss'
-
+import Header from "../header"
 
 export default function InfoUsuario() {
 
     return (
-        <div className='comp-modal-endereco'>
-            <div className="modal-endereco ">
+        <div className='comp-modal-usuario'>
+            <Header/>
+            <div className="modal-usuario ">
                 <div className='conteudo'>
                     <h1> Dados basicos </h1>
 
-                    <div className='form'>
+                    <div className='fff'>
 
                         <div>
                             <label> &nbsp; </label>
@@ -34,27 +35,29 @@ export default function InfoUsuario() {
                             <label> &nbsp; </label>
                         </div>
 
-                        <div className="gender-inputs">
-                            <div className="gender-title">
+                        <div className="usu-inputs">
+                            <div className="usu-title">
                                 <h6>Gênero</h6>
                             </div>
 
-                            <div className="gender-group">
-                                <div className="gender-input">
-                                    <input id="female" type="radio" name="gender" />
+                            <div className="usu-group">
+                                <div className="usu-input">
+                                    <input id="female" type="radio" name="usu" />
                                     <label for="female">Feminino</label>
                                 </div>
 
-                                <div className="gender-input">
-                                    <input id="male" type="radio" name="gender" />
+                                <div className="usu-input">
+                                    <input id="male" type="radio" name="usu" />
                                     <label for="male">Masculino</label>
                                 </div>
 
-                                <div className="gender-input">
-                                    <input id="none" type="radio" name="gender" />
+                                <div className="usu-input">
+                                    <input id="none" type="radio" name="usu" />
                                     <label for="none">Prefiro não dizer</label>
                                 </div>
                             </div>
+                            <input  type="checkbox"  /><span>Quero receber ofertas e novidades por e-mail</span>
+                          
                         </div>
 
                         <div>
@@ -63,7 +66,25 @@ export default function InfoUsuario() {
                                 <button > Salvar </button>
                             </div>
                         </div>
+
+                        
                     </div>
+
+                     <div>
+                            <label> &nbsp; </label>
+                        </div>
+                        <div>
+                            <label>  </label>
+                            <input type='text'/>
+                        </div>
+                        <div>
+                            <label>  </label>
+                            <input type='text' />
+                        </div>
+                        <div>
+                            <label>  </label>
+                            <input type='text'  />
+                        </div>
                 </div>
 
 

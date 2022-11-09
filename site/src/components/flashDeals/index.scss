@@ -12,13 +12,10 @@
     & > div *, img {
         cursor: pointer;
     }
-    & > div *:hover {
-        color: #672dc3;
-    }
   
     
     img {
-        max-height: 180px;
+        max-height: 150px;
         width: auto;
         background-color: #f8f8f8;
     }
