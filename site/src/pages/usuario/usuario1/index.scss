@@ -1,0 +1,54 @@
+.usu1{
+
+
+.mae{
+    display: flex;
+   
+    flex-direction: column;
+    justify-content: space-around;
+   padding: 70px;
+    height: 90vh;
+    
+
+
+
+    .retangulo{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        background-color: #D9D9D9; 
+        width: 30em;
+        height: 7.5em;
+        padding: 2em;
+        align-items: center;
+
+        
+        border: none;
+        list-style: none;
+        box-sizing: border-box;
+        font-size: 16px;
+        font-family: Poppins, sans-serif !important;
+    }
+
+    .circo {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background-color: antiquewhite;
+        }
+
+    .geral-mom{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        width: 80%;
+
+    }
+
+    .fonte{
+        font-size: 19px;
+        padding-right: 31em;
+    }
+
+}
+}
