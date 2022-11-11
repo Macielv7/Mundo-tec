@@ -6,6 +6,8 @@ import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
 import { cadastroUsuario, loginUsuario } from '../../api/usuario';
 import Storage from 'local-storage'
+import "./index.scss"
+import Header from "../../components/header"
 
 export default function Index(){
 
@@ -54,6 +56,7 @@ export default function Index(){
 
     return(
         <main className="Cadastrarusu">
+            <Header/>
             <div className="container">
             <ToastContainer/>
         <div className="f">
