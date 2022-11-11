@@ -45,7 +45,9 @@ export default function Header() {
             <a href="/loginusuario">
               <img src="/img/icons8-usuário-homem-com-círculo-24.png" />
             </a>
+            <a href="/carrinho">
             <img src="/img/carri.png" />
+            </a>
             <div className='cart'>
 
             </div>

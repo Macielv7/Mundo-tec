@@ -1,10 +1,9 @@
 
-import axios  from 'axios'
-import {useEffect, useState} from 'react'
-import {useHref, useNavigate, useParams} from 'react-router-dom'
+
+import { useState} from 'react'
+import {useNavigate} from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
-import { cadastroUsuario, loginUsuario } from '../../api/usuario';
+import { cadastroUsuario } from '../../api/usuario';
 import Storage from 'local-storage'
 import "./index.scss"
 import Header from "../../components/header"
@@ -44,7 +43,7 @@ export default function Index(){
         try{      
             const r = await cadastroUsuario (nome, cpf,  genero, email, telefone, senha, confirmar)
             Storage('usuario-logado', r)
-            navigate('/loginusuario');
+            navigate('/');
         }
         catch (err){
             toast.error(err.response.data.erro)
@@ -58,7 +57,7 @@ export default function Index(){
         <main className="Cadastrarusu">
             <Header/>
             <div className="container">
-            <ToastContainer/>
+            
         <div className="f">
           
                 <div className="form-header">

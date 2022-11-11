@@ -11,10 +11,6 @@ import Rodape from "../../components/rodape"
 import FlashCard from "../../components/flashDeals/FlashCard"
 
 
-
-
-
-
 export default function Index () {
   
 

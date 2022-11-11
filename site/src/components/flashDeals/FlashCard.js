@@ -29,7 +29,6 @@ export default function FlashCard(props) {
 
         <div className="FlashCard">
 
-       
 
 
                 <div className='comp-card-produto' onClick={() => abrirDetalhes(props.item.id)}>

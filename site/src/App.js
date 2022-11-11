@@ -20,6 +20,7 @@ import Departamento from "./pages/departamento"
 import CriarConta from "./pages/criarConta"
 
 import Usuario1 from "./pages/usuario/usuario1"
+import Usuario2 from "./pages/usuario/usuario2"
 
 import LoginUsuario from "./pages/loginUsuario"
 
@@ -60,6 +61,7 @@ export default function Index() {
                 <Route path='criarconta' element={<CriarConta  />} />
 
                 <Route path='usuario1' element={<Usuario1  />} />
+                <Route path='usuario2' element={<Usuario2  />} />
               </Route>
           
           </Routes>

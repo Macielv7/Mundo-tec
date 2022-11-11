@@ -1,9 +1,11 @@
 import './index.scss'
 import Header from "../../components/header"
+import Rodape from "../../components/rodape"
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Storage from 'local-storage'
 import { toast } from 'react-toastify'
+
 
 import { buscarProdutoPorId } from '../../api/produtoAPI';
 import { API_URL } from '../../api/config';
@@ -64,6 +66,7 @@ export default function ProdutoDetalhe() {
 
 
     return (
+        <div className='f9'>
         <div className='pagina-detalhe-produto'>
             <Header/>
             <div className='produto'>
@@ -88,8 +91,15 @@ export default function ProdutoDetalhe() {
                     
                     <button onClick={adicionarAoCarrinho}> Adicionar ao Carrinho </button>
                 </div>
+
+                
+
                 
             </div>
+           
+            
+        </div>
+      
         </div>
     )
 }
