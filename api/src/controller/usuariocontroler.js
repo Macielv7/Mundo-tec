@@ -28,8 +28,6 @@ server.post('/cadastro/usuario', async (req,resp) => {
 })
 
 
-
-
 server.post('/api/login', async (req, resp) => {
     try {
         const {email, senha} = req.body;

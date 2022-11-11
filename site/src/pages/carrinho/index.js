@@ -135,9 +135,9 @@ export default function Carrinho() {
                     <button onClick={irPedido}> CONTINUAR COMPRANDO </button>
 
                 </div>
-
+                        
             </div>
-
+           
         </div>
     )
 }

@@ -13,11 +13,11 @@ export default function Index() {
             <div className='mae'>
 
                 <div className='retangulo'>
-                    <div className='circo'></div>
+                    <img src='./img/5087579.png' className='circo'/>
                     <h3>Bem-vindo, <br/><span>macielvinicius281@gmail.com</span></h3>
                     
                     <a href='#'>
-                    <img src="./img/icons8-segurança-verificada-24.png" className='' />
+                    <img src="./img/icons8-engrenagem-24.png" className='' />
                     </a>
                 </div>
                

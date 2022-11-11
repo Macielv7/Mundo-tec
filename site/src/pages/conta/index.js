@@ -177,7 +177,7 @@ export default function Index () {
                             <img src="/tudo/5/img/carr.png" alt="" />
                         </div>
                         <div >
-
+                        <img src="./img/icone-noire-camion.png"/>
                             <h3 >Frete Grátis para todo Brasil
                             </h3>
                         </div>
@@ -186,7 +186,7 @@ export default function Index () {
                             <img src="/tudo/5/img/carr.png" alt="" />
                         </div>
                         <div >
-
+                        <img src="./img/pix.png"/>
                             <h3 >5% de desconto no pix
                             </h3>
                         </div>
@@ -195,7 +195,7 @@ export default function Index () {
                             <img src="/tudo/5/img/carr.png" alt="" />
                         </div>
                         <div >
-
+                        <img src="./img/4021708.png"/>
                             <h3 >Parcele em até 12x
 
                             </h3>
@@ -205,7 +205,7 @@ export default function Index () {
                             <img src="/tudo/5/img/carr.png" alt="" />
                         </div>
                         <div >
-
+                            <img src="./img/seguracao.png"/>
                             <h3 >Site seguro
 
                             </h3>

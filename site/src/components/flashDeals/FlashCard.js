@@ -29,18 +29,19 @@ export default function FlashCard(props) {
 
         <div className="FlashCard">
 
-
+           
 
                 <div className='comp-card-produto' onClick={() => abrirDetalhes(props.item.id)}>
                     <img src={exibir(props.item.imagem)} alt="" />
                     <div>
                         <div> {props.item.departamento} </div>
                         <div> {props.item.produto} </div>
+                        <div><s> {props.item.valorantigo} </s></div>
                         <div> R$ {props.item.preco} </div>
                     </div>
                 </div>
-
             
+
 
         </div>
 
