@@ -8,8 +8,8 @@ const api = axios.create({
 
 
 
-export async function cadastroUsuario(nome, cpf,  genero, email, telefone, senha, confirmar) {
-    const r = await api.post('/cadastrousuario',{
+export async function cadastrorUsuario(nome, cpf,  genero, email, telefone, senha, confirmar) {
+    const r = await api.post('/cadastroooo',{
         nome:nome,
         cpf:cpf,
         genero:genero,

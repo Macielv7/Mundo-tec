@@ -1,12 +1,12 @@
 
-
-import { useState} from 'react'
-import {useNavigate} from 'react-router-dom'
+import axios  from 'axios'
+import {useEffect, useState} from 'react'
+import {useHref, useNavigate, useParams} from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
-import { cadastroUsuario } from '../../api/usuario';
+  import 'react-toastify/dist/ReactToastify.css';
+import { cadastrorUsuario, loginUsuario } from '../../api/usuario';
 import Storage from 'local-storage'
 import "./index.scss"
-import Header from "../../components/header"
 
 export default function Index(){
 
@@ -21,29 +21,12 @@ export default function Index(){
     const [erro,setErro] = useState ('')
 
 
-
-    async function CadastroClick() {
-
-        try{
-            const r = await cadastroUsuario(email,senha) 
-            Storage('usuario-logado', r)
-          navigate('/');
-        }
-    
-        catch(err){
-          if(err.response.status === 401){
-              setErro(err.response.data.erro)
-          }
-    
-      }
-    }
-   
   
       async function salvarClick(){
         try{      
-            const r = await cadastroUsuario (nome, cpf,  genero, email, telefone, senha, confirmar)
+            const r = await cadastrorUsuario (nome, cpf,  genero, email, telefone, senha, confirmar)
             Storage('usuario-logado', r)
-            navigate('/');
+            navigate('/loginusuario');
         }
         catch (err){
             toast.error(err.response.data.erro)
@@ -55,9 +38,9 @@ export default function Index(){
 
     return(
         <main className="Cadastrarusu">
-            <Header/>
+         
             <div className="container">
-            
+            <ToastContainer/>
         <div className="f">
           
                 <div className="form-header">
@@ -90,13 +73,13 @@ export default function Index(){
 
                     <div className="input-box">
                         <label for="password">E-mail</label>
-                        <input  type="password"  placeholder="Digite seu e-mail"  value={email} onChange={e => setEmail(e.target.value)}  />
+                        <input    placeholder="Digite seu e-mail"  value={email} onChange={e => setEmail(e.target.value)}  />
                     </div>
 
 
                     <div className="input-box">
                         <label for="confirmPassword">Confirme sua Senha</label>
-                        <input type="password"  placeholder="Digite sua senha novamente" value={confirmar} onChange={e => setConfirmar(e.target.value)}/>
+                        <input   placeholder="Digite sua senha novamente" value={confirmar} onChange={e => setConfirmar(e.target.value)}/>
                     </div>
 
                 </div>
@@ -108,17 +91,17 @@ export default function Index(){
 
                     <div className="gender-group">
                         <div className="gender-input">
-                            <input id="female" type="radio" name="gender"/>
+                            <input id="female" type="radio" name="gender" value={genero} onChange={e => setGenero(e.target.value)}/>
                             <label for="female">Feminino</label>
                         </div>
 
                         <div className="gender-input">
-                            <input id="male" type="radio" name="gender"/>
+                            <input id="male" type="radio" name="gender"value={genero} onChange={e => setGenero(e.target.value)}/>
                             <label for="male">Masculino</label>
                         </div>
 
                         <div className="gender-input">
-                            <input id="none" type="radio" name="gender"/>
+                            <input id="none" type="radio" name="gender"value={genero} onChange={e => setGenero(e.target.value)}/>
                             <label for="none">Prefiro não dizer</label>
                         </div>
                     </div>

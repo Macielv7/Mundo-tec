@@ -1,6 +1,6 @@
 import './index.scss'
 import Header from "../../../components/header"
-import Menu from "../../../components/menu"
+import Barra from "../../../components/barra"
 
 export default function Index() {
 
@@ -8,10 +8,10 @@ export default function Index() {
 
     return (
         <div className='usu1'>
-            <Header />
-            
+           <Header/>
+           <Barra/>
             <div className='mae'>
-
+            
                 <div className='retangulo'>
                     <img src='./img/5087579.png' className='circo'/>
                     <h3>Bem-vindo, <br/><span>macielvinicius281@gmail.com</span></h3>

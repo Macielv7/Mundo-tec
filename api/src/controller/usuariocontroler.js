@@ -9,7 +9,7 @@ const server = Router();
 const upload = multer({ dest: 'storage/capaUsuario'})
 
 
-server.post('/cadastro/usuario', async (req,resp) => {
+server.post('/cadastroooo', async (req,resp) => {
     try {
       const usuario = req.body;
       const x = await cadastrorUsuario(usuario);
@@ -26,6 +26,8 @@ server.post('/cadastro/usuario', async (req,resp) => {
         
     }
 })
+
+
 
 
 server.post('/api/login', async (req, resp) => {
