@@ -70,3 +70,16 @@ export async function RemoverProduto(id){
   export function pegarImagem(imagem) {
     return `http://localhost:5000/${imagem}`
 }
+
+export async function salvarNovoPedido(idUsuario, novoPedido) {
+    const r = await api.post('/api/pedido/' + idUsuario, novoPedido);
+    return r.data;
+}
+
+
+export async function buscardepartamento(id){
+    const resposta = await api.get(`/departamento/produto/${id}`)
+    return resposta.data;
+}  
+
+

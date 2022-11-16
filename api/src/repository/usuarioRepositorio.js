@@ -29,19 +29,38 @@ export async function listarUsuario() {
     const comando =
     `select 
     id_usuario,
-    nm_nome,
-    dt_cpf,
-    ds_email,
+    nm_usuario,
+    ds_cpf, 
+    ds_genero, 
+    ds_email, 
     ds_telefone,
-    ds_genero,
-    ds_senha,
-    ds_confirmar
+     ds_senha,
+      ds_confirmar
     from tb_usuario;`
     
     const [linhas] =  await con.query(comando);
     return linhas;
 }
 
+
+export async function buscarUsuarioPorId(id) {
+    const comando =
+
+    `select 
+    id_usuario id,
+    nm_usuario usuario,
+    ds_cpf cpf, 
+    ds_genero genero, 
+    ds_email email, 
+    ds_telefone telefone,
+     ds_senha senha,
+      ds_confirmar,
+    from tb_usuario
+    where id_usuario = ?`
+
+    const [linhas] = await con.query(comando, [id]);
+    return linhas[0];
+}
 
 
 //ENDEREÇO

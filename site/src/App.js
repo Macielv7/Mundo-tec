@@ -16,6 +16,8 @@ import TelaInicial from "./pages/telaInicial"
 
 import Departamento from "./pages/departamento"
 
+import PagamentoCartao from "./pages/pagamentoCartao"
+
 
 import CriarConta from "./pages/criarConta"
 
@@ -23,6 +25,19 @@ import Usuario1 from "./pages/usuario/usuario1"
 import Usuario2 from "./pages/usuario/usuario2"
 
 import LoginUsuario from "./pages/loginUsuario"
+
+
+
+import Audio from "./pages/departamento/audio"
+import CamerasDrones from "./pages/departamento/camerasDrones"
+import CasaInteligente from "./pages/departamento/casaInteligente"
+import Celular from "./pages/departamento/celular"
+import EspacoGamer from "./pages/departamento/espacoGamer"
+import Gamer from "./pages/departamento/gamer"
+import Hardware from "./pages/departamento/hardware"
+import Perifericos from "./pages/departamento/perifericos"
+import Tv from "./pages/departamento/tv"
+
 
 
 
@@ -62,6 +77,26 @@ export default function Index() {
 
                 <Route path='usuario1' element={<Usuario1  />} />
                 <Route path='usuario2' element={<Usuario2  />} />
+
+                <Route path='cartao' element={<PagamentoCartao  />} />
+              </Route>
+
+
+              <Route>
+
+                <Route path='celular' element={<Celular  />} />
+                <Route path='gamer' element={<Gamer  />} />
+                <Route path='tv' element={<Tv  />} />
+                <Route path='hardware' element={<Hardware />} />
+
+                <Route path='espacogamer' element={<EspacoGamer  />} />
+                <Route path='perifericos' element={<Perifericos  />} />
+                <Route path='camerasdrones/:idParam' element={<CamerasDrones  />} />
+                <Route path='audio' element={<Audio />} />
+
+                <Route path='casainteligente' element={<CasaInteligente  />} />
+                
+                
               </Route>
           
           </Routes>

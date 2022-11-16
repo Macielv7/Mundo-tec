@@ -1,8 +1,9 @@
 import multer from 'multer'
 import { Router } from 'express';
 
-import { alterarProduto, buscarProdutoDestaque, buscarProdutoImagens, buscarProdutoPorId, buscarProdutos, listarProdutosInicio, removerProduto, removerProdutoDestaque, removerProdutoImagens, removerProdutoImagensDiferentesDe, salvarProduto, salvarProdutoDestaque, salvarProdutoImagem } from '../repository/produto.js';
+import { alterarProduto, buscarProdutoDestaque, buscarProdutoImagens,buscarrrdepartamento, buscarProdutoPorId, buscarProdutos, listarProdutosInicio, removerProduto, removerProdutoDestaque, removerProdutoImagens, removerProdutoImagensDiferentesDe, salvarProduto, salvarProdutoDestaque, salvarProdutoImagem ,  } from '../repository/produto.js';
 import { buscarDestaquePorId } from '../repository/destaque.js';
+
 
 
 
@@ -151,6 +152,24 @@ server.put('/admin/produto/:id', async (req, resp) => {
 
     }
     catch (err) {
+        resp.status(400).send({
+            erro: err.message
+        })
+    }
+})
+
+
+server.get('/departamento/produto/:id', async (req, resp) => {
+    try {
+        const id = Number(req.params.id);
+        
+        const resposta = await buscarrrdepartamento(id);
+
+        if (!resposta)
+            resp.status(404).send([])
+        else
+            resp.send(resposta);
+    } catch (err) {
         resp.status(400).send({
             erro: err.message
         })

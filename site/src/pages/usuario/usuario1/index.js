@@ -1,10 +1,38 @@
-import './index.scss'
+
 import Header from "../../../components/header"
 import Barra from "../../../components/barra"
+import  EderecoCard from "../../../components/ederecoCard"
+import { listarUsuario, buscarUsuarioPorId } from "../../../api/usuario"
+import './index.scss'
+import { listar } from '../../../api/usuario'
+import { useEffect, useState } from 'react'
+import Storage, { set } from 'local-storage'
 
 export default function Index() {
+    const [usuario, setUsuario] = useState([])
+    const [itens, setItens] = useState([]);
+    const [enderecos, setEnderecos] = useState([]);
 
-    
+   
+
+    async function carregarUsuario() {
+        const id = Storage('usuario-logado').id
+        const resp = await listarUsuario(id);
+        setUsuario(resp);
+    }
+
+       async function carregarEnderecos() {
+        const id = Storage('usuario-logado').id;
+        const r = await listar(id);
+        setEnderecos(r);
+    }
+
+
+
+    useEffect(() => {
+        carregarEnderecos();
+        carregarUsuario();
+    }, [])
 
     return (
         <div className='usu1'>
@@ -13,12 +41,14 @@ export default function Index() {
             <div className='mae'>
             
                 <div className='retangulo'>
+               
                     <img src='./img/5087579.png' className='circo'/>
-                    <h3>Bem-vindo, <br/><span>macielvinicius281@gmail.com</span></h3>
-                    
+                    <h3>Bem-vindo, <br/><span></span></h3>
+                
                     <a href='#'>
                     <img src="./img/icons8-engrenagem-24.png" className='' />
                     </a>
+                   
                 </div>
                
                 <div >
@@ -56,8 +86,12 @@ export default function Index() {
                     <div className='ender'>
                         <p className='title'> ENDERECO </p>
 
-                        <div className='end'>numero 34 - jardin sipramar</div>
-                        <div className='cep'>cep 75674-756 sao paulo-sp</div>
+                        {enderecos.map(item =>
+            <div>
+                <div className='end'>{item.rua}, {item.numero} - {item.complemento}</div>
+                <div className='cep'> {item.cep}- {item.bairro}, {item.cidade}/{item.estado}</div>
+            </div>
+            )}
 
                     </div>
 

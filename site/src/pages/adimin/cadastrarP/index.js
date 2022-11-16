@@ -145,7 +145,7 @@ export default function Produto() {
 
                     <div>
                         <label> Desconto: </label>
-                        <input type='text' checked={desconto} onChange={e => setDesconto(e.target.checked)} />
+                        <input type='text' checked={desconto} onChange={e => setDesconto(e.target.value)} />
                     </div>
 
 
@@ -168,7 +168,7 @@ export default function Produto() {
 
                     <div>
                         <label> marca: </label>
-                        <input type='text' checked={marca} onChange={e => setMarca(e.target.checked)} />
+                        <input type='text' checked={marca} onChange={e => setMarca(e.target.value)} />
                     </div>
 
                     

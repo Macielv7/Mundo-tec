@@ -5,6 +5,8 @@ import departamento from './controller/departamento.js'
 import produto from './controller/produto.js'
 import usuario from './controller/usuariocontroler.js'
 
+import pedidooo from './controller/pedidooo.js'
+
 import express from "express";
 import cors from "cors";
 
@@ -19,6 +21,8 @@ server.use(usuario)
 server.use(destaque);
 server.use(departamento);
 server.use(produto);
+server.use(pedidooo);
+
  
 
 

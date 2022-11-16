@@ -1,7 +1,7 @@
 .pagina-carrinho {
     background-color: #f3f3f3;
     min-height: 100vh;
-   
+
 
     .carrinho {
         display: flex;
@@ -21,7 +21,7 @@
     }
 
     .resumo {
-        
+
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -29,9 +29,9 @@
         height: 400px;
         width: 300px;
         background-color: #D9D9D9;
-        
-    
-   
+
+
+
         box-shadow: 0px 0px 10px 2px #e0e0e0;
         margin: 0px 0px 0px 10px;
         padding: 2em 0em;
@@ -40,40 +40,40 @@
             font-size: 28px;
             margin: 0px 0px;
         }
-        
 
-        .total{
+
+        .total {
             display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: rgb(6, 0, 83);
-    color: #fff;
-    padding: 2rem 45px;
-    border-radius: 15px;
-    margin-top: 01rem;
-    margin-bottom: 15px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: rgb(6, 0, 83);
+            color: #fff;
+            padding: 2rem 45px;
+            border-radius: 15px;
+            margin-top: 01rem;
+            margin-bottom: 15px;
 
-    border: none;
-    list-style: none;
-    box-sizing: border-box;
-    font-size: 16px;
-    font-family: Poppins, sans-serif !important;
-    
+            border: none;
+            list-style: none;
+            box-sizing: border-box;
+            font-size: 16px;
+            font-family: Poppins, sans-serif !important;
+
 
         }
-    
 
-       
+
+
 
         button {
             width: 80%;
             height: 48px;
             display: flex;
-           
-           
+
+
             justify-content: center;
-           
+
             align-items: center;
             border: 1px solid #03004A;
             background-color: rgb(255, 255, 255);
@@ -85,16 +85,16 @@
             transition: background-color 0.3s ease 0s;
             border-radius: 0.25rem;
             margin-bottom: 10px;
-          
+
         }
 
     }
-    
-    button :hover{
-        background-color:rgb(14, 0, 92);
+
+    button :hover {
+        background-color: rgb(14, 0, 92);
     }
 
-    .cupom{
+    .cupom {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -102,18 +102,18 @@
         height: 85px;
         width: 300px;
         background-color: #D9D9D9;
-        
-        box-shadow: 0px 0px 10px 2px #e0e0e0;
-        margin:0px 0px 0px 0px;
-       
 
-        input{
+        box-shadow: 0px 0px 10px 2px #e0e0e0;
+        margin: 0px 0px 0px 0px;
+
+
+        input {
             border-radius: 10px;
             height: 70px;
             margin: 5px;
-          
+
         }
-     
+
     }
 
 

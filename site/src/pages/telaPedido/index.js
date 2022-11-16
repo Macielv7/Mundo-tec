@@ -99,7 +99,7 @@ export default function ProdutoDetalhe() {
            
            
         </div>
-      
+      <img src="./img/logo.png"/>
         </div>
     )
 }

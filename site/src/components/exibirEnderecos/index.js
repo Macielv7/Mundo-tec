@@ -18,7 +18,7 @@ export default function ModalEndereco({ exibir, fechar }) {
 
     async function salvarEndereco() {
         try {
-            const id = Storage('cliente-logado').id;
+            const id = Storage('usuario-logado').id;
             const r = await salvar(id, cep, rua, bairro, cidade, estado, numero, complemento);
             toast.dark('Endereço salvo');
 

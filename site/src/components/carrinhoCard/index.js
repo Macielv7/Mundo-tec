@@ -17,6 +17,10 @@ export default function CarrinhoCard({ item: { produto: { info, imagens }, qtd }
         }
     }
 
+    function remover() {
+        removerItem(info.id);
+    }
+
     function calcularSubtotal() {
         const subtotal = qtdProduto * info.preco;
         return subtotal;
@@ -63,10 +67,12 @@ export default function CarrinhoCard({ item: { produto: { info, imagens }, qtd }
 
                 </div>
 
-                <div className='lixo'>
+                <div className='lixo'  onClick={remover}>
                     <img src="./img/icons8-remover-24.png" />
                 </div>
             </div>
+
+            
 
         </div>
     )

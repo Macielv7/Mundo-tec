@@ -240,3 +240,34 @@ export async function listarProdutosInicio() {
     const [registros] = await con.query(comando);
     return registros;
 }
+
+
+export async function buscarrrdepartamento(id) {
+    const comando =
+    ` select 
+    id_produto id,
+    id_departamento departamento,
+ 
+    nm_produto produto,
+    vl_preco     preco            ,
+    vl_desconto       desconto      ,
+    dt_valorantigo	 	valorantigo	 
+    from tb_produto
+    where id_departamento = ?`
+    
+    const [linhas] = await con.query(comando, [id]);
+    return linhas;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

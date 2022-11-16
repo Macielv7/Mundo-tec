@@ -1,0 +1,29 @@
+.compo-button{
+ display: flex;
+ padding: 70px;
+       .butt{
+
+       }
+
+       button{
+        width: 180px;
+            height: 48px;
+            display: flex;
+         
+           
+            justify-content: center;
+           
+            align-items: center;
+            border: 1px solid #03004A;
+            background-color: rgb(255, 255, 255);
+            user-select: none;
+            color: #03004A;
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease 0s;
+            border-radius: 0.25rem;
+            margin-bottom: 10px;
+          
+       }
+}

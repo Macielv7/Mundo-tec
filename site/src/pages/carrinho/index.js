@@ -2,7 +2,7 @@ import './index.scss'
 
 import { useEffect, useState } from 'react'
 import { API_URL } from '../../api/config'
-import Storage, { set } from 'local-storage'
+import Storage from 'local-storage'
 import { buscarProdutoPorId } from '../../api/produtoAPI';
 import { listar } from '../../api/usuario'
 import CarrinhoCard from '../../components/carrinhoCard';
@@ -22,10 +22,20 @@ export default function Carrinho() {
     const navigate = useNavigate();
 
     function irPedido() {
-        navigate('/pedido')
+        navigate('/cartao')
     }
 
-   
+    function irPedidooo() {
+        navigate('/')
+    }
+
+    function removerItem(id) {
+        let carrinho = Storage('carrinho');
+        carrinho = carrinho.filter(item => item.id != id);
+
+        Storage('carrinho', carrinho);
+        carregarCarrinho();
+    }
 
     async function carregarEnderecos() {
         const id = Storage('cliente-logado').id;
@@ -96,10 +106,9 @@ export default function Carrinho() {
 
                     <div className='enderecos'>
 
-                      
-                            <EderecoCard 
-                             />
-                           
+                  
+                            <EderecoCard />
+                       
                         
                     </div>
 
@@ -117,7 +126,7 @@ export default function Carrinho() {
                     {itens.map(item => 
                         <CarrinhoCard
                             item={item}
-                            
+                            removerItem={removerItem}
                             carregarCarrinho={carregarCarrinho} />
                     )}
 
@@ -132,13 +141,27 @@ export default function Carrinho() {
 
                     <button onClick={irPedido}> IR PARA PAGAMENTO </button>
 
-                    <button onClick={irPedido}> CONTINUAR COMPRANDO </button>
+                    <button onClick={irPedidooo}> CONTINUAR COMPRANDO </button>
 
                 </div>
+
+               
                         
             </div>
-           
+            <label>cupom</label>
+           <input/>
+           <label>frete</label>
+           <input/>
+           <label>nome</label>
+           <input/>
+           <label>numero</label>
+           <input/>
+           <label>validade</label>
+           <input/>
+           <label>cupom</label>
+           <input/>
         </div>
+        
     )
 }
 

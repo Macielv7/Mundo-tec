@@ -39,6 +39,7 @@
         width: 50px;
         float: left;
         margin-right: 20px;
+        margin-top: 17px;
     }
 
     .car h3{
@@ -71,15 +72,7 @@
         
     }
 
-    .tudo{
-        height: 53vh;
-        width: 100%;
-        background-image: url(../../../public/img/popo.png);
-        background-repeat: no-repeat;
-        background-size: 100%;
-        background-color: #040051;
     
-    }
 
 
 
@@ -96,9 +89,32 @@
         justify-content: space-around;
     }
 
+   
 
-
-
+    .home{
+        min-height: 70vh;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        background: url(../../../public/img/p.png) no-repeat;
+        background-position: center;
+        background-size: cover;
+        position: relative;
+      
+        .content{
+          width:50rem;
+      
+      
+         
+        }
+      
+        .wave{
+          position: absolute;
+          bottom: 0; left:0;
+          width: 100%;
+          height: 6rem;
+        }
+      }
     .container{
         max-width: 1170px;
         margin:auto;
@@ -110,6 +126,37 @@
     ul{
         list-style: none;
     }
+
+
+    @media (max-width:991px) {
+  
+        html{
+          font-size: 55%;
+        }
+      
+        .header{
+          padding:2rem;
+        }
+      
+        section{
+          padding:5rem 2rem;
+        }  
+      
+        .home{
+          justify-content: center;
+          background-position: right;
+      
+          .content{
+            text-align: center;
+            padding-bottom: 5rem;
+      
+            h3{
+              font-size: 4.5rem;
+            }
+          }
+        }
+        
+      }
 
 }
 

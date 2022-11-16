@@ -29,11 +29,39 @@ export async function loooginn(email, senha){
     return a.data;
 }
 
+
 export async function listarUsuario(){
     const resposta = await api.get('/usuario');
     return resposta.data;
   }
 
+  export async function buscarUsuarioPorId(id){
+    const resposta = await api.get(`/usuario/${id}`)
+    return resposta.data;
+}  
+
+export async function alteraUsuario(id, nome, nascimento, email, senha){
+    const resposta = await api.put(`/usuario/${id}`, {
+        nome: nome,
+        nasc: nascimento,
+        email: email,
+        senha: senha
+    })
+    return resposta.data;
+}
+
+export async function enviarImagemUsuario(id, imagem){
+    const formData = new FormData ();
+    formData.append('capa', imagem);
+
+    const resposta = await api.put(`/cadastroUsuario/${id}/capa`, formData,{
+        headers:{
+            "Content-type": "multipart/form-data"
+        },
+    });
+
+    return resposta.status;
+}
 
 export async function logar(email, senha) {
     const r = await api.post('/api/login', { email, senha });

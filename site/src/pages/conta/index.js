@@ -4,11 +4,15 @@ import React from "react"
 import "./index.scss"
 import { useEffect, useState } from 'react';
 
-import { listarProdutosInicio } from '../../api/produtoAPI'
+import { listarProdutosInicio , buscardepartamento } from '../../api/produtoAPI'
 import { useNavigate } from 'react-router-dom';
 import Header from "../../components/header"
 import Rodape from "../../components/rodape"
-import FlashCard from "../../components/flashDeals/FlashCard"
+import FlashDeals from "../../components/flashCard/flas"
+
+import { API_URL } from '../../api/config';
+
+
 
 
 export default function Index () {
@@ -18,11 +22,17 @@ export default function Index () {
 
     const navigate = useNavigate();
 
+
+    
+    function Departamento(id) {
+        navigate(`/camerasdrones/${id}` )
+    }
+
+
     async function listar() {
         const r = await listarProdutosInicio();
         setProdutos(r);
     }
-
 
     useEffect(() => {
         listar();
@@ -33,46 +43,43 @@ export default function Index () {
         <main className="home-inicio">
 
        <Header />
+      
        
 
 
-       <div class="tudo">
-        <div class="nome">
-            <img src="" alt=""/>
-        </div>
-        <div className="mo">
+       <section class="home" id="home">
 
-       
-        </div>
-</div>
+   
+
+    <img src="./img/branco.png" class="wave" alt=""/>
+
+</section>
    
 
 
-       <div className="produtos-container">
                 
                    
-       {produtos.map(item => 
-                    <FlashCard item={item} />
-                )}
+<FlashDeals/>
+                    
+               
                 
              
-            </div>
+           
             <div className="con">
                 <img src="./img/cadeira.jfif" alt="" />
                 <img src="./img/cadeira.jfif" alt="" />
             </div>
 
 
-            <div className="produtos-container">
+         
                 
               
               
-            {produtos.map(item => 
-                    <FlashCard item={item} />
-                )}
+          
+            <FlashDeals/>
             
          
-        </div>
+        
             
            
            
@@ -85,7 +92,7 @@ export default function Index () {
                     
 
                 <div className="imagem-oferta">
-                        <img src="./img/pp.png" height="322px" alt="" />
+                        <img src="./img/pp.png" height="332px" alt="" />
                     </div>
                     
                
@@ -101,24 +108,28 @@ export default function Index () {
                     <div class="os">
 
                         <div class="lk">
+                            
                             <h1>Periféricos </h1>
+                            
                             <img src="./img/perifericos.png" alt="" />
-
+                           
 
                         </div>
 
                         <div class="lk">
                             <h1>Celular</h1>
+                            <a href="/celular">
                             <img src="./img/celular.png" alt="" />
-
+                            </a>
 
                         </div>
 
                         <div class="lk" >
                             <h1>TV</h1>
+                            <a href="/tv">
                             <img src="./img/tv.png" alt="" />
 
-
+                            </a>
                         </div>
                     </div>
 
@@ -127,45 +138,53 @@ export default function Index () {
                     <div class="os">
                         <div class="lk">
                             <h1>Casa Inteligente </h1>
+                            <a href="/casainteligente">
                             <img src="./img/casa.png" alt="" />
-
+                            </a>
 
                         </div>
 
                         <div class="lk">
                             <h1>Hardware</h1>
+                            <a href="/hardware">
                             <img src="./img/hader.png" alt="" />
-
+                            </a>
 
                         </div>
 
                         <div class="lk" >
                             <h1>Games</h1>
+                            <a hreft="gamer">
                             <img src="./img/g.png" alt="" />
-
+                            </a>
 
                         </div>
                     </div>
 
                     <div class="os">
                         <div class="lk">
+                         
                             <h1>Espaço Gamer </h1>
-                            <img src="./img/espacogamr.png" alt="" />
+                               <a hreft="/espacogamer">
+                                                            <img src="./img/espacogamr.png" alt="" />
 
+                                                            </a>
 
                         </div>
-
+                      
                         <div class="lk">
                             <h1>Câmeras e Drones</h1>
-                            <img src="./img/cameras.png" alt="" />
+                         <a href="camerasdrones">
+                            <img src="./img/cameras.png" alt=""/>
 
-
+                            </a>
                         </div>
-
+                        
                         <div class="lk" >
                             <h1>Áudio</h1>
+                            <a href="/audio">
                             <img src="./img/audio.png" alt="" />
-
+                            </a>
 
                         </div>
                     </div>
