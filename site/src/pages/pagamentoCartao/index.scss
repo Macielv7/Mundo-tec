@@ -9,10 +9,7 @@
         justify-content: space-between;
         align-items: center;
 
-        margin-bottom: 20px;
-        h1 {
-            margin: unset
-        }
+    
     }
     .finalizar {
         display: flex;
@@ -35,11 +32,16 @@
     }
     
   
+.itens{
+
+    align-items: center;
+    justify-content: center;
+    display: flex;
 
     table {
-        width: 50%;
+        width: 100%;
         border-collapse: collapse;
-       
+      
         margin-top: 50px;
     }
     th,td {
@@ -47,6 +49,7 @@
         text-align: center;
         border-bottom: 1px solid #cfcfcf;
         color: #767676;
+        
     }
     tr th:first-child {
         text-align: left;
@@ -60,7 +63,7 @@
     th:first-child {
         width: 50%;
     }
-
+}
 
 
 
@@ -107,12 +110,12 @@
     
    
     
-    display: inline-block;
+  
 
-    min-height: 100vh;
+ 
     background: #eee;
     
-    padding: 20px;
+    padding: 10px;
     flex-flow: column;
     padding-bottom: 6px;
 }
@@ -127,7 +130,7 @@
 }
 
 .container form .inputBox{
-    margin-top: 20px;
+    margin-top: 5px;
 }
 
 .container form .inputBox span{
