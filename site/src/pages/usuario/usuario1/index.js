@@ -43,7 +43,7 @@ export default function Index() {
                 <div className='retangulo'>
                
                     <img src='./img/5087579.png' className='circo'/>
-                    <h3>Bem-vindo, <br/><span></span></h3>
+                    <h3>Bem-vindo, <br/><span>macielvinicius@gmail.com</span></h3>
                 
                     <a href='#'>
                     <img src="./img/icons8-engrenagem-24.png" className='' />

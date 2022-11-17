@@ -5,13 +5,16 @@ import "slick-carousel/slick/slick-theme.css"
 import { listarProdutosInicio } from '../../api/produtoAPI'
 import { API_URL } from '../../api/config';
 import './index.scss'
+
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom'
+
 
 
 export default function FlashCard() {
 
     const [produtos, setProdutos] = useState([]);
+    
 
     const navigate = useNavigate();
 
@@ -28,6 +31,10 @@ export default function FlashCard() {
         else
             return `${API_URL}/${imagem}`
     }
+
+
+ 
+
 
     function abrirDetalhes(id) {
         navigate('/tela/' + id + '/pedido')
@@ -98,7 +105,7 @@ export default function FlashCard() {
                                    
                                 </div>
                             </div>
-                             <button >
+                             <button  >
                            
                                         <h11>Comprar</h11>
                                     </button>
@@ -112,4 +119,5 @@ export default function FlashCard() {
 
     )
 
-}
+                }
+            

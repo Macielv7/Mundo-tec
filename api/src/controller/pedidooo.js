@@ -3,7 +3,7 @@
 import { Router } from "express";
 import { inserirPagamento, inserirPedido, inserirPedidoItem } from "../repository/pedidooo.js";
 import { buscarProdutoPorId } from "../repository/produto.js";
-
+import { acharCupom, criarNotaFiscal, criarNovoPedido } from "../service/novoProdutoService.js";
 const server = Router();
 
 

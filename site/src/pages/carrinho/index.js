@@ -148,18 +148,7 @@ export default function Carrinho() {
                
                         
             </div>
-            <label>cupom</label>
-           <input/>
-           <label>frete</label>
-           <input/>
-           <label>nome</label>
-           <input/>
-           <label>numero</label>
-           <input/>
-           <label>validade</label>
-           <input/>
-           <label>cupom</label>
-           <input/>
+           
         </div>
         
     )

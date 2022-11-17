@@ -11,3 +11,9 @@ export async function salvarNovoPedido(idUsuario, novoPedido) {
     return r.data;
 }
 
+export async function listarPedido(){
+    const resposta = await api.get('/api/pedido/');
+    return resposta.data;
+  }
+
+

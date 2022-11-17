@@ -196,6 +196,13 @@
     padding:20px;
     transform:perspective(1000px) rotateY(0deg);
     transition:transform .4s ease-out;
+
+   
+}
+
+@keyframes gradientEffect{
+    from {background-position: 0 0;}
+    to {background-position: 100% ;}    
 }
 
 .container .card-container .front .image{

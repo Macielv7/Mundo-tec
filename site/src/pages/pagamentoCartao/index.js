@@ -155,8 +155,8 @@ export default function Index() {
 
                         <div class="front">
                             <div class="image">
-                                <img src="image/chip.png" alt="" />
-                                <img src="image/visa.png" alt="" />
+                                <img src="./img/chip.png" alt="" />
+                                <img src="./img/visa.png" alt="" />
                             </div>
                             <div class="card-number-box">000000000000</div>
                             <div class="flexbox">
