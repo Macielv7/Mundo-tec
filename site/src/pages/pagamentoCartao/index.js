@@ -161,11 +161,11 @@ export default function Index() {
                             <div class="card-number-box">000000000000</div>
                             <div class="flexbox">
                                 <div class="box">
-                                    <span>card holder</span>
+                                    <span>xxxxxxxx</span>
 
                                 </div>
                                 <div class="box">
-                                    <span>expires</span>
+                                    <span>xxxxxx</span>
 
                                 </div>
                             </div>
