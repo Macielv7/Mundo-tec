@@ -17,7 +17,7 @@ server.use(cors());
 server.use(express.json());
 
 
-server.use(usuario)
+server.use(usuario);
 server.use(destaque);
 server.use(departamento);
 server.use(produto);

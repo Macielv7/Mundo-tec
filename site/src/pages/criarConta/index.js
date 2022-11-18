@@ -33,7 +33,6 @@ export default function Index(){
             toast.error(err.response.data.erro)
         }
         
-        
     }
 
 

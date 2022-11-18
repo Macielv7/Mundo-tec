@@ -287,9 +287,10 @@ export default function Index() {
 
 
                 <div className='pedido-box'>
-                    <h1> Pedido </h1>
+                   
                     <div className='finalizar'>
-                        <div>Total: <span> R$ {calcularTotal()}</span></div>
+                    
+                        <div><span> R$ {calcularTotal()}</span></div>
 
                     </div>
                 </div>

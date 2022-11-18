@@ -42,50 +42,62 @@ const navigate = useNavigate();
 
 
 
+   
+
+
+
+
     return (
-      <main className='tela-departamento'>
+        <main className='page page-consultar'>
+            <Header/> 
+            <div className='container'>
+                
+                
+                <div className='conteudo'>
 
-        <Header/> 
+                    <div className='caixa-busca'>
+                        
+                    
+                      
+                    </div>
+                    
 
-        <div className='departa'>
-            
-          <div className='cont'>
-            <h1>Periféricos</h1>
-          </div>
 
-          <div className='ordenar'>
+                    <div className='card-container'>
 
-          {ge.map(item =>
 
-<div className='box'>
-    
-    <div className='product mtop' onClick={() => abrirDetalhes(item.id)} >
-        <div className='img'>
-            <span className='discount'>{item.desconto} Off</span>
-            <img src={exibir(item.imagem)} alt="" />
+                        <div className='comp-card'>
+                                    <div className='card'>
+                                    <div className='acoes'>
 
-        </div>
-        <div className='product-details'>
-            <h5>{item.departamento} </h5>
-            <h3>{item.produto} </h3>
-            <h9><s>R${item.valorantigo}</s></h9>
-            <div className='price'>
-            
-                <h4>R${item.preco}</h4>
+                                        
+                                        
+                                    </div>
+                                    {ge.map(item =>
+                                    <div>
+                                       
+                                        <img className='capas' src={exibir(item.imagem)}/>      
+                                      
+                                        
+                                        
+                                        <div className='nomee'>{item.produto} </div>
 
-               
+                                        <div className='antigo'>{item.preco}</div>
+                                        <div className='precoo'>{item.proco}</div>
+
+                                        <button className='b'> </button>
+                                    </div>
+                                    )}
+                                    </div>
+                        </div>
+                    </div>  
+                </div>
             </div>
-        </div>
-         <button >
-       
-                    <h11>Comprar</h11>
-                </button>
-    </div>
-</div>
-)}
-            
-          </div>
-        </div>
         </main>
     )
 }
+
+        
+       
+      
+    

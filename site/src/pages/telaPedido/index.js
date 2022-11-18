@@ -1,6 +1,6 @@
 import './index.scss'
 import Header from "../../components/header"
-import Rodape from "../../components/rodape"
+import FlashDeals from "../../components/flashCard"
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Storage from 'local-storage'
@@ -22,17 +22,20 @@ export default function ProdutoDetalhe() {
         setProduto(r);
     }
 
+
     function exibirImagemPrincipal() {
         if (produto.imagens.length > 0) {
             return API_URL + '/' + produto.imagens[imagemPrincipal];
 
         }
-        
+
         else {
             return '/download.png';
-            
+
         }
     }
+
+
 
     function exibirImagemProduto(imagem) {
         return API_URL + '/' + imagem;
@@ -59,47 +62,42 @@ export default function ProdutoDetalhe() {
     }
 
 
-
     useEffect(() => {
-        carregarPagina(); 
+        carregarPagina();
     }, [])
 
 
     return (
         <div className='f9'>
-        <div className='pagina-detalhe-produto'>
-            <Header/>
-            <div className='produto'>
-                    
+            <div className='pagina-detalhe-produto'>
+                <Header />
+                <div className='produto'>
 
-                <div className='imagens'>
-                    <div className='opcoes'>
-                        {produto.imagens.map((item, pos) => 
-                            <img src={exibirImagemProduto(item)} onClick={() => setImagemPrincipal(pos)} />
-                        )}
+                    <div className='imagens'>
+                        <div className='opcoes'>
+                            {produto.imagens.map((item, pos) =>
+                                <img src={exibirImagemProduto(item)} onClick={() => setImagemPrincipal(pos)} />
+                            )}
+                        </div>
+                        <div className='atual'>
+                            <img src={exibirImagemPrincipal()} />
+                        </div>
                     </div>
-                    <div className='atual'>
-                        <img src={exibirImagemPrincipal()} />
+
+                    <div className='detalhes'>
+                        <div className='nome'> {produto.info.produto} </div>
+                        <div className='departamento'> {produto.info.nomeDepartamento} </div>
+
+                        <div className='antigo'> <s> R$ {produto.info.valorantigo} </s> </div>
+                        <div className='preco'> R$ {produto.info.preco} </div>
+
+                        <button onClick={adicionarAoCarrinho}> Adicionar ao Carrinho </button>
                     </div>
-                </div>
-                <div className='detalhes'>
-                    <div className='nome'> {produto.info.produto} </div>
-                    <div className='departamento'> {produto.info.nomeDepartamento} </div>
-                    
-                    <div className='antigo'> <s> R$ {produto.info.valorantigo} </s> </div>
-                    <div className='preco'> R$ {produto.info.preco} </div>
-                    
-                    <button onClick={adicionarAoCarrinho}> Adicionar ao Carrinho </button>
+
                 </div>
 
-                
-
-                
             </div>
-           
-           
-        </div>
-      <img src="./img/logo.png"/>
+
         </div>
     )
 }

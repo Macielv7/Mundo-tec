@@ -2,7 +2,7 @@
 import Header from "../../../components/header"
 import Barra from "../../../components/barra"
 import  EderecoCard from "../../../components/ederecoCard"
-import { listarUsuario, buscarUsuarioPorId } from "../../../api/usuario"
+import { listarUsuario } from "../../../api/usuario"
 import './index.scss'
 import { listar } from '../../../api/usuario'
 import { useEffect, useState } from 'react'
@@ -43,7 +43,7 @@ export default function Index() {
                 <div className='retangulo'>
                
                     <img src='./img/5087579.png' className='circo'/>
-                    <h3>Bem-vindo, <br/><span>macielvinicius@gmail.com</span></h3>
+                    <h3>Bem-vindo,  {usuario.email} <br/><span>macielvinicius@gmail.com</span></h3>
                 
                     <a href='#'>
                     <img src="./img/icons8-engrenagem-24.png" className='' />
@@ -75,7 +75,7 @@ export default function Index() {
 
                     <div className='pagamento'>
                         <p className='title'>PAGAMENTO</p>
-                        <p className='desc'>PIX</p>
+                        <p className='desc'>Cartao</p>
                     </div>
 
 
@@ -94,8 +94,6 @@ export default function Index() {
             )}
 
                     </div>
-
-
                 </div>
 
 

@@ -61,11 +61,11 @@ export default function Index() {
 								<i class="fas fa-lock"></i>
 							</div>
 							<div class="div">
-
+								
 								<input placeholder="senha" class="input" value={senha} onChange={e => setSenha(e.target.value)} />
 							</div>
 						</div>
-						<a href="#">Esqueceu senha</a>
+						<a href="/recuperasenha">Esqueceu senha</a>
 
 						<button className='btn' type="button" onClick={loginClick} > Entrar </button>
 

@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 import { listarProdutosInicio } from '../../api/produtoAPI'
+import { IoIosUndo, IoIosShareAlt, IoMdHeartEmpty } from 'react-icons/io'
 import { API_URL } from '../../api/config';
 import './index.scss'
 
@@ -14,7 +15,7 @@ import { useNavigate } from 'react-router-dom'
 export default function FlashCard() {
 
     const [produtos, setProdutos] = useState([]);
-    
+
 
     const navigate = useNavigate();
 
@@ -27,13 +28,13 @@ export default function FlashCard() {
 
     function exibir(imagem) {
         if (!imagem)
-            return `/produto-padrao.png`;
+            return `./img/logo.png`;
         else
             return `${API_URL}/${imagem}`
     }
 
 
- 
+
 
 
     function abrirDetalhes(id) {
@@ -45,7 +46,7 @@ export default function FlashCard() {
         return (
             <div className='control-btn' onClick={onClick}>
                 <button className='next'>
-                    <i className='fa fa-long-arrow-alt-right'></i>
+                    <IoIosShareAlt className='icon' />
                 </button>
             </div>
         )
@@ -55,10 +56,15 @@ export default function FlashCard() {
         return (
             <div className='control-btn' onClick={onClick}>
                 <button className='prev'>
-                    <i className='fa fa-long-arrow-alt-left'></i>
+                    <IoIosUndo className='icon' />
                 </button>
             </div>
         )
+    }
+
+    const [count, setCount] = useState(0)
+    const increment = () => {
+        setCount(count + 1)
     }
 
 
@@ -87,11 +93,16 @@ export default function FlashCard() {
                 {produtos.map(item =>
 
                     <div className='box'>
-                        
+
                         <div className='product mtop' onClick={() => abrirDetalhes(item.id)}>
                             <div className='img'>
                                 <span className='discount'>{item.desconto} Off</span>
                                 <img src={exibir(item.imagem)} alt="" />
+                                <div className='product-like'>
+                                    <IoMdHeartEmpty IoMdHeartEmpty onClick={increment}></IoMdHeartEmpty>
+
+                                </div>
+
 
                             </div>
                             <div className='product-details'>
@@ -99,18 +110,18 @@ export default function FlashCard() {
                                 <h3>{item.produto} </h3>
                                 <h9><s>R${item.valorantigo}</s></h9>
                                 <div className='price'>
-                                
+
                                     <h4>R${item.preco}</h4>
 
-                                   
+
                                 </div>
                             </div>
-                             <button  >
-                           
-                                        <h11>Comprar</h11>
-                                    </button>
+                            <button  >
+
+                                <h11>Comprar</h11>
+                            </button>
                         </div>
- </div>
+                    </div>
                 )}
             </Slider>
 
@@ -119,5 +130,4 @@ export default function FlashCard() {
 
     )
 
-                }
-            
+}

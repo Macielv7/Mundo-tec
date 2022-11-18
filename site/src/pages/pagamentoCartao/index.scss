@@ -9,14 +9,28 @@
         justify-content: space-between;
         align-items: center;
 
+        
+
     
     }
     .finalizar {
         display: flex;
-        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: center;
         align-items: center;
-        color: #4e4e4e;
+        background: rgb(6, 0, 83);
+        color: #fff;
+        padding: 2rem 45px;
+        margin: 15px;
+        border-radius: 15px;
+        margin-top: 01rem;
+        margin-bottom: 15px;
 
+        border: none;
+        list-style: none;
+        box-sizing: border-box;
+        font-size: 16px;
+        font-family: Poppins, sans-serif !important;
         div {
             font-size: 18px;
             font-weight: 500;

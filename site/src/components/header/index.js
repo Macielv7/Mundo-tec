@@ -1,5 +1,6 @@
 import React from "react"
 import './index.scss'
+import {IoIosHome, IoMdCall, IoMdChatboxes, IoMdClipboard, IoIosHeart, IoMdHammer, IoMdBookmark, IoIosCart, IoMdMenu, IoMdPerson} from 'react-icons/io'
 
 export default function Header() {
 

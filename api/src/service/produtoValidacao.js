@@ -8,8 +8,5 @@ export async function validarProduto(produto) {
     else if (isNaN(produto.preco) || produto.preco <= 0) {
         throw new Error('Preço do produto é obrigatório!');
     }
-    
-    
-  
 
 }

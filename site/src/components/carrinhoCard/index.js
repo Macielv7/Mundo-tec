@@ -26,19 +26,6 @@ export default function CarrinhoCard({ item: { produto: { info, imagens }, qtd }
         return subtotal;
     }
 
-    function alterarQuantidade(novaQtd) {
-        setQtdProduto(novaQtd);
-
-        let carrinho = Storage('carrinho');
-        let itemStorage = carrinho.find(item => item.id == info.id);
-        itemStorage.qtd = novaQtd;
-
-        Storage('carrinho', carrinho);
-        carregarCarrinho();
-    }
-
-
-
 
     return (
         <div className='comp-carrinho-item'>
@@ -56,6 +43,7 @@ export default function CarrinhoCard({ item: { produto: { info, imagens }, qtd }
 
                     </div>
                 </div>
+                
                 <div className='qtd-box'>
                     <div className='i'></div>
                     <div className='subtotal'>

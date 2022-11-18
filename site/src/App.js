@@ -18,7 +18,7 @@ import Departamento from "./pages/departamento"
 
 import PagamentoCartao from "./pages/pagamentoCartao"
 
-
+import Recuperasenha from "./pages/recuperaSenha"
 import CriarConta from "./pages/criarConta"
 
 import Usuario1 from "./pages/usuario/usuario1"
@@ -69,6 +69,7 @@ export default function Index() {
                 
                 
                 <Route path='infoUsuario' element={< InfoUsuario />} />
+                <Route path='recuperasenha' element={< Recuperasenha />} />
                 
               </Route>
 

@@ -18,18 +18,18 @@ export default function CardEndereco() {
 
     useEffect(() => {
         carregarEnderecos();
-      
+
     }, [])
 
     return (
         <div className='comp-card-endereco'
-           
+
         >
             {enderecos.map(item =>
-            <div>
-                <div className='end'>{item.rua}, {item.numero} - {item.complemento}</div>
-                <div className='cep'> {item.cep}- {item.bairro}, {item.cidade}/{item.estado}</div>
-            </div>
+                <div>
+                    <div className='end'>{item.rua}, {item.numero} - {item.complemento}</div>
+                    <div className='cep'> {item.cep}- {item.bairro}, {item.cidade}/{item.estado}</div>
+                </div>
             )}
         </div>
     )

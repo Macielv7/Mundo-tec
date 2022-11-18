@@ -43,7 +43,7 @@ export default function Carrinho() {
         setEnderecos(r);
     }
 
-    
+
     function exibirNovoEndereco() {
         setExibirEndereco(true);
     }
@@ -68,10 +68,10 @@ export default function Carrinho() {
         if (carrinho) {
 
             let temp = [];
-            
+
             for (let produto of carrinho) {
                 let p = await buscarProdutoPorId(produto.id);
-                
+
                 temp.push({
                     produto: p,
                     qtd: produto.qtd
@@ -86,44 +86,44 @@ export default function Carrinho() {
     useEffect(() => {
         carregarCarrinho();
         carregarEnderecos();
-        
+
     }, [])
 
 
     return (
         <div className='pagina-carrinho'>
-            <Header/>
+            <Header />
 
             <h1> PRODUTO E FRETE </h1>
 
             <div className='pagina-pedido'>
-            <ExibirEnderecos exibir={exibirEndereco} fechar={fecharNovoEndereco} />
+                <ExibirEnderecos exibir={exibirEndereco} fechar={fecharNovoEndereco} />
 
 
-            <div className='info'>
-                <div>
-                    <h2>SELECIONE O ENDEREÇO</h2>
+                <div className='info'>
+                    <div>
+                        <h2>SELECIONE O ENDEREÇO</h2>
 
-                    <div className='enderecos'>
+                        <div className='enderecos'>
 
-                  
+
                             <EderecoCard />
-                       
-                        
+
+
+                        </div>
+
+                        <button onClick={exibirNovoEndereco}> Novo </button>
+
                     </div>
 
-                    <button  onClick={exibirNovoEndereco}> Novo </button>
-
                 </div>
-
-                </div>
-        </div>
+            </div>
 
             <div className='carrinho'>
 
                 <div className='itens'>
 
-                    {itens.map(item => 
+                    {itens.map(item =>
                         <CarrinhoCard
                             item={item}
                             removerItem={removerItem}
@@ -131,12 +131,12 @@ export default function Carrinho() {
                     )}
 
                 </div>
-                
+
                 <div className='resumo'>
                     <h1> PREÇOS TOTAL   </h1>
                     <div className='total'>
-                    <h3>  valor total: </h3>
-                    <p> R$ {calcularValorTotal()} </p>
+                        <h3>  valor total: </h3>
+                        <p> R$ {calcularValorTotal()} </p>
                     </div>
 
                     <button onClick={irPedido}> IR PARA PAGAMENTO </button>
@@ -145,12 +145,10 @@ export default function Carrinho() {
 
                 </div>
 
-               
-                        
             </div>
-           
+
         </div>
-        
+
     )
 }
 
