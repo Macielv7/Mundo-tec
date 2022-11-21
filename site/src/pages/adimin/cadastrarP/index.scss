@@ -2,54 +2,99 @@
     padding: 1.5em;
     display: flex;
     margin-left: 250px;
+    background-color: #eee;
     
-    
-    
-    .cat-conteiner {
-        display: flex;
-        flex-wrap: wrap;
-    }
+    textarea {
+        resize: none;
+      }
+      
+      input, select {
+        outline: none;
+        border: 1px solid rgb(92, 92, 92);
+        user-select: none;
+      
+        border-radius: 5px;
+        font-size: 1em;
+        padding: .5em;
+        width: 100%;
+      }
+      
+      input[type=checkbox] {
+        width: auto;
+        align-self: flex-start;
+      }
 
-
-    .image-container {
+      button {
+        width: 11.5em;
+        height: 1.5em;
+        margin: 0.5em;
+        background: rgb(4, 0, 63);
+        color: white;
+        border: none;
+        border-radius: 0.625em;
+        font-size: 20px;
+        font-weight: bold;
+        cursor: pointer;
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+       }
+       
+       button:hover {
+        color: black;
+       }
+       
+       button:after {
+        content: "";
+        background: white;
+        position: absolute;
+        z-index: -1;
+        left: -20%;
+        right: -20%;
+        top: 0;
+        bottom: 0;
+        transform: skewX(-45deg) scale(0, 1);
+        transition: all 0.5s;
+       }
+       
+       button:hover:after {
+        transform: skewX(-45deg) scale(1, 1);
+        -webkit-transition: all 0.5s;
+        transition: all 0.5s;
+       }
+    
+    
+    
+      .image-container {
         display: flex;
         
-      
-        margin-left: 250px;
+        
+        width: 400px;
+        margin-left: 30px;
     }
-    
+    .image-container img {
+        margin:5px;
+        width: 150px;
+        cursor: pointer;
+    }
     .image-container input[type=file] {
         visibility: hidden;
     }
-    
+    .image-container > div {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        font-size: 10px;
+        text-transform: uppercase;
+    }
+    .image-container > div span {
+        cursor: pointer;
+    }
     
 
   
 
-    .imagens {
-        display: flex;
-        flex-direction: row;
-        justify-content: end;
-
-        .opcoes {
-            display: flex;
-            flex-direction: column;
-            margin: 30px;
-            border: none 5px black;
-            justify-content: end;
-
-            img {
-                width: 80px;
-                margin: 10px;
-            }
-        }
-
-        .atual img {
-            max-width: 300px;
-            width: 200%;
-        }
     
-    }
 
 
  

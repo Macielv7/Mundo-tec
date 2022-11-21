@@ -1,14 +1,90 @@
-.perfil-geral{
+
+.usu2 {
+    background-color: #eee;
+
+
+div.cards {
+    display: flex;
+    padding: 32px;
+    
     display: flex;
     justify-content: center;
-
-
-    .perfil-1{
-        
-.opa{
-    display: flex;
-   flex-direction: column;
+    align-items: center;
 }
 
+div.cards div.card {
+    display: flex;
+    flex-direction: column;
+    
+    background: white;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    height: 500px;
+    width: 350px;
+    margin-left: 32px;
+}
+
+div.cards div.card:first-child {
+    margin-left: 0;
+}
+
+div.cards div.card .icon {
+    width: 64px;
+    height: 64px;
+}
+
+div.cards div.card img {
+    width: 100%;
+}
+
+div.cards div.card h3 {
+    font-size: 100%;
+    margin: 16px 0;
+}
+
+div.cards div.card span {
+    font-weight: 300;
+    max-width: 240px;
+    font-size: 80%;
+    margin-bottom: 16px;
+}
+
+div.cards div.card button {
+    padding: 0.5rem 1rem;
+    text-transform: uppercase;
+    
+    border-radius: 32px;
+    border: 0;
+    cursor: pointer;
+    font-size: 80%;
+    font-weight: 500;
+    height: 40px;
+    margin: 90px;
+    width: 100px;
+    color: #fff;
+    background-color: rgb(9, 0, 94);
+    margin-bottom: 16px 0;
+}
+
+
+
+@media screen and (max-width: 720px) {
+    div.cards {
+        flex-direction: column;
     }
+
+    div.cards div.card {
+        margin-left: 0;
+        margin-bottom: 32px;
+    }
+
+    div.cards div.card:last-child {
+        margin-bottom: 0;
+    }
+
+    div.cards div.card button {
+        font-size: 70%;
+    }
+
+}
 }

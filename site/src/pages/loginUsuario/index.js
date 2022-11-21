@@ -41,7 +41,9 @@ export default function Index() {
 			<img class="wave" src="./img/wave.png" />
 			<div class="contaiiner">
 				<div class="img">
+					<a href="/loginadm">
 					<img src="./img/Mobile login-bro.png" />
+					</a>
 				</div>
 				<div class="login-content">
 					<div className='conteudooo'>

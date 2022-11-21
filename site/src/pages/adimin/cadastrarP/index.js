@@ -127,12 +127,12 @@ export default function Produto() {
     return (
         <div className='pagina-admin-produto'>
             <Menu />
-            <h1> {id ? 'Alterar Produto' : 'Novo Produto'} </h1>
+           
 
             <div className='form-container'>
 
                 <div className='form'>
-
+                <h1> {id ? 'Alterar Produto' : 'Novo Produto'} </h1>
                     <div>
                         <label> Produto: </label>
                         <input type='text' value={nome} onChange={e => setNome(e.target.value)} />

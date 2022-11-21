@@ -1,81 +1,140 @@
-import './index.scss'
+
 import Header from "../../../components/header"
+import Barra from "../../../components/barra"
+import  EderecoCard from "../../../components/ederecoCard"
+
+import './index.scss'
+
+
+import { listar } from '../../../api/usuario'
+import { ToastContainer, toast } from 'react-toastify';
+
+import { API_URL } from '../../../api/config'
+import { useEffect, useState } from 'react'
+import { buscarUsuarioPorId, listarUsuario, enviarImagemUsuario } from '../../../api/usuario'
+import { useNavigate, useParams } from 'react-router-dom'
+import Storage from 'local-storage'
 
 
 
 export default function Index() {
 
+    const [usuario, setUsuario] = useState([])
+    const [enderecos, setEnderecos] = useState([])
+    const [imagem, setImagem] = useState('')
+    
+
+    const {idParam} = useParams()
+   const  navigate = useNavigate ()
+
+    function sairClick(){
+        Storage.remove('usuario-logado')
+        navigate('/LoginUsuario')
+    }
+
+    async function carregarUsuario() {
+        const id = Storage('usuario-logado').id
+        const resp = await buscarUsuarioPorId(id);
+        setUsuario(resp);
+    }
+
+   
+    function mostrarImagem(imagem) {
+
+        if (typeof (imagem) == 'object') {
+            return URL.createObjectURL(imagem);
+        }
+        else {
+            return `${API_URL}/${imagem}`
+        }
+    }
+
+    function escolherImagem() {
+        document.getElementById('imagemCapa').click();
+    }
+
+    async function salvarImagem(){
+        try {
+            
+            if(typeof(imagem) == 'object'){
+                await enviarImagemUsuario(idParam, imagem)
+                
+            }
+
+            toast.success('trocastes a foto, querido usuario do fitas br')
+        
+        } catch (err) {
+            if(err.response)
+            toast.error(err.response.data.erro)
+            else
+            toast.error(err.message);
+        }
+
+    }
+
+       async function carregarEnderecos() {
+        const id = Storage('usuario-logado').id;
+        const r = await listar(id);
+        setEnderecos(r);
+    }
+
+
+
+    useEffect(() => {
+        carregarEnderecos();
+        carregarUsuario();
+         
+    }, [])
 
 
     return (
-        <div className='usu2'>
-            <Header />
-
-            <div className='perfil-geral'>
-                <h1>MEUS DADOS</h1>
-
-                <div className='perfil-1'>
-
-                    <div className='opa'>
-                        <div className="gender-title">
-                            <h3>DADOS BÁSICOS</h3>
-                        </div>
-                        <input />
-                        <input />
-                        <input />
-                        <input />
-
-
-                        <div className="gender-inputs">
-                            <div className="gender-title">
-                                <h6>Gênero</h6>
-                            </div>
-
-                            <div className="gender-group">
-                                <div className="gender-input">
-                                    <input id="female" type="radio" name="gender" />
-                                    <label for="female">Feminino</label>
-                                </div>
-
-                                <div className="gender-input">
-                                    <input id="male" type="radio" name="gender" />
-                                    <label for="male">Masculino</label>
-                                </div>
-
-                                <div className="gender-input">
-                                    <input id="none" type="radio" name="gender" />
-                                    <label for="none">outros</label>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <div className='perfil-2'>
-
-                    <div>
-                        <div className="gender-title">
-                            <h3>ENDERECO</h3>
-                        </div>
-
-                        <div>Rua Lopez Freire</div>
-                        <div>Número: 95</div>
-                        <div>CEP 04000001 - São Paulo, SP</div>
-
-                    </div>
-
-                </div>
-
+        <main className="usu2">
+            
+        <Header/>
+        <div class="cards">
+       
+        <div class="card shop">
+            <div class="icon">
+            <h3>Meu dados</h3>
+           
             </div>
+            
+             nome
+           <div>{usuario.nome}</div>
+           
 
-
+           
+             <div>email:  {usuario.email}</div>
+             
+             
+             <div>cpf:  {usuario.cpf}</div>
+             
+            
+             <div> genero:  {usuario.genero}</div>
+             
+             
+             <div>telefone:  {usuario.telefone}</div>
+             
+             
+         
+             
+            <button>Salva</button>
         </div>
-
-
-
+        <div class="card about">
+            <div class="icon">
+            <h3>Endereco</h3>
+            </div>
+       
+            {enderecos.map(item =>
+            <div>
+                <div className='end'>{item.rua}, {item.numero} - {item.complemento}</div>
+                <div className='cep'> {item.cep}- {item.bairro}, {item.cidade}/{item.estado}</div>
+            </div>
+            )}
+            <button>Novo endereco</button>
+        </div>
+    </div>
+</main>
 
 
     )

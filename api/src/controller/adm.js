@@ -1,21 +1,26 @@
-import { Router } from 'express';
-import { loginAdm } from '../repository/adm.js';
+import { loginAdmmm } from '../repository/adm.js'
 
+import { Router  } from "express"
 const server = Router();
 
-server.post('/admin/login', async (req, resp) => {
-    try{
-        const {user, senha} = req.body;
-        const resposta = await loginAdm(user, senha);
+server.post('/adm/loginnn', async (req, resp) => {
+    try {
+        const {email, senha} = req.body;
+        
+        const resposta = await loginAdmmm (email, senha)
         if(!resposta){
-            throw new Error('Credenciais inválidas!');
+            throw new Error('Credenciais inválidas')
         }
 
-        resp.send(resposta);
-    } catch (err){
+        resp.status(200).send(
+        resposta
+        )
+        
+    } 
+    catch (err) {
         resp.status(401).send({
-            erro: err.message
-        });
+            Erro: err.message
+        })
     }
 })
 

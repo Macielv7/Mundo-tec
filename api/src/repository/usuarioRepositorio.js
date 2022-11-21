@@ -54,7 +54,7 @@ export async function buscarUsuarioPorId(id) {
     ds_email email, 
     ds_telefone telefone,
      ds_senha senha,
-      ds_confirmar,
+      ds_confirmar
     from tb_usuario
     where id_usuario = ?`
 

@@ -4,6 +4,7 @@ import destaque from './controller/destaque.js';
 import departamento from './controller/departamento.js'
 import produto from './controller/produto.js'
 import usuario from './controller/usuariocontroler.js'
+import adm from './controller/adm.js'
 
 import pedidooo from './controller/pedidooo.js'
 
@@ -22,6 +23,7 @@ server.use(destaque);
 server.use(departamento);
 server.use(produto);
 server.use(pedidooo);
+server.use(adm);
 
  
 

@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import { cadastrorUsuario, listarUsuario ,login} from "../repository/usuarioRepositorio.js"
+import { cadastrorUsuario, listarUsuario ,buscarUsuarioPorId,login} from "../repository/usuarioRepositorio.js"
 import multer from 'multer';
 import { listar, salvar } from "../repository/usuarioRepositorio.js";
 

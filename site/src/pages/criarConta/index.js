@@ -11,7 +11,7 @@ import "./index.scss"
 
 export default function Index(){
 
-    const [nome, setNome] = useState('');
+    const [usuario, setUsuario] = useState('');
     const [cpf, setCpf] = useState('');
     const [genero, setGenero] = useState('');
     const [email, setEmail] = useState('');
@@ -25,7 +25,7 @@ export default function Index(){
   
       async function salvarClick(){
         try{      
-            const r = await cadastrorUsuario (nome, cpf,  genero, email, telefone, senha, confirmar)
+            const r = await cadastrorUsuario (usuario, cpf,  genero, email, telefone, senha, confirmar)
             Storage('usuario-logado', r)
             navigate('/loginusuario');
         }
@@ -54,7 +54,7 @@ export default function Index(){
                 <div className="input-group">
                     <div className="input-box">
                         <label for="firstname">Primeiro Nome</label>
-                        <input  type="text"  placeholder="Digite seu primeiro nome" value={nome} onChange={e => setNome(e.target.value)}/>
+                        <input  type="text"  placeholder="Digite seu primeiro nome" value={usuario} onChange={e => setUsuario(e.target.value)}/>
                     </div>
 
                     <div className="input-box">

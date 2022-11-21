@@ -1,8 +1,8 @@
 import { con } from './connection.js';
 
-export async function loginAdm(user, senha){
+export async function loginAdmmm(user, senha){
     const comando = 
-    `SELECT ID_ADMIN_LOGIN    id,
+    `SELECT id_adm    id,
             DS_EMAIL          email
     FROM   tb_admin_login
     WHERE  ds_email      like  ?

@@ -62,10 +62,10 @@ export default function ConsultarProduto() {
     return (
         <div className='pagina-admin-consultar-produto'>
             <Menu/>
-            <h1> Catálogo de Produtos </h1>
+            
 
             <div className='form'>
-
+            <h1> Catálogo de Produtos </h1>
                 <table>
                     <thead>
                         <tr>

@@ -2,23 +2,72 @@
 import Header from "../../../components/header"
 import Barra from "../../../components/barra"
 import  EderecoCard from "../../../components/ederecoCard"
-import { listarUsuario } from "../../../api/usuario"
+
 import './index.scss'
+
+
 import { listar } from '../../../api/usuario'
+import { ToastContainer, toast } from 'react-toastify';
+
+import { API_URL } from '../../../api/config'
 import { useEffect, useState } from 'react'
-import Storage, { set } from 'local-storage'
+import { buscarUsuarioPorId, listarUsuario, enviarImagemUsuario } from '../../../api/usuario'
+import { useNavigate, useParams } from 'react-router-dom'
+import Storage from 'local-storage'
 
 export default function Index() {
-    const [usuario, setUsuario] = useState([])
-    const [itens, setItens] = useState([]);
-    const [enderecos, setEnderecos] = useState([]);
 
-   
+    const [usuario, setUsuario] = useState([])
+    const [enderecos, setEnderecos] = useState([])
+    const [imagem, setImagem] = useState('')
+    
+
+    const {idParam} = useParams()
+   const  navigate = useNavigate ()
+
+    function sairClick(){
+        Storage.remove('usuario-logado')
+        navigate('/LoginUsuario')
+    }
 
     async function carregarUsuario() {
         const id = Storage('usuario-logado').id
-        const resp = await listarUsuario(id);
+        const resp = await buscarUsuarioPorId(id);
         setUsuario(resp);
+    }
+
+   
+    function mostrarImagem(imagem) {
+
+        if (typeof (imagem) == 'object') {
+            return URL.createObjectURL(imagem);
+        }
+        else {
+            return `${API_URL}/${imagem}`
+        }
+    }
+
+    function escolherImagem() {
+        document.getElementById('imagemCapa').click();
+    }
+
+    async function salvarImagem(){
+        try {
+            
+            if(typeof(imagem) == 'object'){
+                await enviarImagemUsuario(idParam, imagem)
+                
+            }
+
+            toast.success('trocastes a foto, querido usuario do fitas br')
+        
+        } catch (err) {
+            if(err.response)
+            toast.error(err.response.data.erro)
+            else
+            toast.error(err.message);
+        }
+
     }
 
        async function carregarEnderecos() {
@@ -32,6 +81,7 @@ export default function Index() {
     useEffect(() => {
         carregarEnderecos();
         carregarUsuario();
+         
     }, [])
 
     return (
@@ -43,9 +93,9 @@ export default function Index() {
                 <div className='retangulo'>
                
                     <img src='./img/5087579.png' className='circo'/>
-                    <h3>Bem-vindo,  {usuario.email} <br/><span>macielvinicius@gmail.com</span></h3>
+                    <h3>Bem-vindo,  {usuario.email} <br/><span>{usuario.email}</span></h3>
                 
-                    <a href='#'>
+                    <a href='/usuario2'>
                     <img src="./img/icons8-engrenagem-24.png" className='' />
                     </a>
                    
