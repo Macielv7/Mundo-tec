@@ -34,48 +34,51 @@ export default function ModalEndereco({ exibir, fechar }) {
         <div className='comp-modal-endereco'>
             <div className={`modal-endereco ${exibir ? 'exibir' : ''}`}>
                 <div className='conteudo'>
-                    <h1> Novo Endereço </h1>
+                    <h1> Novo Endereço </h1><span>x</span>
 
                     <div className='form'>
-                       
+                        <div>
+                            <label> Referência: </label>
+                            <input type='text' />
+                        </div>
                         <div>
                             <label> &nbsp; </label>
                         </div>
                         <div>
                             <label> CEP: </label>
-                            <input type='text' value={cep}  onChange={e => setCEP(e.target.value)}  />
+                            <input type='text'  />
                         </div>
                         <div>
-                            <label> Rua: </label>
-                            <input type='text' value={rua}  onChange={e => setRua(e.target.value)}  />
+                            <label> Logradouro: </label>
+                            <input type='text' />
                         </div>
                         <div>
                             <label> Número: </label>
-                            <input type='text' value={numero}  onChange={e => setNumero(e.target.value)}  />
+                            <input type='text'   />
                         </div>
                         <div>
                             <label> Complemento: </label>
-                            <input type='text' value={complemento}  onChange={e => setComplemento(e.target.value)}  />
+                            <input type='text'   />
                         </div>
                         <div>
                             <label> &nbsp; </label>
                         </div>
                         <div>
                             <label> Bairro: </label>
-                            <input type='text' value={bairro}  onChange={e => setBairro(e.target.value)}  />
+                            <input type='text'  />
                         </div>
                         <div>
                             <label> Cidade: </label>
-                            <input type='text' value={cidade}  onChange={e => setCidade(e.target.value)}  />
+                            <input type='text'  />
                         </div>
                         <div>
                             <label> Estado: </label>
-                            <input type='text' value={estado}  onChange={e => setEstado(e.target.value)}  />
+                            <input type='text' />
                         </div>
                         <div>
                             <label></label>
                             <div className='btn'>
-                                <button onClick={salvarEndereco}> Salvar </button>
+                                <button > Salvar </button>
                             </div>
                         </div>
                     </div>

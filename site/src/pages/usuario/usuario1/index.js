@@ -1,6 +1,6 @@
 
 import Header from "../../../components/header"
-import Barra from "../../../components/barra"
+
 import  EderecoCard from "../../../components/ederecoCard"
 
 import './index.scss'
@@ -87,7 +87,7 @@ export default function Index() {
     return (
         <div className='usu1'>
            <Header/>
-           <Barra/>
+          
             <div className='mae'>
             
                 <div className='retangulo'>

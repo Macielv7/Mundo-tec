@@ -1,17 +1,17 @@
-import { API_URL } from '../api/config'
+import { API_URL } from './config'
 import axios from 'axios'
 
 const api = axios.create({
     baseURL: API_URL
 })
 
-export async function salvarProduto(nome, preco, desconto, valorantigo, marca, idDepartamento ) {
-    const r = await api.post('/produto', { nome, preco, desconto, valorantigo, marca, idDepartamento });
+export async function salvarProduto(nome, preco, desconto, valorantigo, marca, idDepartamento, criacao ) {
+    const r = await api.post('/admin/produto', { nome, preco, desconto, valorantigo, marca, idDepartamento, criacao });
     return r.data;
 }
 
 export async function alterarProduto(id, nome, preco, destaque, idDepartamento, categorias) {
-    await api.put('/admin/produto/' + id, { nome, preco, destaque, idDepartamento, categorias });
+    await api.put('/admin/produ/' + id, { nome, preco, destaque, idDepartamento, categorias });
 }
 
 export async function buscarProdutos() {
@@ -27,7 +27,7 @@ export async function salvarImagens(id, imagem1, imagem2, imagem3, imagem4) {
     form.append('imagens', imagem3);
     form.append('imagens', imagem4);
 
-    const r = await api.put(`/produto/${id}/imagem`, form, {
+    const r = await api.put(`/admin/produto/${id}/imagem`, form, {
         headers: {
             'Content-Type': 'multipart/form-data'
         }

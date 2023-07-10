@@ -7,6 +7,8 @@ import { IoIosUndo, IoIosShareAlt, IoMdHeartEmpty } from 'react-icons/io'
 import { API_URL } from '../../api/config';
 import './index.scss'
 
+import { BiX } from "react-icons/bi";
+
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 
@@ -96,7 +98,7 @@ export default function FlashCard() {
 
                         <div className='product mtop' onClick={() => abrirDetalhes(item.id)}>
                             <div className='img'>
-                                <span className='discount'>{item.desconto} Off</span>
+                                <span className='discount'>50% Off</span>
                                 <img src={exibir(item.imagem)} alt="" />
                                 <div className='product-like'>
                                     <IoMdHeartEmpty IoMdHeartEmpty onClick={increment}></IoMdHeartEmpty>
@@ -108,17 +110,25 @@ export default function FlashCard() {
                             <div className='product-details'>
                                 <h5>{item.marca} </h5>
                                 <h3>{item.produto} </h3>
-                                <h9><s>R${item.valorantigo}</s></h9>
+                                <h9><s>R$ {item.valorantigo}</s></h9>
                                 <div className='price'>
 
-                                    <h4>R${item.preco}</h4>
+                                    <h4>R$ {item.preco}</h4>
 
 
                                 </div>
                             </div>
-                            <button  >
-
-                                <h11>Comprar</h11>
+                            <button>
+                                <div class="svg-wrapper-1">
+                                    <div class="svg-wrapper">
+                                        <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                          <span>
+                                          <BiX/>
+                                          </span>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <span>Comprar</span>
                             </button>
                         </div>
                     </div>

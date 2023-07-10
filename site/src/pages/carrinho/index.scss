@@ -1,11 +1,10 @@
 .pagina-carrinho {
-    background-color: #f3f3f3;
+    background-color: #f7f7f7;
     min-height: 100vh;
-
+    padding: 2em;
 
     .carrinho {
         display: flex;
-        padding: 2em;
     }
 
     .itens {
@@ -21,18 +20,15 @@
     }
 
     .resumo {
-
         display: flex;
         flex-direction: column;
         align-items: center;
+        
 
-        height: 400px;
+        height: 200px;
         width: 300px;
-        background-color: #D9D9D9;
-
-
-
-        box-shadow: 0px 0px 10px 2px #e0e0e0;
+        background-color: #fff;
+        box-shadow: 0px 0px 10px 2px #9a9a9a;
         margin: 0px 0px 0px 10px;
         padding: 2em 0em;
 
@@ -41,80 +37,55 @@
             margin: 0px 0px;
         }
 
-
-        .total {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background: rgb(6, 0, 83);
-            color: #fff;
-            padding: 2rem 45px;
-            border-radius: 15px;
-            margin-top: 01rem;
-            margin-bottom: 15px;
-
-            border: none;
-            list-style: none;
-            box-sizing: border-box;
+        h3 {
             font-size: 16px;
-            font-family: Poppins, sans-serif !important;
-
-
         }
 
-
-
+        p {
+            font-size: 20px;
+            font-weight: 500;
+            margin-top: 14px;
+        }
 
         button {
-            width: 80%;
-            height: 48px;
+            outline: 0;
+           
+            border: 0;
+            height: 50px;
+            width: 50%;
             display: flex;
-
-
-            justify-content: center;
-
             align-items: center;
-            border: 1px solid #03004A;
-            background-color: rgb(255, 255, 255);
-            user-select: none;
-            color: #03004A;
-            font-size: 18px;
-            font-weight: 700;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 16px;
+            color: white;
+            background: #8e2de2;
+            border-bottom: 3px solid #6516aa;
             text-transform: uppercase;
-            transition: background-color 0.3s ease 0s;
-            border-radius: 0.25rem;
-            margin-bottom: 10px;
-
         }
 
     }
 
-    button :hover {
-        background-color: rgb(14, 0, 92);
-    }
-
-    .cupom {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        height: 85px;
-        width: 300px;
-        background-color: #D9D9D9;
-
-        box-shadow: 0px 0px 10px 2px #e0e0e0;
-        margin: 0px 0px 0px 0px;
 
 
-        input {
-            border-radius: 10px;
-            height: 70px;
-            margin: 5px;
+    @media (max-width: 1280px) {
 
+        .carrinho {
+            flex-direction: column;
         }
 
+        .resumo {
+            margin: 20px 0px;
+        }
     }
+
+
+    @media (max-width: 868px) {
+        .resumo {
+            width: 100%;
+        }
+    }
+
 
 
 }

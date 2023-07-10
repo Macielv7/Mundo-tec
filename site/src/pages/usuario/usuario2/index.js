@@ -1,6 +1,6 @@
 
 import Header from "../../../components/header"
-import Barra from "../../../components/barra"
+
 import  EderecoCard from "../../../components/ederecoCard"
 
 import './index.scss'

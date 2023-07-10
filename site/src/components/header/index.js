@@ -1,64 +1,137 @@
 import React from "react"
 import './index.scss'
-import {IoIosHome, IoMdCall, IoMdChatboxes, IoMdClipboard, IoIosHeart, IoMdHammer, IoMdBookmark, IoIosCart, IoMdMenu, IoMdPerson} from 'react-icons/io'
+import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { buscarProdutoPorId } from '../../api/produtoAPI';
+import Storage from 'local-storage'
+
+import Cart from "../cart/Cart";
+
+
+import { BiCart, BiHeart, BiGroup, BiSearchAlt2, BiHomeAlt } from "react-icons/bi";
 
 export default function Header() {
 
+  const [openModal, setOpenModal] = useState(false);
+  const [showCart, setShowCart] = useState(false);
+
+  const [itens, setItens] = useState([]);
+
+  function qtdItens() {
+    return itens.length;
+  }
+
+  async function carregarCarrinho() {
+    let carrinho = Storage('carrinho');
+    if (carrinho) {
+
+      let temp = [];
+
+      for (let produto of carrinho) {
+        let p = await buscarProdutoPorId(produto.id);
+
+        temp.push({
+          produto: p,
+          qtd: produto.qtd
+        })
+      }
+
+      setItens(temp);
+    }
+
+  }
+
+  useEffect(() => {
+    carregarCarrinho();
+
+  }, [])
+
+
+
+
   return (
     <main className="componts-header">
-      <section className='search'>
+      <header>
 
-        <div className='containerr c_flex'>
+        <div class="header-main">
+          <div class="container">
 
-          <div class="menu-lado">
-            <input id="menu__toggle" type="checkbox" />
-            <label class="menu__btn" for="menu__toggle">
-              <span></span>
-            </label>
+            <Link to="/" class="header-logo">
+              <h8>Mundo Tec</h8>
+            </Link>
 
-            <ul class="menu__box">
-              <li><a class="menu__item" href="/usuario1">Minha Conta</a></li>
-              <li><a class="menu__item" href="#">Meu carrinho</a></li>
-              <li><a class="menu__item" href="#">Favoritos</a></li>
-              <hr />
-              <li><a class="menu__item" href="#">Atendimento</a></li>
-              <hr />
-              <li><a class="menu__item" href="#">Destaques</a></li>
-              <li><a class="menu__item" href="#">Lançamentos</a></li>
-              <li><a class="menu__item" href="#">Oferta do dia</a></li>
-            </ul>
+            <div class="header-search-container">
+              <input type="search" name="search" class="search-field" placeholder="Procurar Produtos..." />
 
-          </div>
+              <div class="search-btn">
+                <zoom-in name="search-outline"></zoom-in>
+              </div>
+            </div>
 
-          <div className='logo width '>
-            <a href="/">
-              <img src="./img/logo.png" />
-            </a>
-          </div>
+            <div class="header-user-actions">
 
-          <div className='search-boxx '>
-            <i class="fa fa-user-circle-o" ></i>
-            <input type='text' placeholder='Search and hit enter...' />
+              <Link to="/login">
+                <div class="action-btn" >
+                  <BiGroup name="person-outline"></BiGroup>
+                </div>
+              </Link>
 
-          </div>
+              <div class="action-btn">
+                <BiHeart name="heart-outline"></BiHeart>
+                <span class="count">0</span>
+              </div>
 
-          <div className='bt'>
-            <a href="/loginusuario">
-              <img src="/img/icons8-usuário-homem-com-círculo-24.png" />
-            </a>
-            <a href="/carrinho">
-            <img src="/img/carri.png" />
-            </a>
-            <div className='cart'>
+              <div class="action-btn">
+                <span
+                  className="cart-icon"
+                  onClick={() => {
+                    setOpenModal(true)
+                  }}
+                >
+                  <BiCart />
+                  <span class="count">{qtdItens()}   itens</span>
+                </span>
+              </div>
 
+              {openModal && <Cart OpenCart={setOpenModal} />}
             </div>
           </div>
 
+        </div>
+        {showCart && <Cart />}
 
+        <div class="mobile-bottom-navigation">
 
+          <button class="action-btn" data-mobile-menu-open-btn>
+            <BiSearchAlt2 name="menu-outline"></BiSearchAlt2>
+          </button>
+
+          <button class="action-btn">
+            <span
+              className="cart-icon"
+              onClick={() => setShowCart(true)}
+            >
+              <BiCart />
+
+            </span>
+
+          </button>
+
+          <Link to="/">
+            <button class="action-btn">
+              <BiHomeAlt name="home-outline"></BiHomeAlt>
+            </button>
+          </Link>
+
+          <button class="action-btn">
+            <BiHeart name="heart-outline"></BiHeart>
+
+            <span class="count">0</span>
+          </button>
 
         </div>
-      </section>
+
+      </header>
     </main>
   )
 }

@@ -4,7 +4,10 @@ import FlashDeals from "../../components/flashCard"
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Storage from 'local-storage'
-import { toast } from 'react-toastify'
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 import { buscarProdutoPorId } from '../../api/produtoAPI';
@@ -17,13 +20,17 @@ export default function ProdutoDetalhe() {
     const { id } = useParams();
 
 
+
+   
+
     async function carregarPagina() {
         const r = await buscarProdutoPorId(id);
         setProduto(r);
     }
 
 
-    function exibirImagemPrincipal() {
+    function exibirImagemPrincipal(e) {
+
         if (produto.imagens.length > 0) {
             return API_URL + '/' + produto.imagens[imagemPrincipal];
 
@@ -56,6 +63,7 @@ export default function ProdutoDetalhe() {
             })
 
             Storage('carrinho', carrinho);
+
         }
 
         toast.dark('Produto adicionado ao carrinho!');
@@ -68,9 +76,10 @@ export default function ProdutoDetalhe() {
 
 
     return (
-        <div className='f9'>
+        <div>
+            <Header />
             <div className='pagina-detalhe-produto'>
-                <Header />
+
                 <div className='produto'>
 
                     <div className='imagens'>
@@ -80,12 +89,15 @@ export default function ProdutoDetalhe() {
                             )}
                         </div>
                         <div className='atual'>
-                            <img src={exibirImagemPrincipal()} />
+                            <img src={exibirImagemPrincipal()}
+                                draggable={false}
+                                
+                            />
                         </div>
                     </div>
 
-                    <div className='detalhes'>
-                        <div className='nome'> {produto.info.produto} </div>
+                    <div className='detalhess'>
+                        <div className='namme'> {produto.info.produto} </div>
                         <div className='departamento'> {produto.info.nomeDepartamento} </div>
 
                         <div className='antigo'> <s> R$ {produto.info.valorantigo} </s> </div>

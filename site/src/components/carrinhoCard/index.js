@@ -38,29 +38,25 @@ export default function CarrinhoCard({ item: { produto: { info, imagens }, qtd }
                     </div>
                     <div className='detalhes'>
                         <div className='departamento'> {info.nomeDepartamento} </div>
-                        <div className='nome'> {info.produto} </div>
+                        <div className='noomee'> {info.produto} </div>
 
 
                     </div>
                 </div>
-                
+
                 <div className='qtd-box'>
-                    <div className='i'></div>
                     <div className='subtotal'>
 
-                        <div>R$  {calcularSubtotal()}</div>
-                        <div>(A vista no PIX)</div>
+                        <div>R$ {calcularSubtotal()}</div>
+                     
 
                     </div>
 
                 </div>
 
-                <div className='lixo'  onClick={remover}>
-                    <img src="./img/icons8-remover-24.png" />
-                </div>
             </div>
 
-            
+
 
         </div>
     )

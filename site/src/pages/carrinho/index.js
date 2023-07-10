@@ -22,7 +22,7 @@ export default function Carrinho() {
     const navigate = useNavigate();
 
     function irPedido() {
-        navigate('/cartao')
+        navigate('/pagamento')
     }
 
     function irPedidooo() {
@@ -91,63 +91,53 @@ export default function Carrinho() {
 
 
     return (
-        <div className='pagina-carrinho'>
-            <Header />
+        <main class="containerrr">
+            <Header/>
+ 
+            <div className='pagina-carrinho'>
+            <div>
+                    <h2>Endereços</h2>
 
-            <h1> PRODUTO E FRETE </h1>
+                    <div className='enderecos'>
 
-            <div className='pagina-pedido'>
-                <ExibirEnderecos exibir={exibirEndereco} fechar={fecharNovoEndereco} />
-
-
-                <div className='info'>
-                    <div>
-                        <h2>SELECIONE O ENDEREÇO</h2>
-
-                        <div className='enderecos'>
-
-
-                            <EderecoCard />
-
-
-                        </div>
-
-                        <button onClick={exibirNovoEndereco}> Novo </button>
-
+                        
+                            <EderecoCard  />
+                      
                     </div>
 
-                </div>
-            </div>
-
-            <div className='carrinho'>
-
-                <div className='itens'>
-
-                    {itens.map(item =>
-                        <CarrinhoCard
-                            item={item}
-                            removerItem={removerItem}
-                            carregarCarrinho={carregarCarrinho} />
-                    )}
+                    <button onClick={exibirNovoEndereco}> Novo </button>
 
                 </div>
 
-                <div className='resumo'>
-                    <h1> PREÇOS TOTAL   </h1>
-                    <div className='total'>
-                        <h3>  valor total: </h3>
-                        <p> R$ {calcularValorTotal()} </p>
-                    </div>
+<h1> Carrinho </h1>
 
-                    <button onClick={irPedido}> IR PARA PAGAMENTO </button>
+<div className='carrinho'>
 
-                    <button onClick={irPedidooo}> CONTINUAR COMPRANDO </button>
+    <div className='itens'>
 
-                </div>
+        {itens.map(item => 
+            <CarrinhoCard
+                item={item}
+                removerItem={removerItem}
+                carregarCarrinho={carregarCarrinho} />
+        )}
 
-            </div>
+    </div>
 
-        </div>
+    
+    <div className='resumo'>
+        <h1> Subtotal </h1>
+       
+        <p> R$ {calcularValorTotal()} </p>
+        <button onClick={irPedido}> Fechar Pedido </button>
+    </div>
+
+
+</div>
+
+</div>
+  </main>
+
 
     )
 }

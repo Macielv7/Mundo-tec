@@ -1,31 +1,28 @@
 import 'dotenv/config'
 
-import destaque from './controller/destaque.js';
-import departamento from './controller/departamento.js'
-import produto from './controller/produto.js'
-import usuario from './controller/usuariocontroler.js'
-import adm from './controller/adm.js'
+import AdmProduto from "./controller/admin/ProdutoController.js"
+import Departamento from "./controller/admin/DepartamentoController.js"
 
-import pedidooo from './controller/pedidooo.js'
+import Produto from "./controller/ProdutoController.js"
+import Login from "./controller/LoginController.js"
+
 
 import express from "express";
 import cors from "cors";
 
 const server = express();
 
-server.use('/storage/produto', express.static('storage/produto') );
 server.use(cors());
 server.use(express.json());
 
+server.use('/storage/produto', express.static('storage/produto'));
 
-server.use(usuario);
-server.use(destaque);
-server.use(departamento);
-server.use(produto);
-server.use(pedidooo);
-server.use(adm);
 
- 
+server.use(AdmProduto);
+server.use(Departamento);
+
+server.use(Produto);
+server.use(Login);
 
 
 const PORT = process.env.PORT;

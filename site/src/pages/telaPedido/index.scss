@@ -1,19 +1,17 @@
-.f9{
-
 .pagina-detalhe-produto {
-    background-color: #f7f7f7;
-   
+    background-color: #ffffff;
+    min-height: 100vh;
+
 
 
     .produto {
         display: flex;
         flex-direction: row;
         align-items: center;
-        
 
         padding: 1.5em;
         background-color: #fff;
-        box-shadow: 0px 0px 10px 2px #e0e0e0;
+        box-shadow: 15px 2px 0px 0px #e0e0e0;
     }
 
 
@@ -21,8 +19,7 @@
         display: flex;
         flex-direction: row;
         align-items: center;
-        margin-left: 140px;
-        
+
         .opcoes {
             display: flex;
             flex-direction: column;
@@ -30,24 +27,22 @@
             margin: 30px;
 
             img {
-                width: 80px;
+                width: 60px;
                 margin: 10px;
             }
         }
 
         .atual img {
             max-width: 300px;
-            width: 200%;
+            width: 100vh;
         }
     }
 
-    .detalhes {
+    .detalhess {
         margin-left: 100px;
-       
-        
-        .nome {
-            padding: 3em  0px;
-            font-size: 29px;
+
+        .namme {
+            font-size: 32px;
             font-weight: 500;
         }
 
@@ -63,52 +58,13 @@
         }
 
         .preco {
-            
             font-size: 28px;
             font-weight: 700;
-            
         }
 
-        
-
         button {
-            width: 11.5em;
-            height: 1.5em;
-            margin: 0.5em;
-            background: rgb(4, 0, 63);
-            color: white;
-            border: none;
-            border-radius: 0.625em;
-            font-size: 20px;
-            font-weight: bold;
-            cursor: pointer;
-            position: relative;
-            z-index: 1;
-            overflow: hidden;
-           }
-           
-           button:hover {
-            color: black;
-           }
-           
-           button:after {
-            content: "";
-            background: white;
-            position: absolute;
-            z-index: -1;
-            left: -20%;
-            right: -20%;
-            top: 0;
-            bottom: 0;
-            transform: skewX(-45deg) scale(0, 1);
-            transition: all 0.5s;
-           }
-           
-           button:hover:after {
-            transform: skewX(-45deg) scale(1, 1);
-            -webkit-transition: all 0.5s;
-            transition: all 0.5s;
-           }
+            margin-top: 20px;
+        }
     }
 
 
@@ -135,5 +91,4 @@
     }
 
 
-}
 }
