@@ -3,6 +3,7 @@ import './index.scss'
 export default function CardEndereco() {
 
     return (
+        <main className='endereco'>
         <div className='comp-card-endereco'
             
         >
@@ -12,6 +13,7 @@ export default function CardEndereco() {
                 <div className='cep'>567899567 - grajau, sao paulo/sp</div>
             </div>
         </div>
+        </main>
     )
 }
 

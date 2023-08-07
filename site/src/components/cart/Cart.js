@@ -73,7 +73,7 @@ export default function Cart({ OpenCart }) {
                 className="opac-layer"
                 onClick={() => OpenCart(false)}
             ></div>
-            <div className="cart-content">
+            <div className="cart-contentt">
                 <div className="cart-header">
                     <span className="heading">Carrinho</span>
 

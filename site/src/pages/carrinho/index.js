@@ -25,10 +25,6 @@ export default function Carrinho() {
         navigate('/pagamento')
     }
 
-    function irPedidooo() {
-        navigate('/')
-    }
-
     function removerItem(id) {
         let carrinho = Storage('carrinho');
         carrinho = carrinho.filter(item => item.id != id);
@@ -91,54 +87,35 @@ export default function Carrinho() {
 
 
     return (
-        <main class="containerrr">
-            <Header/>
- 
-            <div className='pagina-carrinho'>
-            <div>
-                    <h2>Endereços</h2>
+        <main>
+                        <Header/>
+        <div className='pagina-carrinho'>
+        <ExibirEnderecos/>
+                        <EderecoCard/>
+            <h1> Carrinho </h1>
 
-                    <div className='enderecos'>
+            <div className='carrinho'>
 
-                        
-                            <EderecoCard  />
-                      
-                    </div>
+                <div className='itens'>
 
-                    <button onClick={exibirNovoEndereco}> Novo </button>
+                    {itens.map(item =>
+                        <CarrinhoCard
+                            item={item}
+                            removerItem={removerItem}
+                            carregarCarrinho={carregarCarrinho} />
+                    )}
 
                 </div>
 
-<h1> Carrinho </h1>
 
-<div className='carrinho'>
-
-    <div className='itens'>
-
-        {itens.map(item => 
-            <CarrinhoCard
-                item={item}
-                removerItem={removerItem}
-                carregarCarrinho={carregarCarrinho} />
-        )}
-
-    </div>
-
-    
-    <div className='resumo'>
-        <h1> Subtotal </h1>
-       
-        <p> R$ {calcularValorTotal()} </p>
-        <button onClick={irPedido}> Fechar Pedido </button>
-    </div>
-
-
-</div>
-
-</div>
-  </main>
-
-
+                <div className='resumo'>
+                    <h1> Subtotal </h1>
+                    <p> R$ {calcularValorTotal()} </p>
+                    <button onClick={irPedido}> Fechar Pedido </button>
+                </div>
+            </div>
+        </div>
+        </main>
     )
 }
 

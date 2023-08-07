@@ -1,5 +1,5 @@
 .pagina-carrinho {
-    background-color: #f7f7f7;
+
     min-height: 100vh;
     padding: 2em;
 
@@ -23,12 +23,11 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        
 
         height: 200px;
         width: 300px;
         background-color: #fff;
-        box-shadow: 0px 0px 10px 2px #9a9a9a;
+        box-shadow: 0px 0px 10px 2px #e0e0e0;
         margin: 0px 0px 0px 10px;
         padding: 2em 0em;
 
@@ -48,20 +47,12 @@
         }
 
         button {
-            outline: 0;
-           
-            border: 0;
-            height: 50px;
-            width: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 16px;
-            color: white;
-            background: #8e2de2;
-            border-bottom: 3px solid #6516aa;
-            text-transform: uppercase;
+            background-color: rgb(118, 6, 103);
+            color: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 6px;
+            font-size: 12px;
         }
 
     }

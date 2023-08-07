@@ -2,7 +2,7 @@ import { API_URL } from '../../api/config';
 import './item.scss'
 
 import { BiX } from "react-icons/bi";
-
+import { useNavigate } from 'react-router-dom'
 import Storage from 'local-storage'
 import { useState } from 'react';
 
@@ -10,6 +10,12 @@ export default function CarrinhoItem({ item: { produto: { info, imagens }, qtd }
 
     const [qtdProduto, setQtdProduto] = useState(qtd);
 
+    const navigate = useNavigate();
+
+
+    function abrirDetalhes(id) {
+        navigate('/tela/' + id + '/pedido')
+    }
 
     function remover() {
         removerItem(info.id);
@@ -42,18 +48,20 @@ export default function CarrinhoItem({ item: { produto: { info, imagens }, qtd }
 
 
     return (
-        <div className="cart-products">
+        <div className="cart-products" >
             <div
                 className="search-result-item"
                 key={info.id}
                 onClick={() => { }}
             >
-                <div className="image-container">
+                
+                <div className="image-container" onClick={() => abrirDetalhes()}>
                     <img
                         src={exibirImagem()}
                     />
                 </div>
-                <div className="prod-details">
+            
+                <div className="prod-details"  onClick={() => abrirDetalhes()}>
                     <span className="name">{info.produto}</span>
                     <BiX
                         className="close-btn"
@@ -61,15 +69,11 @@ export default function CarrinhoItem({ item: { produto: { info, imagens }, qtd }
                     />
 
                     <div className="quantity-buttons">
-                        <span
-
-                        >
+                        <span>
                             -
                         </span>
                         <span >o</span>
-                        <span
-
-                        >
+                        <span>
                             +
                         </span>
                     </div>
@@ -82,6 +86,7 @@ export default function CarrinhoItem({ item: { produto: { info, imagens }, qtd }
                         R$ {calcularSubtotal()}
                     </span>
                 </div>
+              
             </div>
         </div>
     );

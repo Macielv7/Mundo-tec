@@ -28,37 +28,31 @@ export default function CarrinhoCard({ item: { produto: { info, imagens }, qtd }
 
 
     return (
-        <div className='comp-carrinho-item'>
-            <div className='produto-container'>
-                <div className='produto-box'>
-                    <div className='imagens'>
-                        <div className='atual'>
-                            <img src={exibirImagem()} />
+        <main>
+            <div className='comp-carrinho-item'>
+                <div className='produto-container'>
+                    <div className='produto-box'>
+                        <div className='imagens'>
+                            <div className='atual'>
+                                <img src={exibirImagem()} />
+                            </div>
+                        </div>
+                        <div className='detalhes'>
+                            <div className='departamento'> {info.nomeDepartamento} </div>
+                            <div className='nome'> {info.produto} </div>
+
+                            <div className='preco-label'> PREÇO </div>
+                            <div className='preco'> R$ {info.preco} </div>
                         </div>
                     </div>
-                    <div className='detalhes'>
-                        <div className='departamento'> {info.nomeDepartamento} </div>
-                        <div className='noomee'> {info.produto} </div>
-
-
+                    <div className='qtd-box'>
+                        <div className='excluir' onClick={remover}>
+                            excluir
+                        </div>
                     </div>
                 </div>
-
-                <div className='qtd-box'>
-                    <div className='subtotal'>
-
-                        <div>R$ {calcularSubtotal()}</div>
-                     
-
-                    </div>
-
-                </div>
-
             </div>
-
-
-
-        </div>
+        </main>
     )
 }
 
